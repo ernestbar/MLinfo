@@ -1,0 +1,668 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/Enserbic_WS/Service1" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/Enserbic_WS/Service1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/Enserbic_WS/Service1">
+      <s:element name="consultar_persona_indicadores">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contrasenia" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="xml_entrada" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="motivo_consultas" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tipo_persona" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="integracion" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="consultar_persona_indicadoresResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="consultar_persona_indicadoresResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="consultar_persona_segip">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contrasenia" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="xml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="consultar_persona_segipResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="consultar_persona_segipResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="consultar_contrastacion_segip">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contrasenia" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="xml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="consultar_contrastacion_segipResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="consultar_contrastacion_segipResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="consultar_persona_scoring">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contrasenia" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="xml" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="motivo_consultas" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tipo_persona" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="consultar_persona_scoringResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="consultar_persona_scoringResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="consultar_persona">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contrasenia" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="xml" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="motivo_consultas" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tipo_persona" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tipo_reporte" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="integracion" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="consultar_personaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="consultar_personaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="consultar_persona_motor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contrasenia" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="xml" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="datos_motor_decision" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="motivo_consultas" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tipo_persona" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tipo_reporte" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="integracion" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="consultar_persona_motorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="consultar_persona_motorResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="consultar_persona_deudas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contrasenia" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="xml" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="motivo_consultas" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tipo_persona" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tipo_reporte" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="integracion" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="consultar_persona_deudasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="consultar_persona_deudasResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="consultar_deudas_MC">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contrasenia" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="xml" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="motivo_consultas" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tipo_persona" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tipo_reporte" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="integracion" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="consultar_deudas_MCResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="consultar_deudas_MCResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Verificaciones_Add_Dat_Verificaciones">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contrasenia" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Xml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Verificaciones_Add_Dat_VerificacionesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Verificaciones_Add_Dat_VerificacionesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Verificaciones_Get_Dat_Verificaciones">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contrasenia" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Xml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Verificaciones_Get_Dat_VerificacionesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Verificaciones_Get_Dat_VerificacionesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="verificaciones_consultar_estado">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contrasenia" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Xml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="verificaciones_consultar_estadoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="verificaciones_consultar_estadoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Procesar_analisis_personas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contrasenia" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Xml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Procesar_analisis_personasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Procesar_analisis_personasResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_analisis_personas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contrasenia" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nro_envio" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_analisis_personasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_analisis_personasResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="consultar_ponderado">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="USUARIO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CONTRASENIA" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NOMBRE1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AP_PATERNO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="COD_DOCUMENTO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="COMPLEMENTO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TIPO_DOCUMENTO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EXTENSION" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="motivo_consultas" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tipo_reporte" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="consultar_ponderadoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="consultar_ponderadoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="consultar_persona_indicadoresSoapIn">
+    <wsdl:part name="parameters" element="tns:consultar_persona_indicadores" />
+  </wsdl:message>
+  <wsdl:message name="consultar_persona_indicadoresSoapOut">
+    <wsdl:part name="parameters" element="tns:consultar_persona_indicadoresResponse" />
+  </wsdl:message>
+  <wsdl:message name="consultar_persona_segipSoapIn">
+    <wsdl:part name="parameters" element="tns:consultar_persona_segip" />
+  </wsdl:message>
+  <wsdl:message name="consultar_persona_segipSoapOut">
+    <wsdl:part name="parameters" element="tns:consultar_persona_segipResponse" />
+  </wsdl:message>
+  <wsdl:message name="consultar_contrastacion_segipSoapIn">
+    <wsdl:part name="parameters" element="tns:consultar_contrastacion_segip" />
+  </wsdl:message>
+  <wsdl:message name="consultar_contrastacion_segipSoapOut">
+    <wsdl:part name="parameters" element="tns:consultar_contrastacion_segipResponse" />
+  </wsdl:message>
+  <wsdl:message name="consultar_persona_scoringSoapIn">
+    <wsdl:part name="parameters" element="tns:consultar_persona_scoring" />
+  </wsdl:message>
+  <wsdl:message name="consultar_persona_scoringSoapOut">
+    <wsdl:part name="parameters" element="tns:consultar_persona_scoringResponse" />
+  </wsdl:message>
+  <wsdl:message name="consultar_personaSoapIn">
+    <wsdl:part name="parameters" element="tns:consultar_persona" />
+  </wsdl:message>
+  <wsdl:message name="consultar_personaSoapOut">
+    <wsdl:part name="parameters" element="tns:consultar_personaResponse" />
+  </wsdl:message>
+  <wsdl:message name="consultar_persona_motorSoapIn">
+    <wsdl:part name="parameters" element="tns:consultar_persona_motor" />
+  </wsdl:message>
+  <wsdl:message name="consultar_persona_motorSoapOut">
+    <wsdl:part name="parameters" element="tns:consultar_persona_motorResponse" />
+  </wsdl:message>
+  <wsdl:message name="consultar_persona_deudasSoapIn">
+    <wsdl:part name="parameters" element="tns:consultar_persona_deudas" />
+  </wsdl:message>
+  <wsdl:message name="consultar_persona_deudasSoapOut">
+    <wsdl:part name="parameters" element="tns:consultar_persona_deudasResponse" />
+  </wsdl:message>
+  <wsdl:message name="consultar_deudas_MCSoapIn">
+    <wsdl:part name="parameters" element="tns:consultar_deudas_MC" />
+  </wsdl:message>
+  <wsdl:message name="consultar_deudas_MCSoapOut">
+    <wsdl:part name="parameters" element="tns:consultar_deudas_MCResponse" />
+  </wsdl:message>
+  <wsdl:message name="Verificaciones_Add_Dat_VerificacionesSoapIn">
+    <wsdl:part name="parameters" element="tns:Verificaciones_Add_Dat_Verificaciones" />
+  </wsdl:message>
+  <wsdl:message name="Verificaciones_Add_Dat_VerificacionesSoapOut">
+    <wsdl:part name="parameters" element="tns:Verificaciones_Add_Dat_VerificacionesResponse" />
+  </wsdl:message>
+  <wsdl:message name="Verificaciones_Get_Dat_VerificacionesSoapIn">
+    <wsdl:part name="parameters" element="tns:Verificaciones_Get_Dat_Verificaciones" />
+  </wsdl:message>
+  <wsdl:message name="Verificaciones_Get_Dat_VerificacionesSoapOut">
+    <wsdl:part name="parameters" element="tns:Verificaciones_Get_Dat_VerificacionesResponse" />
+  </wsdl:message>
+  <wsdl:message name="verificaciones_consultar_estadoSoapIn">
+    <wsdl:part name="parameters" element="tns:verificaciones_consultar_estado" />
+  </wsdl:message>
+  <wsdl:message name="verificaciones_consultar_estadoSoapOut">
+    <wsdl:part name="parameters" element="tns:verificaciones_consultar_estadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Procesar_analisis_personasSoapIn">
+    <wsdl:part name="parameters" element="tns:Procesar_analisis_personas" />
+  </wsdl:message>
+  <wsdl:message name="Procesar_analisis_personasSoapOut">
+    <wsdl:part name="parameters" element="tns:Procesar_analisis_personasResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_analisis_personasSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_analisis_personas" />
+  </wsdl:message>
+  <wsdl:message name="Get_analisis_personasSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_analisis_personasResponse" />
+  </wsdl:message>
+  <wsdl:message name="consultar_ponderadoSoapIn">
+    <wsdl:part name="parameters" element="tns:consultar_ponderado" />
+  </wsdl:message>
+  <wsdl:message name="consultar_ponderadoSoapOut">
+    <wsdl:part name="parameters" element="tns:consultar_ponderadoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ServicioIntegracionBICSoap">
+    <wsdl:operation name="consultar_persona_indicadores">
+      <wsdl:input message="tns:consultar_persona_indicadoresSoapIn" />
+      <wsdl:output message="tns:consultar_persona_indicadoresSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="consultar_persona_segip">
+      <wsdl:input message="tns:consultar_persona_segipSoapIn" />
+      <wsdl:output message="tns:consultar_persona_segipSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="consultar_contrastacion_segip">
+      <wsdl:input message="tns:consultar_contrastacion_segipSoapIn" />
+      <wsdl:output message="tns:consultar_contrastacion_segipSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="consultar_persona_scoring">
+      <wsdl:input message="tns:consultar_persona_scoringSoapIn" />
+      <wsdl:output message="tns:consultar_persona_scoringSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="consultar_persona">
+      <wsdl:input message="tns:consultar_personaSoapIn" />
+      <wsdl:output message="tns:consultar_personaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="consultar_persona_motor">
+      <wsdl:input message="tns:consultar_persona_motorSoapIn" />
+      <wsdl:output message="tns:consultar_persona_motorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="consultar_persona_deudas">
+      <wsdl:input message="tns:consultar_persona_deudasSoapIn" />
+      <wsdl:output message="tns:consultar_persona_deudasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="consultar_deudas_MC">
+      <wsdl:input message="tns:consultar_deudas_MCSoapIn" />
+      <wsdl:output message="tns:consultar_deudas_MCSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Verificaciones_Add_Dat_Verificaciones">
+      <wsdl:input message="tns:Verificaciones_Add_Dat_VerificacionesSoapIn" />
+      <wsdl:output message="tns:Verificaciones_Add_Dat_VerificacionesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Verificaciones_Get_Dat_Verificaciones">
+      <wsdl:input message="tns:Verificaciones_Get_Dat_VerificacionesSoapIn" />
+      <wsdl:output message="tns:Verificaciones_Get_Dat_VerificacionesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="verificaciones_consultar_estado">
+      <wsdl:input message="tns:verificaciones_consultar_estadoSoapIn" />
+      <wsdl:output message="tns:verificaciones_consultar_estadoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Procesar_analisis_personas">
+      <wsdl:input message="tns:Procesar_analisis_personasSoapIn" />
+      <wsdl:output message="tns:Procesar_analisis_personasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_analisis_personas">
+      <wsdl:input message="tns:Get_analisis_personasSoapIn" />
+      <wsdl:output message="tns:Get_analisis_personasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="consultar_ponderado">
+      <wsdl:input message="tns:consultar_ponderadoSoapIn" />
+      <wsdl:output message="tns:consultar_ponderadoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServicioIntegracionBICSoap" type="tns:ServicioIntegracionBICSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="consultar_persona_indicadores">
+      <soap:operation soapAction="http://tempuri.org/Enserbic_WS/Service1/consultar_persona_indicadores" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultar_persona_segip">
+      <soap:operation soapAction="http://tempuri.org/Enserbic_WS/Service1/consultar_persona_segip" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultar_contrastacion_segip">
+      <soap:operation soapAction="http://tempuri.org/Enserbic_WS/Service1/consultar_contrastacion_segip" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultar_persona_scoring">
+      <soap:operation soapAction="http://tempuri.org/Enserbic_WS/Service1/consultar_persona_scoring" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultar_persona">
+      <soap:operation soapAction="http://tempuri.org/Enserbic_WS/Service1/consultar_persona" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultar_persona_motor">
+      <soap:operation soapAction="http://tempuri.org/Enserbic_WS/Service1/consultar_persona_motor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultar_persona_deudas">
+      <soap:operation soapAction="http://tempuri.org/Enserbic_WS/Service1/consultar_persona_deudas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultar_deudas_MC">
+      <soap:operation soapAction="http://tempuri.org/Enserbic_WS/Service1/consultar_deudas_MC" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Verificaciones_Add_Dat_Verificaciones">
+      <soap:operation soapAction="http://tempuri.org/Enserbic_WS/Service1/Verificaciones_Add_Dat_Verificaciones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Verificaciones_Get_Dat_Verificaciones">
+      <soap:operation soapAction="http://tempuri.org/Enserbic_WS/Service1/Verificaciones_Get_Dat_Verificaciones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="verificaciones_consultar_estado">
+      <soap:operation soapAction="http://tempuri.org/Enserbic_WS/Service1/verificaciones_consultar_estado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Procesar_analisis_personas">
+      <soap:operation soapAction="http://tempuri.org/Enserbic_WS/Service1/Procesar_analisis_personas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_analisis_personas">
+      <soap:operation soapAction="http://tempuri.org/Enserbic_WS/Service1/Get_analisis_personas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultar_ponderado">
+      <soap:operation soapAction="http://tempuri.org/Enserbic_WS/Service1/consultar_ponderado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServicioIntegracionBICSoap12" type="tns:ServicioIntegracionBICSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="consultar_persona_indicadores">
+      <soap12:operation soapAction="http://tempuri.org/Enserbic_WS/Service1/consultar_persona_indicadores" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultar_persona_segip">
+      <soap12:operation soapAction="http://tempuri.org/Enserbic_WS/Service1/consultar_persona_segip" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultar_contrastacion_segip">
+      <soap12:operation soapAction="http://tempuri.org/Enserbic_WS/Service1/consultar_contrastacion_segip" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultar_persona_scoring">
+      <soap12:operation soapAction="http://tempuri.org/Enserbic_WS/Service1/consultar_persona_scoring" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultar_persona">
+      <soap12:operation soapAction="http://tempuri.org/Enserbic_WS/Service1/consultar_persona" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultar_persona_motor">
+      <soap12:operation soapAction="http://tempuri.org/Enserbic_WS/Service1/consultar_persona_motor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultar_persona_deudas">
+      <soap12:operation soapAction="http://tempuri.org/Enserbic_WS/Service1/consultar_persona_deudas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultar_deudas_MC">
+      <soap12:operation soapAction="http://tempuri.org/Enserbic_WS/Service1/consultar_deudas_MC" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Verificaciones_Add_Dat_Verificaciones">
+      <soap12:operation soapAction="http://tempuri.org/Enserbic_WS/Service1/Verificaciones_Add_Dat_Verificaciones" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Verificaciones_Get_Dat_Verificaciones">
+      <soap12:operation soapAction="http://tempuri.org/Enserbic_WS/Service1/Verificaciones_Get_Dat_Verificaciones" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="verificaciones_consultar_estado">
+      <soap12:operation soapAction="http://tempuri.org/Enserbic_WS/Service1/verificaciones_consultar_estado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Procesar_analisis_personas">
+      <soap12:operation soapAction="http://tempuri.org/Enserbic_WS/Service1/Procesar_analisis_personas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_analisis_personas">
+      <soap12:operation soapAction="http://tempuri.org/Enserbic_WS/Service1/Get_analisis_personas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultar_ponderado">
+      <soap12:operation soapAction="http://tempuri.org/Enserbic_WS/Service1/consultar_ponderado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServicioIntegracionBIC">
+    <wsdl:port name="ServicioIntegracionBICSoap" binding="tns:ServicioIntegracionBICSoap">
+      <soap:address location="http://200.87.205.38/Integracion_Enserbic/Standard_WS/ServicioIntegracionBIC.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServicioIntegracionBICSoap12" binding="tns:ServicioIntegracionBICSoap12">
+      <soap12:address location="http://200.87.205.38/Integracion_Enserbic/Standard_WS/ServicioIntegracionBIC.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
