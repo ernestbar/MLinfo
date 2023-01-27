@@ -72,27 +72,27 @@ namespace appAmascuotas
                 txtValorCaracter.Text = dom.PV_VALOR_CARACTER;
                 string decSep = System.Globalization.CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalSeparator;
                 txtValorNmerico.Text = dom.PV_VALOR_NUMERICO.ToString().Replace(".",decSep).Replace(",",decSep);
-                if (dom.PV_VALOR_DATE == DateTime.Parse("01/01/3000"))
-                {
+                //if (dom.PV_VALOR_DATE == DateTime.Parse("01/01/3000"))
+                //{
 
-                }
-                else
-                {
-                    DateTime fecha2 = dom.PV_VALOR_DATE;
-                    string dia = "";
-                    string mes = "";
-                    if (fecha2.Day.ToString().Length == 1)
-                        dia = "0" + fecha2.Day.ToString();
-                    else
-                        dia = fecha2.Day.ToString();
+                //}
+                //else
+                //{
+                //    DateTime fecha2 = dom.PV_VALOR_DATE;
+                //    string dia = "";
+                //    string mes = "";
+                //    if (fecha2.Day.ToString().Length == 1)
+                //        dia = "0" + fecha2.Day.ToString();
+                //    else
+                //        dia = fecha2.Day.ToString();
 
-                    if (fecha2.Month.ToString().Length == 1)
-                        mes = "0" + fecha2.Month.ToString();
-                    else
-                        mes = fecha2.Month.ToString();
-                    hfFechaSalida.Value = fecha2.Year.ToString() + "-" + mes + "-" + dia;
-                    ScriptManager.RegisterStartupScript(this, this.Page.GetType(), "myFuncionAlerta2", "setearFechaSalida();", true);
-                }
+                //    if (fecha2.Month.ToString().Length == 1)
+                //        mes = "0" + fecha2.Month.ToString();
+                //    else
+                //        mes = fecha2.Month.ToString();
+                //    hfFechaSalida.Value = fecha2.Year.ToString() + "-" + mes + "-" + dia;
+                //    ScriptManager.RegisterStartupScript(this, this.Page.GetType(), "myFuncionAlerta2", "setearFechaSalida();", true);
+                //}
                 
                 lblNombreDominio.Text = dom.PV_DOMINIO;
                 MultiView1.ActiveViewIndex = 1;
@@ -122,7 +122,7 @@ namespace appAmascuotas
                 lblCodigo.Text = datos[1];
                 lblDominio.Text = datos[0];
                 Clases.Dominios dom = new Clases.Dominios("D", lblDominio.Text, lblCodigo.Text, "", "", 0, DateTime.Now, lblUsuario.Text);
-                lblAviso.Text = dom.ABM().Replace("|", "").Replace("0", "").Replace("null", "");
+                lblAviso.Text = dom.ABM().Replace("|", "").Replace("0", "").Replace("null", "").Replace("1", "");
                 Repeater1.DataBind();
             }
             catch (Exception ex)
@@ -147,17 +147,22 @@ namespace appAmascuotas
             try
             {
                 string valor_fecha = "01/01/3000";
-                if (hfFechaSalida.Value != "")
-                    valor_fecha = hfFechaSalida.Value;
+                //if (hfFechaSalida.Value != "")
+                //    valor_fecha = hfFechaSalida.Value;
+                string valor_numerico = "";
+                if(txtValorNmerico.Text=="")
+                    valor_numerico = "0";
+                else
+                    valor_numerico = txtValorNmerico.Text;
                 if (lblCodigo.Text == "")
                 {
-                    Clases.Dominios dom = new Clases.Dominios("I", ddlDominio.SelectedValue, txtCodigo.Text, txtDescripcion.Text, txtValorCaracter.Text, decimal.Parse(txtValorNmerico.Text), DateTime.Parse(valor_fecha), lblUsuario.Text);
-                    lblAviso.Text = dom.ABM().Replace("|", "").Replace("0", "").Replace("null", ""); 
+                    Clases.Dominios dom = new Clases.Dominios("I", ddlDominio.SelectedValue, txtCodigo.Text, txtDescripcion.Text, txtValorCaracter.Text, decimal.Parse(valor_numerico), DateTime.Parse(valor_fecha), lblUsuario.Text);
+                    lblAviso.Text = dom.ABM().Replace("|", "").Replace("0", "").Replace("null", "").Replace("1", "");
                 }
                 else
                 {
-                    Clases.Dominios dom = new Clases.Dominios("U", lblDominio.Text, lblCodigo.Text, txtDescripcion.Text, txtValorCaracter.Text, decimal.Parse(txtValorNmerico.Text), DateTime.Parse(valor_fecha), lblUsuario.Text);
-                    lblAviso.Text = dom.ABM().Replace("|", "").Replace("0", "").Replace("null", "");
+                    Clases.Dominios dom = new Clases.Dominios("U", lblDominio.Text, lblCodigo.Text, txtDescripcion.Text, txtValorCaracter.Text, decimal.Parse(valor_numerico), DateTime.Parse(valor_fecha), lblUsuario.Text);
+                    lblAviso.Text = dom.ABM().Replace("|", "").Replace("0", "").Replace("null", "").Replace("1", "");
                 }
                 MultiView1.ActiveViewIndex = 0;
                 Repeater1.DataBind();
@@ -190,7 +195,7 @@ namespace appAmascuotas
             txtValorCaracter.Text = "";
             txtValorNmerico.Text = "";
             txtValorNmerico.Text = "0";
-            hfFechaSalida.Value = "";
+            //hfFechaSalida.Value = "";
             txtCodigo.Enabled = true;
 
         }

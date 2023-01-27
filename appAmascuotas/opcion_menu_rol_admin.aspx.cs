@@ -39,7 +39,7 @@ namespace appAmascuotas
                 id = obj.CommandArgument.ToString();
                 string[] datos = id.Split('|');
                 Clases.Opciones_Menu_Rol obj_mr = new Clases.Opciones_Menu_Rol("D", datos[0], ddlMenuRol.SelectedValue, ddlRol.SelectedValue, "", datos[1], lblUsuario.Text);
-                lblAviso.Text = obj_mr.ABM();
+                lblAviso.Text = obj_mr.ABM().Replace("|", "").Replace("0", "").Replace("null", "").Replace("1", "");
                 Repeater1.DataBind();
                 Repeater2.DataBind();
 
@@ -66,7 +66,7 @@ namespace appAmascuotas
                 id = obj.CommandArgument.ToString();
 
                 Clases.Opciones_Menu_Rol obj_mr = new Clases.Opciones_Menu_Rol("I", "", ddlMenuRol.SelectedValue, ddlRol.SelectedValue, "", id, lblUsuario.Text);
-                lblAviso.Text = obj_mr.ABM().Replace("0", "").Replace("|", "").Replace("1", "");
+                lblAviso.Text = obj_mr.ABM().Replace("|", "").Replace("0", "").Replace("null", "").Replace("1", "");
                 Repeater1.DataBind();
                 Repeater2.DataBind();
 

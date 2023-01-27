@@ -3449,12 +3449,8 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <Content Include="dashboard.aspx" />
-    <Content Include="Datos1.xml" />
     <Content Include="default.aspx" />
     <Content Include="domino_admin.aspx" />
-    <Content Include="editar_seccion.aspx" />
-    <Content Include="editar_seccion_j.aspx" />
-    <Content Include="expPlanPago.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Imagenes\alianza_logo.png" />
     <Content Include="Imagenes\amaszonas.png" />
@@ -3483,24 +3479,12 @@
     <Content Include="Imagenes\pgare_amaszonas.jpg" />
     <Content Include="Imagenes\seguro_hoja2.jpg" />
     <Content Include="Imagenes\seguro_pie1.jpg" />
-    <Content Include="imprimir_documentos.aspx" />
-    <Content Include="infoCenter1.aspx" />
-    <Content Include="juridica_wiz.aspx" />
     <Content Include="login.aspx" />
     <Content Include="menus_admin.aspx" />
     <Content Include="menu_rol_admin.aspx" />
-    <Content Include="natural_wiz.aspx" />
     <Content Include="opciones_admin.aspx" />
     <Content Include="opcion_menu_rol_admin.aspx" />
     <Content Include="personal_admin.aspx" />
-    <Content Include="plan_pagos.aspx" />
-    <Content Include="reporteBoletaJuridica.aspx" />
-    <Content Include="reporteContrato.aspx" />
-    <Content Include="reporteFormJuridica.aspx" />
-    <Content Include="reporteFormNatural.aspx" />
-    <Content Include="ReportePlanPago.aspx" />
-    <Content Include="reportePlanPagos.aspx" />
-    <Content Include="reporteSeguro.aspx" />
     <Content Include="Reportes\Seguro\base.min.css" />
     <Content Include="Reportes\Seguro\bg1.png" />
     <Content Include="Reportes\Seguro\bg2.png" />
@@ -3511,15 +3495,6 @@
     <Content Include="Reportes\Seguro\seguro1.aspx" />
     <Content Include="Reportes\Seguro\theViewer.min.js" />
     <Content Include="roles_admin.aspx" />
-    <Content Include="rpt_plan_pago.aspx" />
-    <Content Include="Service.asmx" />
-    <Content Include="simulador.aspx" />
-    <Content Include="simulador_detalle.aspx" />
-    <Content Include="simulador_wiz.aspx" />
-    <Content Include="solicitudes.aspx" />
-    <Content Include="solicitudes_admin.aspx" />
-    <Content Include="solicitudes_gerencial.aspx" />
-    <Content Include="solicitud_consulta.aspx" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -3534,24 +3509,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="sucursal_admin.aspx" />
-    <Content Include="test1.aspx" />
-    <Content Include="testSW.aspx" />
-    <Content Include="TypeAhead.css" />
-    <Content Include="vuelos.aspx" />
     <Content Include="Web.config" />
-    <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="amascuotasDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>amascuotasDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="amascuotasDataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>amascuotasDataSet1.xsd</DependentUpon>
-    </Compile>
     <Compile Include="cambio_password.aspx.cs">
       <DependentUpon>cambio_password.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3559,8 +3519,6 @@
     <Compile Include="cambio_password.aspx.designer.cs">
       <DependentUpon>cambio_password.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Clases\clientes.cs" />
-    <Compile Include="Clases\Datos_motor_decision.cs" />
     <Compile Include="Clases\DBApi.cs" />
     <Compile Include="Clases\Dominios.cs" />
     <Compile Include="Clases\enviar_correo.cs" />
@@ -3569,16 +3527,9 @@
     <Compile Include="Clases\Opciones.cs" />
     <Compile Include="Clases\Opciones_Menu_Rol.cs" />
     <Compile Include="Clases\Paises.cs" />
-    <Compile Include="Clases\Reservas.cs" />
     <Compile Include="Clases\Roles.cs" />
-    <Compile Include="Clases\servicioRest.cs" />
-    <Compile Include="Clases\solicitudes.cs" />
-    <Compile Include="Clases\solicitudes_detalle.cs" />
     <Compile Include="Clases\Sucursales.cs" />
-    <Compile Include="Clases\Tickets.cs" />
     <Compile Include="Clases\Usuarios.cs" />
-    <Compile Include="Clases\vuelosSoloIda.cs" />
-    <Compile Include="Clases\XML_infocred.cs" />
     <Compile Include="Connected Services\testInfoCenter\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -3590,51 +3541,6 @@
     </Compile>
     <Compile Include="domino_admin.aspx.designer.cs">
       <DependentUpon>domino_admin.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="DSDireccion.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DSDireccion.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="editar_seccion.aspx.cs">
-      <DependentUpon>editar_seccion.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="editar_seccion.aspx.designer.cs">
-      <DependentUpon>editar_seccion.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="editar_seccion_j.aspx.cs">
-      <DependentUpon>editar_seccion_j.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="editar_seccion_j.aspx.designer.cs">
-      <DependentUpon>editar_seccion_j.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="formNaturalDS.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>formNaturalDS.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="imprimir_documentos.aspx.cs">
-      <DependentUpon>imprimir_documentos.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="imprimir_documentos.aspx.designer.cs">
-      <DependentUpon>imprimir_documentos.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="infoCenter1.aspx.cs">
-      <DependentUpon>infoCenter1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="infoCenter1.aspx.designer.cs">
-      <DependentUpon>infoCenter1.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="juridica_wiz.aspx.cs">
-      <DependentUpon>juridica_wiz.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="juridica_wiz.aspx.designer.cs">
-      <DependentUpon>juridica_wiz.aspx</DependentUpon>
     </Compile>
     <Compile Include="menus_admin.aspx.cs">
       <DependentUpon>menus_admin.aspx</DependentUpon>
@@ -3649,13 +3555,6 @@
     </Compile>
     <Compile Include="menu_rol_admin.aspx.designer.cs">
       <DependentUpon>menu_rol_admin.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="natural_wiz.aspx.cs">
-      <DependentUpon>natural_wiz.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="natural_wiz.aspx.designer.cs">
-      <DependentUpon>natural_wiz.aspx</DependentUpon>
     </Compile>
     <Compile Include="opciones_admin.aspx.cs">
       <DependentUpon>opciones_admin.aspx</DependentUpon>
@@ -3678,55 +3577,6 @@
     <Compile Include="personal_admin.aspx.designer.cs">
       <DependentUpon>personal_admin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="plan_pagos.aspx.cs">
-      <DependentUpon>plan_pagos.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="plan_pagos.aspx.designer.cs">
-      <DependentUpon>plan_pagos.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="reporteBoletaJuridica.aspx.cs">
-      <DependentUpon>reporteBoletaJuridica.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="reporteBoletaJuridica.aspx.designer.cs">
-      <DependentUpon>reporteBoletaJuridica.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="reporteContrato.aspx.cs">
-      <DependentUpon>reporteContrato.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="reporteContrato.aspx.designer.cs">
-      <DependentUpon>reporteContrato.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="reporteFormJuridica.aspx.cs">
-      <DependentUpon>reporteFormJuridica.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="reporteFormJuridica.aspx.designer.cs">
-      <DependentUpon>reporteFormJuridica.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="reporteFormNatural.aspx.cs">
-      <DependentUpon>reporteFormNatural.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="reporteFormNatural.aspx.designer.cs">
-      <DependentUpon>reporteFormNatural.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="reportePlanPagos.aspx.cs">
-      <DependentUpon>reportePlanPagos.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="reportePlanPagos.aspx.designer.cs">
-      <DependentUpon>reportePlanPagos.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="reporteSeguro.aspx.cs">
-      <DependentUpon>reporteSeguro.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="reporteSeguro.aspx.designer.cs">
-      <DependentUpon>reporteSeguro.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Reportes\Seguro\seguro1.aspx.cs">
       <DependentUpon>seguro1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3741,59 +3591,6 @@
     <Compile Include="roles_admin.aspx.designer.cs">
       <DependentUpon>roles_admin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="rpt_plan_pago.aspx.cs">
-      <DependentUpon>rpt_plan_pago.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="rpt_plan_pago.aspx.designer.cs">
-      <DependentUpon>rpt_plan_pago.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Service.asmx.cs">
-      <DependentUpon>Service.asmx</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="simulador_detalle.aspx.cs">
-      <DependentUpon>simulador_detalle.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="simulador_detalle.aspx.designer.cs">
-      <DependentUpon>simulador_detalle.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="simulador_wiz.aspx.cs">
-      <DependentUpon>simulador_wiz.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="simulador_wiz.aspx.designer.cs">
-      <DependentUpon>simulador_wiz.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="solicitudes.aspx.cs">
-      <DependentUpon>solicitudes.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="solicitudes.aspx.designer.cs">
-      <DependentUpon>solicitudes.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="solicitudes_admin.aspx.cs">
-      <DependentUpon>solicitudes_admin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="solicitudes_admin.aspx.designer.cs">
-      <DependentUpon>solicitudes_admin.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="solicitudes_gerencial.aspx.cs">
-      <DependentUpon>solicitudes_gerencial.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="solicitudes_gerencial.aspx.designer.cs">
-      <DependentUpon>solicitudes_gerencial.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="solicitud_consulta.aspx.cs">
-      <DependentUpon>solicitud_consulta.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="solicitud_consulta.aspx.designer.cs">
-      <DependentUpon>solicitud_consulta.aspx</DependentUpon>
-    </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="sucursal_admin.aspx.cs">
       <DependentUpon>sucursal_admin.aspx</DependentUpon>
@@ -3802,15 +3599,6 @@
     <Compile Include="sucursal_admin.aspx.designer.cs">
       <DependentUpon>sucursal_admin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="test1.aspx.cs">
-      <DependentUpon>test1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="test1.aspx.designer.cs">
-      <DependentUpon>test1.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Clases\dominio.cs" />
-    <Compile Include="Clases\simular.cs" />
     <Compile Include="dashboard.aspx.cs">
       <DependentUpon>dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3824,13 +3612,6 @@
     </Compile>
     <Compile Include="default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="expPlanPago.aspx.cs">
-      <DependentUpon>expPlanPago.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="expPlanPago.aspx.designer.cs">
-      <DependentUpon>expPlanPago.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -3850,41 +3631,6 @@
       <DependentUpon>Principal.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReportePlanPago.aspx.cs">
-      <DependentUpon>ReportePlanPago.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ReportePlanPago.aspx.designer.cs">
-      <DependentUpon>ReportePlanPago.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="simulador.aspx.cs">
-      <DependentUpon>simulador.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="simulador.aspx.designer.cs">
-      <DependentUpon>simulador.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="testSW.aspx.cs">
-      <DependentUpon>testSW.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="testSW.aspx.designer.cs">
-      <DependentUpon>testSW.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="vuelos.aspx.cs">
-      <DependentUpon>vuelos.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="vuelos.aspx.designer.cs">
-      <DependentUpon>vuelos.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\plugins\bootstrap-calendar\example\lib\font\fontawesome-webfont.eot" />
@@ -4064,51 +3810,7 @@
     <Content Include="assets\plugins\parsley\UPGRADE-2.0.md" />
     <Content Include="assets\plugins\parsley\UPGRADE-2.1.md" />
     <Content Include="assets\plugins\parsley\UPGRADE-2.2.md" />
-    <Content Include="amascuotasDataSet.xsc">
-      <DependentUpon>amascuotasDataSet.xsd</DependentUpon>
-    </Content>
-    <None Include="amascuotasDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>amascuotasDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <Content Include="amascuotasDataSet.xss">
-      <DependentUpon>amascuotasDataSet.xsd</DependentUpon>
-    </Content>
-    <Content Include="amascuotasDataSet1.xsc">
-      <DependentUpon>amascuotasDataSet1.xsd</DependentUpon>
-    </Content>
-    <None Include="amascuotasDataSet1.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>amascuotasDataSet1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <Content Include="amascuotasDataSet1.xss">
-      <DependentUpon>amascuotasDataSet1.xsd</DependentUpon>
-    </Content>
-    <Content Include="formNaturalDS.xsc">
-      <DependentUpon>formNaturalDS.xsd</DependentUpon>
-    </Content>
-    <Content Include="DSDireccion.xsc">
-      <DependentUpon>DSDireccion.xsd</DependentUpon>
-    </Content>
     <None Include="Connected Services\testInfoCenter\ServicioIntegracionBIC.wsdl" />
-    <None Include="DSDireccion.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DSDireccion.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <Content Include="DSDireccion.xss">
-      <DependentUpon>DSDireccion.xsd</DependentUpon>
-    </Content>
-    <None Include="formNaturalDS.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>formNaturalDS.Designer.cs</LastGenOutput>
-    </None>
-    <Content Include="formNaturalDS.xss">
-      <DependentUpon>formNaturalDS.xsd</DependentUpon>
-    </Content>
     <None Include="packages.config" />
     <Content Include="Principal.Master" />
     <Content Include="Reportes\Seguro\Certificado_de_Cobertura_VG_Z8.outline" />

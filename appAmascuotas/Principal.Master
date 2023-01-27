@@ -87,7 +87,7 @@
 						<span class="d-none d-md-inline"><asp:Label ID="lblUsuario" runat="server" Text=""></asp:Label> </span> <b class="caret"></b>
 					</a>
 					<div class="dropdown-menu dropdown-menu-right">
-						<a href="cambio_password.aspx" class="dropdown-item">Change password</a>
+						<a href="cambio_password.aspx?tmp=0" class="dropdown-item">Change password</a>
 						<div class="dropdown-divider"></div>
 						<a href="login.aspx" class="dropdown-item">Logout</a>
 					</div>

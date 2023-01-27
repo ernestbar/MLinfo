@@ -346,8 +346,14 @@ namespace appAmascuotas.Clases
                 // verificar_vacios();
                 DbCommand cmd = db1.GetStoredProcCommand("PR_ABM_USUARIOS");
                 db1.AddInParameter(cmd, "PV_TIPO_OPERACION", DbType.String, _PV_TIPO_OPERACION);
-                db1.AddInParameter(cmd, "PV_COD_PERSONAL", DbType.String, _PV_COD_PERSONAL);
-                db1.AddInParameter(cmd, "PV_SUPERVISOR_INMEDIATO", DbType.String, _PV_SUPERVISOR_INMEDIATO);
+                if(_PV_TIPO_OPERACION=="I")
+                    db1.AddInParameter(cmd, "PV_COD_PERSONAL", DbType.String, null);
+                else
+                    db1.AddInParameter(cmd, "PV_COD_PERSONAL", DbType.String, _PV_COD_PERSONAL);
+                if (_PV_SUPERVISOR_INMEDIATO=="SELECT")
+                    db1.AddInParameter(cmd, "PV_SUPERVISOR_INMEDIATO", DbType.String, null);
+                else
+                    db1.AddInParameter(cmd, "PV_SUPERVISOR_INMEDIATO", DbType.String, _PV_SUPERVISOR_INMEDIATO);
                 db1.AddInParameter(cmd, "PV_COD_SUCURSAL", DbType.String, _PV_COD_SUCURSAL);
                 db1.AddInParameter(cmd, "PV_NOMBRE_COMPLETO", DbType.String, _PV_NOMBRE_COMPLETO);
                 db1.AddInParameter(cmd, "PV_TIPO_DOCUMENTO", DbType.String, _PV_TIPO_DOCUMENTO);
@@ -390,7 +396,7 @@ namespace appAmascuotas.Clases
                     PV_ERROR = "";
                 else
                     PV_ERROR = (string)db1.GetParameterValue(cmd, "PV_ERROR");
-                resultado = PV_EMAILOUT + "|" + PV_ESTADOPR + "|" + PV_DESCRIPCIONPR + "|" + PV_ERROR;
+                resultado = PV_EMAILOUT + " |" + PV_ESTADOPR + "|" + PV_DESCRIPCIONPR + "|" + PV_ERROR;
                 return resultado;
             }
             catch (Exception ex)

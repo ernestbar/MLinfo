@@ -50,14 +50,14 @@ namespace appAmascuotas
                 if (lblCodRol.Text == "")
                 {
                     Clases.Roles obj = new Clases.Roles("I",txtCodRol.Text, txtDescripcion.Text, lblUsuario.Text);
-                    lblAviso.Text = obj.ABM().Replace("0", "").Replace("|", "").Replace("1", "");
+                    lblAviso.Text = obj.ABM().Replace("|", "").Replace("0", "").Replace("null", "").Replace("1", "");
                     MultiView1.ActiveViewIndex = 0;
                     Repeater1.DataBind();
                 }
                 else
                 {
                     Clases.Roles obj = new Clases.Roles("U", lblCodRol.Text, txtDescripcion.Text, lblUsuario.Text);
-                    lblAviso.Text = obj.ABM().Replace("0", "").Replace("|", "").Replace("1", "");
+                    lblAviso.Text = obj.ABM().Replace("|", "").Replace("0", "").Replace("null", "").Replace("1", "");
                     MultiView1.ActiveViewIndex = 0;
                     Repeater1.DataBind();
                 }
@@ -133,15 +133,15 @@ namespace appAmascuotas
                 id = obj.CommandArgument.ToString();
                 string[] datos = id.Split('|');
                 lblCodRol.Text = datos[0];
-                if (datos[1] == "ACTIVO")
+                if (datos[1] == "ACTIVE")
                 { 
                     Clases.Roles obj_m = new Clases.Roles("D", lblCodRol.Text, "", lblUsuario.Text);
-                    lblAviso.Text = obj_m.ABM().Replace("0","").Replace("|","").Replace("1", "");
+                    lblAviso.Text = obj_m.ABM().Replace("|", "").Replace("0", "").Replace("null", "").Replace("1", "");
                 }
                 else
                 {
                     Clases.Roles obj_m = new Clases.Roles("A", lblCodRol.Text, "", lblUsuario.Text);
-                    lblAviso.Text = obj_m.ABM().Replace("0", "").Replace("|", "").Replace("1", "");
+                    lblAviso.Text = obj_m.ABM().Replace("|", "").Replace("0", "").Replace("null", "").Replace("1", "");
                 }
 
                 Repeater1.DataBind();

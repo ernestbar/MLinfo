@@ -58,14 +58,14 @@ namespace appAmascuotas
                 if (lblCodOpcion.Text == "")
                 {
                     Clases.Opciones obj = new Clases.Opciones("I", "", cod_menu_padre, txtDescripcion.Text, txtDetalle.Text, lblUsuario.Text);
-                    lblAviso.Text = obj.ABM().Replace("0", "").Replace("|", "").Replace("1", "");
+                    lblAviso.Text = obj.ABM().Replace("|", "").Replace("0", "").Replace("null", "").Replace("1", "");
                     MultiView1.ActiveViewIndex = 0;
                     Repeater1.DataBind();
                 }
                 else
                 {
                     Clases.Opciones obj = new Clases.Opciones("U", lblCodOpcion.Text, cod_menu_padre, txtDescripcion.Text, txtDetalle.Text, lblUsuario.Text);
-                    lblAviso.Text = obj.ABM().Replace("0", "").Replace("|", "").Replace("1", "");
+                    lblAviso.Text = obj.ABM().Replace("|", "").Replace("0", "").Replace("null", "").Replace("1", "");
                     MultiView1.ActiveViewIndex = 0;
                     Repeater1.DataBind();
                 }
@@ -144,15 +144,15 @@ namespace appAmascuotas
                 id = obj.CommandArgument.ToString();
                 string[] datos = id.Split('|');
                 lblCodOpcion.Text = datos[0];
-                if (datos[1] == "ACTIVO")
+                if (datos[1] == "ACTIVE")
                 {
                     Clases.Opciones obj_m = new Clases.Opciones("D", lblCodOpcion.Text, "", "", "", lblUsuario.Text);
-                    lblAviso.Text = obj_m.ABM().Replace("0", "").Replace("|", "").Replace("1", "");
+                    lblAviso.Text = obj_m.ABM().Replace("|", "").Replace("0", "").Replace("null", "").Replace("1", "");
                 }
                 else
                 {
                     Clases.Opciones obj_m = new Clases.Opciones("A", lblCodOpcion.Text, "", "", "", lblUsuario.Text);
-                    lblAviso.Text = obj_m.ABM().Replace("0", "").Replace("|", "").Replace("1", "");
+                    lblAviso.Text = obj_m.ABM().Replace("|", "").Replace("0", "").Replace("null", "").Replace("1", "");
                 }
                 Repeater1.DataBind();
             }

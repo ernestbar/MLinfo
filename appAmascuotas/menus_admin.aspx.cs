@@ -50,19 +50,19 @@ namespace appAmascuotas
             try
             {
                 string cod_menu_padre = "";
-                if (ddlMenuPadre.SelectedItem.Text != "ES MENU PADRE")
+                if (ddlMenuPadre.SelectedIndex!=0)
                     cod_menu_padre = ddlMenuPadre.SelectedValue;
                 if (lblCodMenu.Text == "")
                 {
                     Clases.Menus obj = new Clases.Menus("I", "", cod_menu_padre, txtDescripcion.Text, txtDetalle.Text, lblUsuario.Text);
-                    lblAviso.Text = obj.ABM().Replace("0", "").Replace("|", "").Replace("1", ""); 
+                    lblAviso.Text = obj.ABM().Replace("|", "").Replace("0", "").Replace("null", "").Replace("1", "");
                     MultiView1.ActiveViewIndex = 0;
                     Repeater1.DataBind();
                 }
                 else
                 {
                     Clases.Menus obj = new Clases.Menus("U", lblCodMenu.Text, cod_menu_padre, txtDescripcion.Text, txtDetalle.Text, lblUsuario.Text);
-                    lblAviso.Text = obj.ABM().Replace("0", "").Replace("|", "").Replace("1", ""); 
+                    lblAviso.Text = obj.ABM().Replace("|", "").Replace("0", "").Replace("null", "").Replace("1", "");
                     MultiView1.ActiveViewIndex = 0;
                     Repeater1.DataBind();
                 }
@@ -142,15 +142,15 @@ namespace appAmascuotas
                 id = obj.CommandArgument.ToString();
                 string[] datos = id.Split('|');
                 lblCodMenu.Text = datos[0];
-                if (datos[1] == "ACTIVO")
+                if (datos[1] == "ACTIVE")
                 {
                     Clases.Menus obj_m = new Clases.Menus("D", lblCodMenu.Text, "", "", "", lblUsuario.Text);
-                    lblAviso.Text = obj_m.ABM().Replace("0", "").Replace("|", "").Replace("1", ""); 
+                    lblAviso.Text = obj_m.ABM().Replace("|", "").Replace("0", "").Replace("null", "").Replace("1", "");
                 }
                 else
                 {
                     Clases.Menus obj_m = new Clases.Menus("A", lblCodMenu.Text, "", "", "", lblUsuario.Text);
-                    lblAviso.Text = obj_m.ABM().Replace("0", "").Replace("|", "").Replace("1", ""); 
+                    lblAviso.Text = obj_m.ABM().Replace("|", "").Replace("0", "").Replace("null", "").Replace("1", "");
                 }
                   
 

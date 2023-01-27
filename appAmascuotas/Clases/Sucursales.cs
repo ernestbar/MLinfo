@@ -150,7 +150,7 @@ namespace appAmascuotas.Clases
             catch (Exception ex)
             {
                 //_error = ex.Message;
-                resultado = "Se produjo un error al registrar||";
+                resultado = "|An error occurred while registering|";
                 return resultado;
             }
         }

@@ -198,7 +198,7 @@
 					<div class="form-group row m-b-10">
 						<label class="col-md-3 text-md-right col-form-label">Latitude:</label>
 						<div class="col-md-6">
-                            <asp:TextBox ID="txtLatitud" class="form-control" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtLatitud" class="form-control" Enabled="false" runat="server"></asp:TextBox>
 							<%--<asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ErrorMessage="*" ControlToValidate="txtLatitud" Font-Bold="True"></asp:RequiredFieldValidator>--%>
 						</div>
 					</div>
@@ -207,7 +207,7 @@
 					<div class="form-group row m-b-10">
 						<label class="col-md-3 text-md-right col-form-label">Length:</label>
 						<div class="col-md-6">
-                            <asp:TextBox ID="txtLongitud" class="form-control" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtLongitud" class="form-control"  Enabled="false" runat="server"></asp:TextBox>
 							<%--<asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ErrorMessage="*" ControlToValidate="txtLongitud" Font-Bold="True"></asp:RequiredFieldValidator>--%>
 						</div>
 					</div>

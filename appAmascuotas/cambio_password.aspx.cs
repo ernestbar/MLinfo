@@ -22,6 +22,11 @@ namespace appAmascuotas
                 else
                 {
                     lblUsuario.Text = Session["usuario"].ToString();
+                    string temporal = Request.QueryString["tmp"].ToString();
+                    if (temporal == "1")
+                        lblAviso.Text = "Your password is temporal, you must change it.";
+                    else
+                        lblAviso.Text = "";
                     //btnNuevo.Visible = false;
                     //lblCodMenuRol.Text = Request.QueryString["RME"].ToString();
                     //DataTable dt = Clases.Usuarios.PR_SEG_GET_OPCIONES_ROLES(lblUsuario.Text, Int64.Parse(lblCodMenuRol.Text));
@@ -47,15 +52,13 @@ namespace appAmascuotas
                 Clases.Usuarios per = new Clases.Usuarios("C", "", "", "", "", "", "", "", "", 0, 0, 0,
                        "", lblUsuario.Text, txtPassword.Text, txtPasswordAnterior.Text, "", DateTime.Now, DateTime.Now, "", lblUsuario.Text);
                 string[] datos = per.ABM().Split('|');
-                if (datos[2] == "PASSWORD CORRECTAMENTE REGISTRADO")
+                lblAviso.Text = datos[2];
+                if (datos[1] == "0")
                 {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Su password SI se cambio correctamente.');", true);
+                    Response.Redirect("login.aspx");
                 }
-                else
-                {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Su password NO se cambio correctamente.');", true);
-                }
-               
+                
+
             }
             catch (Exception ex)
             {

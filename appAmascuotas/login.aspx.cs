@@ -48,18 +48,28 @@ namespace appAmascuotas
         {
             lblAviso.Text = "";
             string[] datos= Clases.Usuarios.Ingreso_usuario(txtUsuario.Text, txtPassword.Text).Split('|');
-            if (datos[1] == "Login correcto")
+            if (datos[0] == "0")
             {
+                if (datos[2] == "1")
+                {
+                    Session["usuario"] = txtUsuario.Text;
+                    Response.Redirect("cambio_password.aspx?tmp=1");
+                    lblAviso.Text = "";
+                }
+                else
+                {
+                    Session["usuario"] = txtUsuario.Text;
+                    Response.Redirect("dashboard.aspx");
+                    lblAviso.Text = "";
+                }
                 //Clases.enviar_correo objC = new Clases.enviar_correo();
                 //string resp_email = objC.enviar("ernesto.barron@gmail.com", "Confirmacion de requisitos", "Pruebas de envio de correo.", "");
 
-                Session["usuario"] = txtUsuario.Text;
-                Response.Redirect("dashboard.aspx");
-                lblAviso.Text = "";
+                
                 
             }
             else
-            { lblAviso.Text = "Usuario y contraseña incorrectas!"; txtUsuario.Focus(); }
+            { lblAviso.Text = "User or password wrong!"; txtUsuario.Focus(); }
             
             
         }
@@ -69,14 +79,18 @@ namespace appAmascuotas
             Clases.Usuarios per = new Clases.Usuarios("R", "", "", "", "", "", "", "", "", 0, 0, 0,
                        "", txtUsuario.Text, "", "", "", DateTime.Now, DateTime.Now, "", txtUsuario.Text);
             string[] datos = per.ABM().Split('|');
-            if (datos[2] == "PASSWORD CORRECTAMENTE REGISTRADO")
+            lblAviso.Text = datos[2];
+            if (datos[1] == "0")
             {
-                ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Su password se reseteo correctamente a 123');", true);
+                Clases.enviar_correo objC = new Clases.enviar_correo();
+                string resultado2 = objC.enviar(txtUsuario.Text, "Reset password from user " + txtUsuario.Text, " Dear user:" + "<br/><br/>"+ datos[2]  +" <br/><br/>" + " <br/><br/> Now login with the link: <br/><br/>" + "https://200.105.209.42:5560" + "<br/><br/> Regards.", "");
+                lblAviso.Text = "We send you an email with your temporary password to enter, thank you very much!!!!";
             }
             else
             {
-                ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Su password NO se reseteo correctamente a 123');", true);
+                lblAviso.Text = "We have some problems consult with the administrator.";
             }
+            
         }
     }
 }

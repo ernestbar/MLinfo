@@ -94,7 +94,7 @@
 															<th class="text-nowrap">DESCRIPTION</th>
 															<th class="text-nowrap">CHARACTER VALUE</th>
 															<th class="text-nowrap">NUMERIC VALUE</th>
-															<th class="text-nowrap">DATE VALUE</th>
+															<%--<th class="text-nowrap">DATE VALUE</th>--%>
 															<th class="text-nowrap" data-orderable="false">OPTIONS</th>
 															
 															</tr>
@@ -110,7 +110,7 @@
 															<td><asp:Label ID="lblMedioContacto" runat="server" Text='<%# Eval("descripcion") %>'></asp:Label></td>
 															<td><asp:Label ID="lblValor" runat="server" Text='<%# Eval("valor_caracter") %>'></asp:Label></td>
 																<td><asp:Label ID="Label1" runat="server" Text='<%# Eval("valor_numerico") %>'></asp:Label></td>
-																<td><asp:Label ID="Label2" runat="server" Text='<%# Eval("valor_date") %>'></asp:Label></td>
+																<%--<td><asp:Label ID="Label2" runat="server" Text='<%# Eval("valor_date") %>'></asp:Label></td>--%>
 															<td>
 																<asp:Button ID="btnEditar" class="btn btn-success btn-sm"  CommandArgument='<%# Eval("dominio") +"|"+Eval("codigo") %>' OnClick="btnEditar_Click" runat="server" Text="Edit" ToolTip="Edit" />
 																<asp:Button ID="btnEliminar" class="btn btn-success btn-sm" CommandArgument='<%# Eval("dominio") +"|"+Eval("codigo") %>' OnClick="btnEliminar_Click" OnClientClick="return confirm('Are you shure to delete this registers???')" runat="server" Text="Delete" ToolTip="Delete Register" />
@@ -187,19 +187,19 @@
 					</div>
 					<!-- end form-group row -->
 					<!-- begin form-group row -->
-					<div class="form-group row m-b-10">
+					<%--<div class="form-group row m-b-10">
 						<label class="col-md-3 text-md-right col-form-label">Date value:</label>
 						<div class="col-md-6">
                             <asp:Label ID="lblFechaDesde" runat="server" Text=""></asp:Label>
 						    <input id="fecha_salida" class="form-control" style="background:#ecf1fa" type="date"><asp:HiddenField ID="hfFechaSalida" runat="server" />
 						</div>
                         
-					</div>
+					</div>--%>
 					<!-- end form-group row -->
 					
 					
 						<div class="btn-toolbar mr-2 sw-btn-group float-right" role="group">
-							<asp:Button ID="btnGuardar" CssClass="btn btn-success" runat="server" OnClientClick="recuperarFechaSalida()" OnClick="btnGuardar_Click" Text="Save" />
+							<asp:Button ID="btnGuardar" CssClass="btn btn-success" runat="server" OnClick="btnGuardar_Click" Text="Save" />
 							<asp:Button ID="btnVolverAlta" CssClass="btn btn-success"  runat="server" CausesValidation="false" OnClick="btnVolverAlta_Click" Text="Cancel" />
 						</div>
 					</div>
@@ -211,7 +211,7 @@
 	
 			
 		</div>
-	<script type="text/javascript">
+	<%--<script type="text/javascript">
         function recuperarFechaSalida() {
 
             document.getElementById('<%=hfFechaSalida.ClientID%>').value = document.getElementById('fecha_salida').value;
@@ -219,6 +219,6 @@
         function setearFechaSalida() {
             document.getElementById('fecha_salida').value = document.getElementById('<%=hfFechaSalida.ClientID%>').value;
         }
-    </script>
+    </script>--%>
 		<!-- end #content -->
 </asp:Content>

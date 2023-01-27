@@ -114,24 +114,18 @@ namespace appAmascuotas
                 if (lblCodSucursal.Text == "")
                 {
                     Clases.Sucursales cli = new Clases.Sucursales("I",txtCodigo.Text, txtNombreSucursal.Text,txtDireccion.Text,ddlPais.SelectedValue,ddlCiudad.SelectedValue, txtLatitud.Text, txtLongitud.Text, lblUsuario.Text);
-                    string resultado = cli.ABM();
-                    string[] aux = resultado.Split('|');
-                    lblAviso.Text = aux[1];
-                    Repeater1.DataBind();
+                    lblAviso.Text = cli.ABM().Replace("|", "").Replace("0", "").Replace("null", "").Replace("1", "");
                     MultiView1.ActiveViewIndex = 0;
-                    ScriptManager.RegisterStartupScript(Page, Page.GetType(), "showError", "alert('" + aux[1] + "');", true);
+
                 }
                 else
                 {
 
                     Clases.Sucursales cli = new Clases.Sucursales("U", lblCodSucursal.Text, txtNombreSucursal.Text, txtDireccion.Text, ddlPais.SelectedValue, ddlCiudad.SelectedValue, txtLatitud.Text, txtLongitud.Text, lblUsuario.Text);
-                    string resultado = cli.ABM();
-                    string[] aux = resultado.Split('|');
-                    lblAviso.Text = aux[1];
-                    Repeater1.DataBind();
+                    lblAviso.Text = cli.ABM().Replace("|", "").Replace("0", "").Replace("null", "").Replace("1", "");
                     MultiView1.ActiveViewIndex = 0;
-                    ScriptManager.RegisterStartupScript(Page, Page.GetType(), "showError", "alert('" + aux[1] + "');", true);
                 }
+                Repeater1.DataBind();
                 
             }
             catch (Exception ex)
@@ -154,20 +148,16 @@ namespace appAmascuotas
                 Button obj = (Button)sender;
                 id = obj.CommandArgument.ToString();
                 string[] datos = id.Split('|');
-                if (datos[1] == "ACTIVO")
+                if (datos[1] == "ACTIVE")
                 {
                     Clases.Sucursales mcc = new Clases.Sucursales("D", datos[0],"","","","","","", lblUsuario.Text);
-                    string resultado = mcc.ABM();
-                    string[] aux = resultado.Split('|');
-                    lblAviso.Text = aux[1];
+                    lblAviso.Text = mcc.ABM().Replace("|", "").Replace("0", "").Replace("null", "").Replace("1", "");
                     Repeater1.DataBind();
                 }
                 else
                 {
                     Clases.Sucursales mcc = new Clases.Sucursales("A", datos[0], "", "", "", "", "", "", lblUsuario.Text);
-                    string resultado = mcc.ABM();
-                    string[] aux = resultado.Split('|');
-                    lblAviso.Text = aux[1];
+                    lblAviso.Text = mcc.ABM().Replace("|", "").Replace("0", "").Replace("null", "").Replace("1", "");
                     Repeater1.DataBind();
                 }
             }
