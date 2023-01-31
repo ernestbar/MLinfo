@@ -1,6 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="roles_admin.aspx.cs" Inherits="appAmascuotas.roles_admin" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ObjectDataSource ID="odsRoles" runat="server" SelectMethod="PR_GET_ROLES" TypeName="appAmascuotas.Clases.Roles">
+		<SelectParameters>
+				<asp:Parameter DefaultValue="A" Name="PV_ESTADO" Type="String" />
+			</SelectParameters>
 		</asp:ObjectDataSource>
 	
 	<style type="text/css">

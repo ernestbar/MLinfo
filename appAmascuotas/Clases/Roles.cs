@@ -51,11 +51,12 @@ namespace appAmascuotas.Clases
         #endregion
 
         #region Métodos que NO requieren constructor
-        public static DataTable PR_GET_ROLES()
+        public static DataTable PR_GET_ROLES(string PV_ESTADO)
         {
             try
             {
                 DbCommand cmd = db1.GetStoredProcCommand("PR_GET_ROLES");
+                db1.AddInParameter(cmd, "PV_ESTADO", DbType.String, PV_ESTADO);
                 cmd.CommandTimeout = int.Parse(ConfigurationManager.AppSettings["CommandTimeout"]);
                 return db1.ExecuteDataSet(cmd).Tables[0];
             }

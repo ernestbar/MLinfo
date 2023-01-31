@@ -276,14 +276,20 @@ namespace appAmascuotas
                 string fecha_salida = "01/01/3000";
                 if (hfFechaSalida.Value != "")
                     fecha_salida = hfFechaSalida.Value;
+                string interno= "";
+                string fijo= "";
 
+                if (txtInterno.Text == "")
+                    interno = "0";
+                if (txtFijo.Text == "")
+                    fijo = "0";
                 string[] datos_cargo = ddlCargo.SelectedValue.Split('&');
                 string aux = "";
                 if (lblCodPersonal.Text == "")
                 {
                     Clases.Usuarios per = new Clases.Usuarios("I","",ddlSupervisor.SelectedValue,ddlSucursal.SelectedValue, txtNombres.Text,
                         ddlTipoDocumento.SelectedValue, txtNumeroDocumento.Text, ddlExpedido.SelectedValue,
-                        ddlCargo.SelectedValue,int.Parse(txtCelular.Text),int.Parse(txtFijo.Text),int.Parse(txtInterno.Text),
+                        ddlCargo.SelectedValue,int.Parse(txtCelular.Text),int.Parse(fijo),int.Parse(interno),
                         txtEmail.Text,txtEmail.Text,"","", txtDescripcion.Text, DateTime.Parse(fecha_salida), DateTime.Parse(fecha_retorno), ddlRol.SelectedValue,lblUsuario.Text);
                     string[] datos = per.ABM().Split('|');
                     aux = datos[2];
@@ -295,7 +301,7 @@ namespace appAmascuotas
                 {
                     Clases.Usuarios per = new Clases.Usuarios("U", lblCodPersonal.Text, ddlSupervisor.SelectedValue, ddlSucursal.SelectedValue, txtNombres.Text,
                         ddlTipoDocumento.SelectedValue, txtNumeroDocumento.Text, ddlExpedido.SelectedValue,
-                        ddlCargo.SelectedValue, int.Parse(txtCelular.Text), int.Parse(txtFijo.Text), int.Parse(txtInterno.Text),
+                        ddlCargo.SelectedValue, int.Parse(txtCelular.Text), int.Parse(fijo), int.Parse(interno),
                         txtEmail.Text, txtEmail.Text, "", "", txtDescripcion.Text, DateTime.Parse(fecha_salida), DateTime.Parse(fecha_retorno), ddlRol.SelectedValue, lblUsuario.Text);
                     aux = per.ABM().Replace("|", "").Replace("0", "").Replace("null", "").Replace("1", "");
                     lblAviso.Text = aux;

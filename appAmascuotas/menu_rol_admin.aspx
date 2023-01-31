@@ -2,6 +2,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     
 	<asp:ObjectDataSource ID="odsRolesActivos" runat="server" SelectMethod="PR_GET_ROLES" TypeName="appAmascuotas.Clases.Roles">
+		<SelectParameters>
+				<asp:Parameter DefaultValue="A" Name="PV_ESTADO" Type="String" />
+			</SelectParameters>
     </asp:ObjectDataSource>
 	
 	<asp:ObjectDataSource ID="odsMenusNoAsignado" runat="server" SelectMethod="PR_SEG_GET_MENUS_A_ASIGNAR" TypeName="appAmascuotas.Clases.Menus_roles">

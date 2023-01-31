@@ -8,6 +8,9 @@
 		</SelectParameters>
 		</asp:ObjectDataSource>
 	<asp:ObjectDataSource ID="odsRoles" runat="server" SelectMethod="PR_GET_ROLES" TypeName="appAmascuotas.Clases.Roles">
+		<SelectParameters>
+				<asp:Parameter DefaultValue="A" Name="PV_ESTADO" Type="String" />
+			</SelectParameters>
 		</asp:ObjectDataSource>
 	<asp:ObjectDataSource ID="odsTipoDocumento" runat="server" SelectMethod="PR_PAR_GET_DOMINIOS" TypeName="appAmascuotas.Clases.Dominios">
 			<SelectParameters>

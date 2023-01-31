@@ -55,9 +55,9 @@ namespace appAmascuotas
                 lblAviso.Text = datos[2];
                 if (datos[1] == "0")
                 {
-                    Response.Redirect("login.aspx");
+                    Response.Redirect("default.aspx");
                 }
-                
+
 
             }
             catch (Exception ex)
