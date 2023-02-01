@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  <siteMapNode title="Home" url="~/dashboard.aspx">
+    <siteMapNode title="Security" >
+      <siteMapNode title="Menus" url="~/menus_admin.aspx"/>
+      <siteMapNode title="Roles" url="~/roles_admin.aspx"/>
+      <siteMapNode title="Menus to Roles" url="~/menu_rol_admin.aspx"/>
+      <siteMapNode title="Options" url="~/opciones_admin.aspx"/>
+      <siteMapNode title="Options to menus" url="~/opcion_menu_rol_admin.aspx"/>
+    </siteMapNode>
+    <siteMapNode title="Staff and users" >
+      <siteMapNode title="Staff and users" url="~/personal_admin.aspx"/>
+    </siteMapNode>
+    <siteMapNode title="Parameter" >
+      <siteMapNode title="Branch offices" url="~/sucursal_admin.aspx"/>
+      <siteMapNode title="Domains" url="~/domino_admin.aspx"/>
+    </siteMapNode>
+  </siteMapNode>
+</siteMap>

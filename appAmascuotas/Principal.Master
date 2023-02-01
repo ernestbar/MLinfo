@@ -49,8 +49,86 @@
 	 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js" type="text/javascript"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
     <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="Stylesheet" type="text/css" />
+	<script type="text/javascript">
+
+        // Carga de la página
+        function pageLoad() {
+            var hfIdMenu = document.getElementById('<%=hfIdMenu.ClientID%>');
+            var hfIdSubMenu = document.getElementById('<%=hfIdSubMenu.ClientID%>');
+
+            if (hfIdMenu.value == '') {
+                hfIdMenu.value = localStorage.getItem('IdMenu');
+            }
+
+            if (hfIdSubMenu.value == '') {
+                hfIdSubMenu.value = localStorage.getItem('IdSubMenu');
+            }
+
+            // Quitar la clase activo de todos los menús
+            $('.menu-padre').each(function () {
+                $(this).removeClass('active');
+            });
+
+            //  Añadir la clase al último menú seleccionado guardado en variable
+            $('.menu-padre').each(function () {
+                //if ($(this).attr('id') == localStorage.getItem('IdMenu')) {
+                if ($(this).attr('id') == hfIdMenu.value) {
+                    $(this).closest('li').addClass('active');
+                }
+            });
+
+            // Quitar la clase activo de todos los sub menús
+            $('.sub-menu-hijo').each(function () {
+                $(this).removeClass('active');
+            });
+
+            //  Añadir la clase al último sub menú seleccionado guardado en variable
+            $('.sub-menu-hijo').each(function () {
+                //if ($(this).attr('id') == localStorage.getItem('IdMenu')) {
+                if ($(this).attr('id') == hfIdSubMenu.value) {
+                    $(this).closest('li').addClass('active');
+                }
+            });
+
+            // Borrar variable
+            // localStorage.removeItem('IdMenu');
+        }
+
+        // Funcion que activa menú
+        function activaMenu(item) {
+            // Guardar el id. de menú del item actual en variable
+            localStorage.setItem('IdMenu', $(item).attr('id'));
+            document.getElementById('<%=hfIdMenu.ClientID %>').value = $(item).attr('id');
+
+            // Quitar la clase activo de todos los menús
+            $('.menu-padre').each(function () {
+                $(this).removeClass('active');
+            });
+
+            // Añadir la clase al menú seleccionado
+            $(item).addClass('active');
+        }
+
+        // Funcion que activa sub menú
+        function activaSubMenu(item) {
+            // Guardar el id. de sub menú del item actual en variable
+            localStorage.setItem('IdSubMenu', $(item).attr('id'));
+            document.getElementById('<%=hfIdSubMenu.ClientID %>').value = $(item).attr('id');
+
+            // Quitar la clase activo de todos los sub menús
+            $('.sub-menu-hijo').each(function () {
+                $(this).removeClass('active');
+            });
+
+            // Añadir la clase al sub menú seleccionado
+            $(item).addClass('active');
+        }
+    </script>
 </head>
 <body>
+	 <form id="form1" class="form-control-with-bg" style="background-color:white" runat="server">
+		<asp:HiddenField ID="hfIdMenu" runat="server" ClientIDMode="static"/>
+        <asp:HiddenField ID="hfIdSubMenu" runat="server" ClientIDMode="static"/>
 	<!-- begin #page-loader -->
 	<div id="page-loader" class="fade show"><span class="spinner"></span></div>
 	<!-- end #page-loader -->
@@ -100,114 +178,18 @@
 		<div id="sidebar" class="sidebar" style="background-color:black">
 			<!-- begin sidebar scrollbar -->
 			<div data-scrollbar="true" data-height="100%">
-				<!-- begin sidebar user -->
-				<%--<ul class="nav">
-					<li class="nav-profile">
-						<a href="javascript:;" data-toggle="nav-profile">
-							<div class="cover with-shadow"></div>
-							<div class="image">
-								<img src="assets/img/user/user-13.jpg" alt="" />
-							</div>
-							<div class="info">
-								<b class="caret pull-right"></b>
-								AmasCuotas
-								<small>Opciones de configuracion</small>
-							</div>
-						</a>
-					</li>
-					<li>
-						<ul class="nav nav-profile">
-							<li><a href="javascript:;"><i class="fa fa-cog"></i> Configurar</a></li>
-							<li><a href="javascript:;"><i class="fa fa-pencil-alt"></i> Retroalimentacion</a></li>
-							<li><a href="javascript:;"><i class="fa fa-question-circle"></i> Ayuda</a></li>
-						</ul>
-					</li>
-				</ul>--%>
-				<!-- end sidebar user -->
 				<!-- begin sidebar nav -->
 				<ul class="nav">
 					<li class="nav-header">Navigation</li>
-					<%--<li class="has-sub active">
-						<a href="javascript:;">
-							<b class="caret"></b>
-							<i class="fa fa-th-large"></i>
-							<span>Home</span>
-						</a>
-						<ul class="sub-menu">
-							<li><a href="default.aspx">Dashboard usuarios</a></li>
-						</ul>
-					</li>
-					<li class="has-sub">
-						<a href="javascript:;">
-							<span class="badge pull-right">10</span>
-							<i class="fa fa-hdd"></i> 
-							<span>Mensajes</span>
-						</a>
-						<ul class="sub-menu">
-							<li><a href="#">Mensajes</a></li>
-							<li><a href="#">Envios</a></li>
-							<li><a href="#">Detalles</a></li>
-						</ul>
-					</li>--%>
-					<%--<li class="has-sub">
-						<a href="javascript:;">
-							<b class="caret"></b>
-							<i class="fa fa-table"></i>
-							<span>Solicitudes</span>
-						</a>
-						<ul class="sub-menu">
-							<li><a href="simulador_wiz.aspx">Simulador plan de pagos</a></li>
-							<li><a href="natural_wiz.aspx">Formulario Natural</a></li>
-							<li><a href="juridica_wiz.aspx">Formulario Juridica</a></li>
-							<li><a href="solicitudes_gerencial.aspx">Solicitudes pendientes</a></li>
-							
-						
-						</ul>
-					</li>
-					<li class="has-sub">
-						<a href="javascript:;">
-							<b class="caret"></b>
-							<i class="fa fa-table"></i>
-							<span>Personal y usuarios</span>
-						</a>
-						<ul class="sub-menu">
-							<li><a href="personal_admin.aspx">Personal/Usuario</a></li>
-							
-						</ul>
-					</li>
-					<li class="has-sub">
-						<a href="javascript:;">
-							<b class="caret"></b>
-							<i class="fa fa-table"></i>
-							<span>Parametros</span>
-						</a>
-						<ul class="sub-menu">
-							<li><a href="domino_admin.aspx">Dominios</a></li>
-							<li><a href="sucursal_admin.aspx">Sucursales</a></li>
-						</ul>
-					</li>
-					<li class="has-sub">
-						<a href="javascript:;">
-							<b class="caret"></b>
-							<i class="fa fa-table"></i>
-							<span>Seguridad</span>
-						</a>
-						<ul class="sub-menu">
-							<li><a href="roles_admin.aspx">Admnistrar roles</a></li>
-							<li><a href="menus_admin.aspx">Admnistrar menus</a></li>
-							<li><a href="menu_rol_admin.aspx">Asignar menus a roles</a></li>
-							<li><a href="opciones_admin.aspx">Admnistrar opciones</a></li>
-							<li><a href="opcion_menu_rol_admin.aspx">Asignar opciones a menu rol</a></li>
-						</ul>
-					</li>--%>
+				
 					<asp:ObjectDataSource ID="odsMenuPadre" runat="server" SelectMethod="PR_SEG_GET_MENUS_PADRE_ROL" TypeName="appAmascuotas.Clases.Usuarios">
                     <SelectParameters>
                         <asp:ControlParameter ControlID="lblUsuario" Name="PV_USUARIO" Type="String" />
                     </SelectParameters>
                 </asp:ObjectDataSource>
-					<asp:Repeater ID="Repeater1" DataSourceID="odsMenuPadre" OnItemDataBound="Repeater1_ItemDataBound" runat="server">
+					<asp:Repeater ID="Repeater1" OnItemDataBound="Repeater1_ItemDataBound" runat="server">
                         <ItemTemplate>
-                            	<li class="has-sub">
+                            	<li id="<%# Eval("COD_MENU") %>" class="has-sub menu-padre" onclick="activaMenu(this)">
 						            <a href="javascript:;">
 							            <b class="caret"></b>
 							            <i class="fa fa-asterisk"></i>
@@ -218,7 +200,7 @@
                                      <asp:Repeater ID="Repeater2" runat="server">
                                         <ItemTemplate>
                                             
-							                    <li><a href="<%# Eval("DETALLE") + "?RME=" + Eval("ROL_MENU") %>"><%# Eval("DESCRIPCION") %></a></li>
+							                    <li class="sub-menu-hijo" id="<%# Eval("COD_MENU") %>" onclick="activaSubMenu(this)"><a href="<%# Eval("DETALLE") + "?RME=" + Eval("ROL_MENU") %>"><%# Eval("DESCRIPCION") %></a></li>
 												
 						                    
                                         </ItemTemplate>
@@ -238,12 +220,14 @@
 		<div class="sidebar-bg"></div>
 		<!-- end #sidebar -->
 		</div>
-    <form id="form1" class="form-control-with-bg" style="background-color:white" runat="server">
+   
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <div>
+			
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                
             </asp:ContentPlaceHolder>
+			
         </div>
     </form>
 	<!-- ================== BEGIN BASE JS ================== -->

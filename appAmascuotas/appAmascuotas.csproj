@@ -3510,6 +3510,7 @@
     </Content>
     <Content Include="sucursal_admin.aspx" />
     <Content Include="Web.config" />
+    <Content Include="Web.sitemap" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="cambio_password.aspx.cs">

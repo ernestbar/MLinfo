@@ -18,10 +18,18 @@ namespace appAmascuotas
                 else
                 {
                     lblUsuario.Text = Session["usuario"].ToString();
+                    // Cargar menú
+                    BindMenuRptr();
                 }
             }
 
         }
+        private void BindMenuRptr()
+        {
+            Repeater1.DataSource = Clases.Usuarios.PR_SEG_GET_MENUS_PADRE_ROL(lblUsuario.Text);
+            Repeater1.DataBind();
+        }
+
         protected void Repeater1_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
             if (e.Item.ItemType == ListItemType.Item ||

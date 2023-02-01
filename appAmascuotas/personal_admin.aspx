@@ -71,6 +71,12 @@
     </script>
 	<!-- begin #content -->
 		<div id="content" class="content">
+			<asp:SiteMapPath ID="SiteMapPath1" Runat="server" Font-Names="Verdana" Font-Size="0.8em" PathSeparator=" : ">
+                <CurrentNodeStyle ForeColor="#333333" />
+                <NodeStyle Font-Bold="True" ForeColor="#7C6F57" />
+                <PathSeparatorStyle Font-Bold="True" ForeColor="#5D7B9D" />
+                <RootNodeStyle Font-Bold="True" ForeColor="#5D7B9D" />
+			</asp:SiteMapPath>
 			<asp:Label ID="lblUsuario" runat="server" Visible="false" Text=""></asp:Label> 
 			<asp:Label ID="lblCodPersonal" runat="server" Text="" Visible="false"></asp:Label>
 			<asp:Label ID="lblCodUsuario" runat="server" Text="" Visible="false"></asp:Label>

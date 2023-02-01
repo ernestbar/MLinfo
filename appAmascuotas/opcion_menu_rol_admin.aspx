@@ -2,6 +2,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     
 	<asp:ObjectDataSource ID="odsRolesActivos" runat="server" SelectMethod="PR_GET_ROLES" TypeName="appAmascuotas.Clases.Roles">
+		<SelectParameters>
+				<asp:Parameter DefaultValue="A" Name="PV_ESTADO" Type="String" />
+			</SelectParameters>
     </asp:ObjectDataSource>
 	
 	<asp:ObjectDataSource ID="odsOpcionRolAsignado" runat="server" SelectMethod="PR_SEG_GET_OPCIONES_ASIGNADOS" TypeName="appAmascuotas.Clases.Opciones_Menu_rol">
@@ -57,6 +60,12 @@
     </script>
 	<!-- begin #content -->
 		<div id="content" class="content">
+			<asp:SiteMapPath ID="SiteMapPath1" Runat="server" Font-Names="Verdana" Font-Size="0.8em" PathSeparator=" : ">
+                <CurrentNodeStyle ForeColor="#333333" />
+                <NodeStyle Font-Bold="True" ForeColor="#7C6F57" />
+                <PathSeparatorStyle Font-Bold="True" ForeColor="#5D7B9D" />
+                <RootNodeStyle Font-Bold="True" ForeColor="#5D7B9D" />
+			</asp:SiteMapPath>
 			<asp:Label ID="lblUsuario" runat="server" Visible="false" Text=""></asp:Label> 
 			<asp:Label ID="lblCodMenu" runat="server" Text="" Visible="false"></asp:Label>
 			<asp:Label ID="lblAviso" runat="server" ForeColor="Blue" Font-Size="Medium" Text=""></asp:Label>
