@@ -23,9 +23,9 @@ namespace appAmascuotas.Clases
         private string _PV_NUMERO_DOCUMENTO = "";
         private string _PV_EXPEDIDO = "";
         private string _PV_COD_CARGO = "";
-        private int _PN_CELULAR = 0;
-        private int _PN_FIJO = 0;
-        private int _PN_INTERNO = 0;
+        private decimal _PN_CELULAR = 0;
+        private decimal _PN_FIJO = 0;
+        private decimal _PN_INTERNO = 0;
         private string _PV_EMAIL = "";
 
         private string _PV_USUARIOI = "";
@@ -53,9 +53,9 @@ namespace appAmascuotas.Clases
         public string PV_EXPEDIDO { get { return _PV_EXPEDIDO; } set { _PV_EXPEDIDO = value; } }
         public string PV_COD_CARGO { get { return _PV_COD_CARGO; } set { _PV_COD_CARGO = value; } }
                
-        public int PN_CELULAR { get { return _PN_CELULAR; } set { _PN_CELULAR = value; } }
-        public int PN_FIJO { get { return _PN_FIJO; } set { _PN_FIJO = value; } }
-        public int PN_INTERNO { get { return _PN_INTERNO; } set { _PN_INTERNO = value; } }
+        public decimal PN_CELULAR { get { return _PN_CELULAR; } set { _PN_CELULAR = value; } }
+        public decimal PN_FIJO { get { return _PN_FIJO; } set { _PN_FIJO = value; } }
+        public decimal PN_INTERNO { get { return _PN_INTERNO; } set { _PN_INTERNO = value; } }
         public string PV_EMAIL { get { return _PV_EMAIL; } set { _PV_EMAIL = value; } }
         
         public string PV_USUARIOI { get { return _PV_USUARIOI; } set { _PV_USUARIOI = value; } }
@@ -84,7 +84,7 @@ namespace appAmascuotas.Clases
         }
         public Usuarios(string pV_TIPO_OPERACION, string pV_COD_PERSONAL,string pV_SUPERVISOR_INMEDIATO,
             string pV_COD_SUCURSAL,string pV_NOMBRE_COMPLETO,string pV_TIPO_DOCUMENTO,string pV_NUMERO_DOCUMENTO,
-            string pV_EXPEDIDO,string pV_COD_CARGO,int pN_CELULAR,int pN_FIJO,int pN_INTERNO,string pV_EMAIL,
+            string pV_EXPEDIDO,string pV_COD_CARGO, decimal pN_CELULAR, decimal pN_FIJO, decimal pN_INTERNO,string pV_EMAIL,
             string pV_USUARIOI,string pV_PASSWORD,string pV_PASSWORD_ANTERIOR,string pV_DESCRIPCION,
             DateTime pD_FECHA_DESDE,DateTime pD_FECHA_HASTA,string pV_ROL,string pV_USUARIO)
         {
@@ -360,9 +360,9 @@ namespace appAmascuotas.Clases
                 db1.AddInParameter(cmd, "PV_NUMERO_DOCUMENTO", DbType.String, _PV_NUMERO_DOCUMENTO);
                 db1.AddInParameter(cmd, "PV_EXPEDIDO", DbType.String, _PV_EXPEDIDO);
                 db1.AddInParameter(cmd, "PV_COD_CARGO", DbType.String, _PV_COD_CARGO);
-                db1.AddInParameter(cmd, "PN_CELULAR", DbType.Int32, _PN_CELULAR);
-                db1.AddInParameter(cmd, "PN_FIJO", DbType.Int32, _PN_FIJO);
-                db1.AddInParameter(cmd, "PN_INTERNO", DbType.Int32, _PN_INTERNO);
+                db1.AddInParameter(cmd, "PN_CELULAR", DbType.Decimal, _PN_CELULAR);
+                db1.AddInParameter(cmd, "PN_FIJO", DbType.Decimal, _PN_FIJO);
+                db1.AddInParameter(cmd, "PN_INTERNO", DbType.Decimal, _PN_INTERNO);
                 db1.AddInParameter(cmd, "PV_EMAIL", DbType.String, _PV_EMAIL);
                 
                 db1.AddInParameter(cmd, "PV_USUARIOI", DbType.String, _PV_USUARIOI);

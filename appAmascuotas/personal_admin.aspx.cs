@@ -78,6 +78,9 @@ namespace appAmascuotas
             lblCodPersonal.Text = "";
             txtEmail.Text = "";
             txtNombres.Text = "";
+            txtFijo.Text = "";
+            txtInterno.Text = "";
+            txtCelular.Text = "";
             txtNumeroDocumento.Text = "";
             lblFechaDesde.Text = "";
             lblFechaHasta.Text = "";
@@ -85,6 +88,7 @@ namespace appAmascuotas
             ddlTipoDocumento.DataBind();
             ddlCargo.DataBind();
             ddlSupervisor.DataBind();
+            ddlSucursal.DataBind();
 
         }
         protected void btnNuevo_Click(object sender, EventArgs e)
@@ -273,7 +277,7 @@ namespace appAmascuotas
                 string fecha_retorno = "01/01/3000";
                 if (hfFechaRetorno.Value != "")
                     fecha_retorno = hfFechaRetorno.Value;
-                string fecha_salida = "01/01/3000";
+                string fecha_salida = DateTime.Now.ToShortDateString();
                 if (hfFechaSalida.Value != "")
                     fecha_salida = hfFechaSalida.Value;
                 string interno= "";
@@ -281,12 +285,42 @@ namespace appAmascuotas
 
                 if (txtInterno.Text == "")
                     interno = "0";
+                else
+                    interno = txtInterno.Text;
                 if (txtFijo.Text == "")
                     fijo = "0";
+                else
+                    fijo = txtFijo.Text;
+
                 string[] datos_cargo = ddlCargo.SelectedValue.Split('&');
                 string aux = "";
                 if (lblCodPersonal.Text == "")
                 {
+                    if (fuPhoto.HasFile)
+                    {
+                        string Ruta = Server.MapPath("~/Imagenes/usuarios/");
+                        if (!Directory.Exists(Ruta))
+                        {
+                            Directory.CreateDirectory(Ruta);
+                        }
+                        string archivo = txtNumeroDocumento.Text + ".jpg";
+                        fuPhoto.PostedFile.SaveAs(Ruta + archivo);
+                    }
+                    else
+                    {
+                        string Ruta = Server.MapPath("~/Imagenes/usuarios/");
+                        if (!Directory.Exists(Ruta))
+                        {
+                            Directory.CreateDirectory(Ruta);
+                        }
+                        string archivo_def = "sin_imagen.jpg";
+                        string archivo = txtNumeroDocumento.Text + ".jpg";
+                        string sourceFile = System.IO.Path.Combine(Ruta, archivo_def);
+                        string destFile = System.IO.Path.Combine(Ruta, archivo);
+
+                        System.IO.File.Copy(sourceFile, destFile, true);
+                    }
+
                     Clases.Usuarios per = new Clases.Usuarios("I","",ddlSupervisor.SelectedValue,ddlSucursal.SelectedValue, txtNombres.Text,
                         ddlTipoDocumento.SelectedValue, txtNumeroDocumento.Text, ddlExpedido.SelectedValue,
                         ddlCargo.SelectedValue,int.Parse(txtCelular.Text),int.Parse(fijo),int.Parse(interno),
@@ -299,6 +333,17 @@ namespace appAmascuotas
                 }
                 else
                 {
+                    if (fuPhoto.HasFile)
+                    {
+                        string Ruta = Server.MapPath("~/Imagenes/usuarios/");
+                        if (!Directory.Exists(Ruta))
+                        {
+                            Directory.CreateDirectory(Ruta);
+                        }
+                        string archivo = txtNumeroDocumento.Text + ".jpg";
+                        fuPhoto.PostedFile.SaveAs(Ruta + archivo);
+                    }
+                   
                     Clases.Usuarios per = new Clases.Usuarios("U", lblCodPersonal.Text, ddlSupervisor.SelectedValue, ddlSucursal.SelectedValue, txtNombres.Text,
                         ddlTipoDocumento.SelectedValue, txtNumeroDocumento.Text, ddlExpedido.SelectedValue,
                         ddlCargo.SelectedValue, int.Parse(txtCelular.Text), int.Parse(fijo), int.Parse(interno),
@@ -306,6 +351,9 @@ namespace appAmascuotas
                     aux = per.ABM().Replace("|", "").Replace("0", "").Replace("null", "").Replace("1", "");
                     lblAviso.Text = aux;
                 }
+
+                
+
                 MultiView1.ActiveViewIndex = 0;
                 Repeater1.DataBind();
             }

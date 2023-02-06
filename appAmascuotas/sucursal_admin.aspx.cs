@@ -34,11 +34,9 @@ namespace appAmascuotas
                             if (dr["DESCRIPCION"].ToString().ToUpper() == "NEW")
                                 btnNuevoCliente.Visible = true;
                         }
-
                     }
                     MultiView1.ActiveViewIndex = 0;
                     limpiar_controles();
-
                 }
             }
         }
@@ -58,6 +56,10 @@ namespace appAmascuotas
         protected void btnNuevoCliente_Click(object sender, EventArgs e)
         {
             limpiar_controles();
+            ListItem itemd = new ListItem();
+            itemd.Text = "SWITZERLAND";
+            itemd.Value = "SWI";
+            ddlPais.SelectedIndex=ddlPais.Items.IndexOf(itemd);
             MultiView1.ActiveViewIndex = 1;
         }
         

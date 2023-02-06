@@ -3479,6 +3479,8 @@
     <Content Include="Imagenes\pgare_amaszonas.jpg" />
     <Content Include="Imagenes\seguro_hoja2.jpg" />
     <Content Include="Imagenes\seguro_pie1.jpg" />
+    <Content Include="Imagenes\usuarios\111111111111.jpg" />
+    <Content Include="Imagenes\usuarios\sin_imagen.jpg" />
     <Content Include="login.aspx" />
     <Content Include="menus_admin.aspx" />
     <Content Include="menu_rol_admin.aspx" />

@@ -123,7 +123,7 @@
 												<table id="data-table-default" class="table table-striped table-bordered">
 													<thead>
 														<tr>
-															<%--<th class="text-wrap">FOTO</th>--%>
+															<th class="text-wrap"></th>
 															<th class="text-wrap">NAME</th>
 															<th class="text-nowrap">TYPE DOC.</th>
 															<th class="text-nowrap">NUMBER DOC.</th>
@@ -143,7 +143,7 @@
 														<ItemTemplate>
 															<tr class="gradeA">
 																
-															<%--<td><asp:Image ID="Image1" Height="50px" runat="server" ImageUrl='<%# "data:image/jpg;base64," + Convert.ToBase64String((byte[])Eval("filecontent"))  %>' /></td>--%>
+															<td><asp:Image ID="Image1" Height="30px" runat="server" ImageUrl='<%# "~/Imagenes/usuarios/" + Eval("NUMERO_DOCUMENTO") +".jpg" %>' /></td>
 															<td><asp:Label ID="lblNombre" runat="server" Text='<%# Eval("NOMBRE_COMPLETO") %>'></asp:Label></td>
 																<td><asp:Label ID="lblPaterno" runat="server" Text='<%# Eval("TIPO_DOCUMENTO") %>'></asp:Label></td>
 																<td><asp:Label ID="lblMaterno" runat="server" Text='<%# Eval("NUMERO_DOCUMENTO") %>'></asp:Label></td>
@@ -334,6 +334,14 @@
 						<label class="col-md-3 text-md-right col-form-label">Description:</label>
 						<div class="col-md-6">
 						                <asp:TextBox ID="txtDescripcion" ForeColor="Black" TextMode="MultiLine"  class="form-control" runat="server" ></asp:TextBox>
+						</div>
+					</div>
+					<!-- end form-group row -->
+					<!-- begin form-group row -->
+					<div class="form-group row m-b-10">
+						<label class="col-md-3 text-md-right col-form-label">Photo:</label>
+						<div class="col-md-6">
+							<asp:FileUpload ID="fuPhoto" runat="server" />
 						</div>
 					</div>
 					<!-- end form-group row -->

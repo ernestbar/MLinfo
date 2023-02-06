@@ -50,23 +50,22 @@ namespace appAmascuotas
             string[] datos= Clases.Usuarios.Ingreso_usuario(txtUsuario.Text, txtPassword.Text).Split('|');
             if (datos[0] == "0")
             {
-                if (datos[2] == "1")
+                if (datos[3] == "1")
                 {
                     Session["usuario"] = txtUsuario.Text;
                     Response.Redirect("cambio_password.aspx?tmp=1");
+                    Session["documento"] = "sin_imagen";
                     lblAviso.Text = "";
                 }
                 else
                 {
                     Session["usuario"] = txtUsuario.Text;
+                    Session["documento"] = datos[2];
                     Response.Redirect("dashboard.aspx");
                     lblAviso.Text = "";
                 }
                 //Clases.enviar_correo objC = new Clases.enviar_correo();
                 //string resp_email = objC.enviar("ernesto.barron@gmail.com", "Confirmacion de requisitos", "Pruebas de envio de correo.", "");
-
-                
-                
             }
             else
             { lblAviso.Text = "User or password wrong!"; txtUsuario.Focus(); }

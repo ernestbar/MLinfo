@@ -56,7 +56,10 @@ namespace appAmascuotas.Clases
             try
             {
                 DbCommand cmd = db1.GetStoredProcCommand("PR_GET_ROLES");
-                db1.AddInParameter(cmd, "PV_ESTADO", DbType.String, PV_ESTADO);
+                if(PV_ESTADO=="T")
+                    db1.AddInParameter(cmd, "PV_ESTADO", DbType.String, null);
+                else
+                    db1.AddInParameter(cmd, "PV_ESTADO", DbType.String, PV_ESTADO);
                 cmd.CommandTimeout = int.Parse(ConfigurationManager.AppSettings["CommandTimeout"]);
                 return db1.ExecuteDataSet(cmd).Tables[0];
             }

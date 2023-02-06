@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ObjectDataSource ID="odsRoles" runat="server" SelectMethod="PR_GET_ROLES" TypeName="appAmascuotas.Clases.Roles">
 		<SelectParameters>
-				<asp:Parameter DefaultValue="A" Name="PV_ESTADO" Type="String" />
+				<asp:Parameter DefaultValue="T" Name="PV_ESTADO" Type="String" />
 			</SelectParameters>
 		</asp:ObjectDataSource>
 	

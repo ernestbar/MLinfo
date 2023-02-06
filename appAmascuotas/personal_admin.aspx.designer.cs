@@ -438,6 +438,15 @@ namespace appAmascuotas
         protected global::System.Web.UI.WebControls.TextBox txtDescripcion;
 
         /// <summary>
+        /// fuPhoto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload fuPhoto;
+
+        /// <summary>
         /// btnGuardar control.
         /// </summary>
         /// <remarks>

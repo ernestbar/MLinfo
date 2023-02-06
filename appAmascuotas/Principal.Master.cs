@@ -18,6 +18,7 @@ namespace appAmascuotas
                 else
                 {
                     lblUsuario.Text = Session["usuario"].ToString();
+                    Image1.ImageUrl = "~/Imagenes/usuarios/" + Session["documento"].ToString() + ".jpg";
                     // Cargar menú
                     BindMenuRptr();
                 }
