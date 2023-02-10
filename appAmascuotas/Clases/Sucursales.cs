@@ -23,6 +23,9 @@ namespace appAmascuotas.Clases
         private string _PV_LATITUD = "";
         private string _PV_LONGITUD = "";
         private string _PV_USUARIO = "";
+        private string _PB_VILLAGE_NAME = "";
+        private string _PB_POSTALE_CODE = "";
+
         private string _PV_ESTADOPR = "";
         private string _PV_DESCRIPCIONPR = "";
         private string _PV_ERROR = "";
@@ -36,6 +39,8 @@ namespace appAmascuotas.Clases
         public string PV_LATITUD { get { return _PV_LATITUD; } set { _PV_LATITUD = value; } }
         public string PV_LOGITUD { get { return _PV_LONGITUD; } set { _PV_LONGITUD = value; } }
         public string PV_USUARIO { get { return _PV_USUARIO; } set { _PV_USUARIO = value; } }
+        public string PB_VILLAGE_NAME { get { return _PB_VILLAGE_NAME; } set { _PB_VILLAGE_NAME = value; } }
+        public string PB_POSTALE_CODE { get { return _PB_POSTALE_CODE; } set { _PB_POSTALE_CODE = value; } }
         public string PV_ESTADOPR { get { return _PV_ESTADOPR; } set { _PV_ESTADOPR = value; } }
         public string PV_DESCRIPCIONPR { get { return _PV_DESCRIPCIONPR; } set { _PV_DESCRIPCIONPR = value; } }
         public string PV_ERROR { get { return _PV_ERROR; } set { _PV_ERROR = value; } }
@@ -48,7 +53,8 @@ namespace appAmascuotas.Clases
             RecuperarDatos();
         }
         public Sucursales(string pV_TIPO_OPERACION, string pV_CODIGO, string pV_NOMBRE_SUCURSAL,
-            string pV_DIRECCION,string pB_ID_PAIS,string pB_ID_CIUDAD ,string pV_LATITUD, string pV_LONGITUD, string pV_USUARIO)
+            string pV_DIRECCION,string pB_ID_PAIS,string pB_ID_CIUDAD ,string pV_LATITUD, string pV_LONGITUD, 
+            string pV_USUARIO,string pB_VILLAGE_NAME,string pB_POSTALE_CODE)
         {
             _PV_TIPO_OPERACION = pV_TIPO_OPERACION;
             _PB_ID_PAIS = pB_ID_PAIS;
@@ -59,6 +65,8 @@ namespace appAmascuotas.Clases
             _PV_LATITUD = pV_LATITUD;
             _PV_LONGITUD = pV_LONGITUD;
             _PV_USUARIO = pV_USUARIO;
+            _PB_VILLAGE_NAME = pB_VILLAGE_NAME;
+            _PB_POSTALE_CODE = pB_POSTALE_CODE;
         }
 
         #endregion
@@ -96,6 +104,8 @@ namespace appAmascuotas.Clases
                         _PV_DIRECCION = (string)dr["DIRECCION"];
                         _PV_LATITUD = (string)dr["LATITUD"];
                         _PV_LONGITUD = (string)dr["LONGITUD"];
+                        _PB_VILLAGE_NAME= (string)dr["VILLAGE_NAME"];
+                        _PB_POSTALE_CODE=(string)dr["POSTALE_CODE"];
                     }
                 }
             }
@@ -127,6 +137,8 @@ namespace appAmascuotas.Clases
                 db1.AddInParameter(cmd, "PV_LATITUD", DbType.String, _PV_LATITUD);
                 db1.AddInParameter(cmd, "PV_LONGITUD", DbType.String, _PV_LONGITUD);
                 db1.AddInParameter(cmd, "PV_USUARIO", DbType.String, _PV_USUARIO);
+                db1.AddInParameter(cmd, "PB_VILLAGE_NAME", DbType.String, _PB_VILLAGE_NAME);
+                db1.AddInParameter(cmd, "PB_POSTALE_CODE", DbType.String, _PB_POSTALE_CODE);
                 db1.AddOutParameter(cmd, "PV_ESTADOPR", DbType.String, 30);
                 db1.AddOutParameter(cmd, "PV_DESCRIPCIONPR", DbType.String, 250);
                 db1.AddOutParameter(cmd, "PV_ERROR", DbType.String, 250);

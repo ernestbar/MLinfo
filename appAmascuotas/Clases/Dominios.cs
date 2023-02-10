@@ -138,6 +138,24 @@ namespace appAmascuotas.Clases
             }
 
         }
+
+        public static DataTable PR_PAR_GET_DATA_CITY(string PV_COUNTRY)
+        {
+            try
+            {
+                DbCommand cmd = db1.GetStoredProcCommand("PR_PAR_GET_DATA_CITY");
+                db1.AddInParameter(cmd, "PV_COD_COUNTRY", DbType.String, PV_COUNTRY);
+                cmd.CommandTimeout = int.Parse(ConfigurationManager.AppSettings["CommandTimeout"]);
+                return db1.ExecuteDataSet(cmd).Tables[0];
+            }
+            catch (Exception ex)
+            {
+                ex.ToString();
+                DataTable dt = new DataTable();
+                return dt;
+            }
+
+        }
         public static DataTable PR_GET_GEOREFERENCING(string PV_CITY)
         {
             try

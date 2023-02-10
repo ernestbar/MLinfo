@@ -1,9 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="sucursal_admin.aspx.cs" Inherits="appAmascuotas.sucursal_admin" %>
 <%@ Register assembly="GMaps" namespace="Subgurim.Controles" tagprefix="cc" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    
-    
-	
 	<style type="text/css">
         body
         {
@@ -34,13 +31,13 @@
             return true;
         }
     </script>
-    
+      
 	<asp:ObjectDataSource ID="odsPais" runat="server" SelectMethod="PR_PAR_GET_DOMINIOS" TypeName="appAmascuotas.Clases.Dominios">
         <SelectParameters>
             <asp:Parameter DefaultValue="COUNTRY" Name="PV_DOMINIO" Type="String" />
         </SelectParameters>
     </asp:ObjectDataSource>
-	<asp:ObjectDataSource ID="odsCiudad" runat="server" SelectMethod="PR_GET_CITY" TypeName="appAmascuotas.Clases.Dominios">
+	<asp:ObjectDataSource ID="odsCiudad" runat="server" SelectMethod="PR_PAR_GET_DATA_CITY" TypeName="appAmascuotas.Clases.Dominios">
         <SelectParameters>
 			<asp:ControlParameter ControlID="ddlPais" Name="PV_COUNTRY" Type="String" />
         </SelectParameters>
@@ -107,6 +104,7 @@
 															<th class="text-nowrap">CODIGO</th>
 															<th class="text-nowrap">COUNTRY</th>
 															<th class="text-nowrap">CITY</th>
+															<th class="text-nowrap">POSTAL CODE</th>
 															<th class="text-nowrap">NAME BRANCH OFFICE</th>
 															<th class="text-nowrap">LATITUDE</th>
 															<th class="text-nowrap">LENGTH</th>
@@ -120,7 +118,8 @@
 															<tr class="gradeA">																
 															<td><asp:Label ID="Label2" runat="server" Text='<%# Eval("COD_SUCURSAL") %>'></asp:Label></td>
 																<td><asp:Label ID="lblPias" runat="server" Text='<%# Eval("DESC_PAIS") %>'></asp:Label></td>
-															<td><asp:Label ID="lblCiudad" runat="server" Text='<%# Eval("DESC_CIUDAD") %>'></asp:Label></td>
+															<td><asp:Label ID="lblCiudad" runat="server" Text='<%# Eval("VILLAGE_NAME") %>'></asp:Label></td>
+															<td><asp:Label ID="lblCiudad1" runat="server" Text='<%# Eval("POSTALE_CODE") %>'></asp:Label></td>
 															<td><asp:Label ID="lblNombreSucursal" runat="server" Text='<%# Eval("DESCRIPCION") %>'></asp:Label></td>
 															<td><asp:Label ID="lblLatitud" runat="server" Text='<%# Eval("LATITUD") %>'></asp:Label></td>
 															<td><asp:Label ID="lblLongitud" runat="server" Text='<%# Eval("LONGITUD") %>'></asp:Label></td>
@@ -191,15 +190,43 @@
 					<!-- end form-group row -->  
                     <!-- begin form-group row -->
 					<div class="form-group row m-b-10">
-						<label class="col-md-3 text-md-right col-form-label">City:</label>
+						<label class="col-md-3 text-md-right col-form-label">City search:</label>
 						<div class="col-md-6">
-						         <asp:DropDownList ID="ddlCiudad" class="form-control" OnSelectedIndexChanged="ddlCiudad_SelectedIndexChanged" AutoPostBack="true" DataSourceID="odsCiudad" OnDataBound="ddlCiudad_DataBound" DataTextField="descripcion" DataValueField="codigo"  ForeColor="Black" runat="server"></asp:DropDownList>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMesssage="*" ForeColor="Red" ControlToValidate="ddlCiudad" InitialValue="SELECCIONAR" Font-Bold="True"></asp:RequiredFieldValidator>
+						         <asp:DropDownList ID="ddlCiudad"  class="default-select2 form-control" OnSelectedIndexChanged="ddlCiudad_SelectedIndexChanged" AutoPostBack="true" DataSourceID="odsCiudad" OnDataBound="ddlCiudad_DataBound" DataTextField="city" DataValueField="cod_city"  ForeColor="Black" runat="server"></asp:DropDownList>
+                                <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMesssage="*" ForeColor="Red" ControlToValidate="ddlCiudad" InitialValue="SELECCIONAR" Font-Bold="True"></asp:RequiredFieldValidator>--%>
                         </div>
+						<div class="col-md-1">
+							<asp:ImageButton ID="imgNew" OnClick="imgNew_Click" ImageUrl="~/Imagenes/agregar.png" CausesValidation="false" Height="40px" ToolTip="Add new city" runat="server" />
+						</div>
 					</div>
 					<!-- end form-group row -->
-					
-				    
+					 <!-- begin form-group row -->
+					<div class="form-group row m-b-10">
+						<label class="col-md-3 text-md-right col-form-label">City:</label>
+						<div class="col-md-6">
+                            <asp:TextBox ID="txtCiudad" class="form-control" Enabled="false" runat="server"></asp:TextBox>
+							<%--<asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ErrorMessage="*" ControlToValidate="txtLatitud" Font-Bold="True"></asp:RequiredFieldValidator>--%>
+						</div>
+					</div>
+					<!-- end form-group row -->
+				    <!-- begin form-group row -->
+					<div class="form-group row m-b-10">
+						<label class="col-md-3 text-md-right col-form-label">Village:</label>
+						<div class="col-md-6">
+                            <asp:TextBox ID="txtVillage" class="form-control" Enabled="false" runat="server"></asp:TextBox>
+							<%--<asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ErrorMessage="*" ControlToValidate="txtLatitud" Font-Bold="True"></asp:RequiredFieldValidator>--%>
+						</div>
+					</div>
+					<!-- end form-group row -->
+					<!-- begin form-group row -->
+					<div class="form-group row m-b-10">
+						<label class="col-md-3 text-md-right col-form-label">Postal code:</label>
+						<div class="col-md-6">
+                            <asp:TextBox ID="txtPostalCode" class="form-control" Enabled="false" runat="server"></asp:TextBox>
+							<%--<asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ErrorMessage="*" ControlToValidate="txtLatitud" Font-Bold="True"></asp:RequiredFieldValidator>--%>
+						</div>
+					</div>
+					<!-- end form-group row -->
                     <!-- begin form-group row -->
 					<div class="form-group row m-b-10">
 						<label class="col-md-3 text-md-right col-form-label">Latitude:</label>

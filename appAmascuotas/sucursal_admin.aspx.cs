@@ -94,7 +94,10 @@ namespace appAmascuotas
                 ddlPais.DataBind();
                 ddlPais.SelectedValue = cli.PB_ID_PAIS.ToString();
                 ddlCiudad.DataBind();
-                ddlCiudad.SelectedValue = cli.PB_ID_CIUDAD.ToString();
+                //ddlCiudad.SelectedValue = cli.PB_ID_CIUDAD.ToString();
+                txtCiudad.Text = cli.PB_ID_CIUDAD;
+                txtVillage.Text = cli.PB_VILLAGE_NAME;
+                txtPostalCode.Text = cli.PB_POSTALE_CODE;
                 MultiView1.ActiveViewIndex = 1;
             }
             catch (Exception ex)
@@ -115,7 +118,7 @@ namespace appAmascuotas
                 
                 if (lblCodSucursal.Text == "")
                 {
-                    Clases.Sucursales cli = new Clases.Sucursales("I",txtCodigo.Text, txtNombreSucursal.Text,txtDireccion.Text,ddlPais.SelectedValue,ddlCiudad.SelectedValue, txtLatitud.Text, txtLongitud.Text, lblUsuario.Text);
+                    Clases.Sucursales cli = new Clases.Sucursales("I",txtCodigo.Text, txtNombreSucursal.Text,txtDireccion.Text,ddlPais.SelectedValue,txtCiudad.Text, txtLatitud.Text, txtLongitud.Text, lblUsuario.Text,txtVillage.Text,txtPostalCode.Text);
                     lblAviso.Text = cli.ABM().Replace("|", "").Replace("0", "").Replace("null", "").Replace("1", "");
                     MultiView1.ActiveViewIndex = 0;
 
@@ -123,7 +126,7 @@ namespace appAmascuotas
                 else
                 {
 
-                    Clases.Sucursales cli = new Clases.Sucursales("U", lblCodSucursal.Text, txtNombreSucursal.Text, txtDireccion.Text, ddlPais.SelectedValue, ddlCiudad.SelectedValue, txtLatitud.Text, txtLongitud.Text, lblUsuario.Text);
+                    Clases.Sucursales cli = new Clases.Sucursales("U", lblCodSucursal.Text, txtNombreSucursal.Text, txtDireccion.Text, ddlPais.SelectedValue, txtCiudad.Text, txtLatitud.Text, txtLongitud.Text, lblUsuario.Text, txtVillage.Text, txtPostalCode.Text);
                     lblAviso.Text = cli.ABM().Replace("|", "").Replace("0", "").Replace("null", "").Replace("1", "");
                     MultiView1.ActiveViewIndex = 0;
                 }
@@ -152,13 +155,13 @@ namespace appAmascuotas
                 string[] datos = id.Split('|');
                 if (datos[1] == "ACTIVE")
                 {
-                    Clases.Sucursales mcc = new Clases.Sucursales("D", datos[0],"","","","","","", lblUsuario.Text);
+                    Clases.Sucursales mcc = new Clases.Sucursales("D", datos[0],"","","","","","", lblUsuario.Text,"","");
                     lblAviso.Text = mcc.ABM().Replace("|", "").Replace("0", "").Replace("null", "").Replace("1", "");
                     Repeater1.DataBind();
                 }
                 else
                 {
-                    Clases.Sucursales mcc = new Clases.Sucursales("A", datos[0], "", "", "", "", "", "", lblUsuario.Text);
+                    Clases.Sucursales mcc = new Clases.Sucursales("A", datos[0], "", "", "", "", "", "", lblUsuario.Text,"","");
                     lblAviso.Text = mcc.ABM().Replace("|", "").Replace("0", "").Replace("null", "").Replace("1", "");
                     Repeater1.DataBind();
                 }
@@ -209,43 +212,21 @@ namespace appAmascuotas
 
         protected void ddlCiudad_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
+            string[] datos = ddlCiudad.SelectedValue.Split('|');
+            txtCiudad.Text = datos[0];
+            txtVillage.Text = datos[1];
+            txtPostalCode.Text = datos[2];
+
+            txtCiudad.Enabled = false;
+            txtVillage.Enabled = false;
+            txtPostalCode.Enabled = false;
+
             string decSep = System.Globalization.CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalSeparator;
-
-            DataTable dt = new DataTable();
-            dt = Clases.Dominios.PR_GET_GEOREFERENCING(ddlCiudad.SelectedValue);
-            string valor = "";
-            foreach (DataRow dr in dt.Rows)
-            {
-                valor = dr["valor_caracter"].ToString();
-            }
-
-            string[] aux = valor.Split('|');
-            string lat = aux[1];
-            string lon = aux[0];
-
-
-
-             inciar_mapa(lat.Replace(".", decSep), lon.Replace(".", decSep)); 
-            //if (ddlCiudad.SelectedItem.Text == "LA PAZ")
-            //{ inciar_mapa("-16.5".Replace(".", decSep), "-68.15".Replace(".", decSep)); }
-            //if (ddlCiudad.SelectedItem.Text == "COCHABAMBA")
-            //{ inciar_mapa("-17.3895".Replace(".", decSep), "-66.1568".Replace(".", decSep)); }
-            //if (ddlCiudad.SelectedItem.Text == "ORURO")
-            //{ inciar_mapa("-17.9833".Replace(".", decSep), "-67.15".Replace(".", decSep)); }
-            //if (ddlCiudad.SelectedItem.Text == "SANTA CRUZ")
-            //{ inciar_mapa("-17.8".Replace(".", decSep), "-63.1667".Replace(".", decSep)); }
-            //if (ddlCiudad.SelectedItem.Text == "BENI")
-            //{ inciar_mapa("-13.7455".Replace(".", decSep), "-65.4277".Replace(".", decSep)); }
-            //if (ddlCiudad.SelectedItem.Text == "CHUQUISACA")
-            //{ inciar_mapa("-19.0431".Replace(".", decSep), "-65.2592".Replace(".", decSep)); }
-            //if (ddlCiudad.SelectedItem.Text == "PANDO".Replace(".", decSep))
-            //{ inciar_mapa("-11.0333".Replace(".", decSep), "-68.7718".Replace(".", decSep)); }
-            //if (ddlCiudad.SelectedItem.Text == "POTOSI".Replace(".", decSep))
-            //{ inciar_mapa("-19.5781".Replace(".", decSep), "-65.7553".Replace(".", decSep)); }
-            //if (ddlCiudad.SelectedItem.Text == "TARIJA")
-            //{ inciar_mapa("-21.5167".Replace(".", decSep), "-64.75".Replace(".", decSep)); }
-            //if (ddlCiudad.SelectedItem.Text == "OTROS")
-            //{ inciar_mapa("-17.7696".Replace(".", decSep), "-64.0105".Replace(".", decSep)); }
+           
+            string lat = datos[3];
+            string lon = datos[4];
+            inciar_mapa(lat.Replace(".", decSep), lon.Replace(".", decSep));
         }
 
         protected void Repeater1_ItemDataBound(object sender, RepeaterItemEventArgs e)
@@ -276,6 +257,17 @@ namespace appAmascuotas
         protected void ddlPais_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        protected void imgNew_Click(object sender, ImageClickEventArgs e)
+        {
+            txtCiudad.Text = "";
+            txtCiudad.Enabled = true;
+            txtVillage.Text = "";
+            txtVillage.Enabled = true;
+            txtPostalCode.Text = "";
+            txtPostalCode.Enabled = true;
+            txtCiudad.Focus();
         }
 
         protected void btnVerUbi_Click(object sender, EventArgs e)
