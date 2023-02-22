@@ -248,7 +248,7 @@
 					 <!-- begin form-group row -->
 					<div class="form-group row m-b-10">
 						<label class="col-md-3 text-md-right col-form-label"><input type="button" class="btn-sm btn-success btn-block" value="My location" onclick="javascript: showlocation()" />
-							<asp:Button ID="btnVerUbi" OnClick="btnVerUbi_Click" runat="server" CssClass="bg-transparent border-0" Text="" Visible="true" />
+							<asp:Button ID="btnVerUbi" CausesValidation="false" OnClick="btnVerUbi_Click" runat="server" CssClass="bg-transparent border-0" Text="" Visible="true" />
 							<asp:HiddenField ID="hfLatitud" runat="server" EnableViewState="true"  />
 							<asp:HiddenField ID="hfLongitud" runat="server" EnableViewState="true" /></label>
 						<div class="col-md-6">

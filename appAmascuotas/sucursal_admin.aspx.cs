@@ -50,6 +50,9 @@ namespace appAmascuotas
             txtDireccion.Text = "";
             txtLongitud.Text = "";
             txtLatitud.Text = "";
+            txtCiudad.Text = "";
+            txtVillage.Text = "";
+            txtPostalCode.Text = "";
             ddlPais.DataBind();
             ddlCiudad.DataBind();
         }
