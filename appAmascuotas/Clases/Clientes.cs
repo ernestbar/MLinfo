@@ -273,7 +273,7 @@ namespace appAmascuotas.Clases
                 PB_ID_CLIENTOUT = long.Parse(db1.GetParameterValue(cmd, "PB_ID_CLIENTOUT").ToString());
                 //_id_cliente = (int)db1.GetParameterValue(cmd, "@PV_DESCRIPCIONPR");
                 //_error = (string)db1.GetParameterValue(cmd, "error");
-                resultado = PV_ERROR + "|" + PV_ESTADOPR + "|" + PV_DESCRIPCIONPR + "|" + PB_ID_CLIENTOUT;
+                resultado = PV_ERROR + "|" + PV_ESTADOPR + "|" + PV_DESCRIPCIONPR + "|";// + PB_ID_CLIENTOUT;
                 return resultado;
             }
             catch (Exception ex)

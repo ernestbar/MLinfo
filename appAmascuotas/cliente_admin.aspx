@@ -33,12 +33,7 @@
 			<asp:ControlParameter ControlID="ddlPais2" Name="PV_COUNTRY" Type="String" />
         </SelectParameters>
     </asp:ObjectDataSource>
-	<script>
-        $(document).ready(function () {
-            FormPlugins.init();
-
-        });
-    </script>
+	 
 	<style type="text/css">
         body
         {
@@ -66,7 +61,7 @@
                 }
                 return false;
             }
-            return true;
+			return true;
         }
     </script>
 	<!-- begin #content -->
@@ -86,8 +81,9 @@
 			<!-- begin form-group row -->
 										<div class="form-group row m-b-10">
 											
-											<div class="col-md-6">
-                                                <asp:Button ID="btnNuevo" class="btn btn-success btn-sm" OnClick="btnNuevo_Click" runat="server" Text="New Client" />
+											<div class="col-md-12" style="text-align:right">
+												<asp:LinkButton ID="lbtNuevo" class="btn btn-primary btn-md" OnClick="lbtNuevo_Click" runat="server"><i class="fa fa-user-plus"></i><br /> New client </asp:LinkButton>
+                                                <%--<asp:Button ID="btnNuevo" class="btn btn-success btn-sm" OnClick="btnNuevo_Click" runat="server" Text="New Client" />--%>
 												<%--<input type="text" name="Ruta" placeholder="" class="form-control" />--%>
 											</div>
 										</div>
@@ -120,10 +116,10 @@
 														<tr>
 															<%--<th class="text-wrap">TYPE CLIENT</th>
 																<th class="text-nowrap">SOCIETY</th>--%>
-																<th class="text-nowrap">NAME</th>
+																<th class="text-nowrap col-2">NAME</th>
 																<%--<th class="text-nowrap">SURNAMES</th>
 																<th class="text-nowrap">DATE_BIRTH</th>--%>
-																<th class="text-nowrap">ADDRESS</th>
+																<th class="text-nowrap col-2">ADDRESS</th>
 																<%--<th class="text-nowrap">COUNTRY</th>
 																<th class="text-nowrap">CITY</th>
 																<th class="text-nowrap">VILLAGE_NAME</th>
@@ -134,9 +130,9 @@
 																<th class="text-nowrap">PHONE</th>
 																<th class="text-nowrap">MOBILE</th>
 																<th class="text-nowrap">FAX</th>
-																<th class="text-nowrap">TYPE COMMUNICATION</th>--%>
-																<th class="text-nowrap">ESTADO</th>
-															<th class="text-nowrap" data-orderable="false">OPTIONS</th>
+																<th class="text-nowrap">TYPE COMMUNICATION</th>
+																<th class="text-nowrap">ESTADO</th>--%>
+															<th class="text-nowrap col-1"></th>
 															
 															</tr>
 													</thead>
@@ -166,11 +162,12 @@
 																<td><asp:Label ID="Label145" runat="server" Text='<%# Eval("MOBILE") %>'></asp:Label></td>
 																<td><asp:Label ID="Label1415" runat="server" Text='<%# Eval("FAX") %>'></asp:Label></td>
 																<td><asp:Label ID="Label1425" runat="server" Text='<%# Eval("DESC_TYPE_COMMUNICATION") %>'></asp:Label></td>--%>
-																<td><asp:Label ID="Label14215" runat="server" Text='<%# Eval("DESC_ESTADO") %>'></asp:Label></td>
+																<%--<td><asp:Label ID="Label14215" runat="server" Text='<%# Eval("DESC_ESTADO") %>'></asp:Label></td>--%>
 															<td>
-																<asp:Button ID="btnEditar" class="btn btn-success btn-sm"  CommandArgument='<%# Eval("ID_CLIENT") %>' OnClick="btnEditar_Click" runat="server" Text="Edit" ToolTip="Editar" />
+																<asp:ImageButton ID="ibtnMapa" CommandArgument='<%# Eval("LATITUD") +"|" + Eval("LONGITUD") %>' OnClick="ibtnMapa_Click" ImageUrl="~/Imagenes/google_maps.png" runat="server" />
+															<%--	<asp:Button ID="btnEditar" class="btn btn-success btn-sm"  CommandArgument='<%# Eval("ID_CLIENT") %>' OnClick="btnEditar_Click" runat="server" Text="Edit" ToolTip="Editar" />
 																<asp:Button ID="btnEliminar" class="btn btn-success btn-sm" CommandArgument='<%# Eval("ID_CLIENT") + "|" + Eval("DESC_ESTADO") %>' OnClick="btnEliminar_Click" runat="server" Text="Activate/Desactivate" ToolTip="Activate or desactivate clients" />
-																<asp:Button ID="btnContacts" class="btn btn-success btn-sm" CommandArgument='<%# Eval("ID_CLIENT") %>' OnClick="btnContacts_Click" runat="server" Text="Contacts" ToolTip="Contacts Management" />
+																<asp:Button ID="btnContacts" class="btn btn-success btn-sm" CommandArgument='<%# Eval("ID_CLIENT") %>' OnClick="btnContacts_Click" runat="server" Text="Contacts" ToolTip="Contacts Management" />--%>
                                                                 
 																<%--<asp:Button ID="btnActivar" class="btn btn-success btn-sm" CommandArgument='<%# Eval("CLI_ID_CLIENTE") %>' OnClick="btnActivar_Click" runat="server" Text="Nuevo" ToolTip="Nueva simulacion" />--%>
 															</td>
@@ -200,6 +197,7 @@
 						<tbody>
 							<tr>
 								<asp:LinkButton ID="lbtnEditarR" class="btn btn-primary btn-md" OnClick="lbtnEditarR_Click" runat="server"><i class="fa fa-user"></i><br /> Edit </asp:LinkButton>
+								<asp:LinkButton ID="lbtnVoler2" CssClass="btn btn-secondary btn-sm" runat="server" CausesValidation="false" OnClick="lbtnVoler2_Click"><i class="fa fa-arrow-alt-circle-left"></i><br /> Cancel </asp:LinkButton>
 							</tr>
 							<tr>
 								<td>
@@ -235,7 +233,7 @@
 							</tr>
 							<tr>
 								<td>
-										<label class="col-md-3 text-md-right col-form-label">City:</label>
+										<label class="col-md-3 text-md-right col-form-label">Municipality:</label>
 								</td>
 								<td>
 									<asp:Label ID="lblCityR" runat="server" Text=""></asp:Label>
@@ -243,7 +241,7 @@
 							</tr>
 							<tr>
 								<td>
-										<label class="col-md-3 text-md-right col-form-label">Village:</label>
+										<label class="col-md-3 text-md-right col-form-label">City:</label>
 								</td>
 								<td>
 									<asp:Label ID="lblVillageR" runat="server" Text=""></asp:Label>
@@ -299,366 +297,184 @@
 							</tr>
 						</tbody>
 					</table>
+					<cc:GMap ID="Gmap3" runat="server" mapType="Normal" Height="350px" Width="100%" enableServerEvents="True" enableGoogleBar="True" />
 				</div>
+				
 				<!-- end form-group row -->
 				<div class="col-md-4">
 					<hr style="background-color:red"/>
 					<legend class="no-border f-w-700 p-b-0 m-t-0 m-b-20 f-s-16 text-inverse">Vehicles</legend>
 					<hr />
-					<asp:LinkButton ID="LinkButton4" class="btn btn-primary btn-md" runat="server"><i class="fa fa-car"></i><br /> List of sold vehicles </asp:LinkButton>
+					<asp:LinkButton ID="LinkButton4" class="btn btn-primary btn-md mt-1" Width="130px" runat="server"><i class="fa fa-car"></i><br /> List of sold vehicles </asp:LinkButton>
 					<hr style="background-color:red"/>
 					<legend class="no-border f-w-700 p-b-0 m-t-0 m-b-20 f-s-16 text-inverse">Labour</legend>
 					<hr />
-					<asp:LinkButton ID="LinkButton3" class="btn btn-primary btn-md" runat="server"><i class="fa fa-plus-circle"></i><br /> New intervention </asp:LinkButton>
-					<asp:LinkButton ID="LinkButton5" class="btn btn-primary btn-md" runat="server"><i class="fa fa-car"></i><br /> New offset </asp:LinkButton>
-					<asp:LinkButton ID="LinkButton6" class="btn btn-primary btn-md" runat="server"><i class="fa fa-car"></i><br /> New offset ofert </asp:LinkButton>
-					<asp:LinkButton ID="LinkButton7" class="btn btn-primary btn-md" runat="server"><i class="fa fa-list"></i><br /> List of interventions </asp:LinkButton>
+					<asp:LinkButton ID="LinkButton3" class="btn btn-primary btn-md mt-1" Width="130px" runat="server"><i class="fa fa-plus-circle"></i><br /> New intervention </asp:LinkButton>
+					<asp:LinkButton ID="LinkButton5" class="btn btn-primary btn-md mt-1" Width="130px" runat="server"><i class="fa fa-car"></i><br /> New offset </asp:LinkButton>
+					<asp:LinkButton ID="LinkButton6" class="btn btn-primary btn-md mt-1" Width="130px" runat="server"><i class="fa fa-car"></i><br /> New offset ofert </asp:LinkButton>
+					<asp:LinkButton ID="LinkButton7" class="btn btn-primary btn-md mt-1" Width="130px" runat="server"><i class="fa fa-list"></i><br /> List of interventions </asp:LinkButton>
 					<hr style="background-color:red"/>
 					<legend class="no-border f-w-700 p-b-0 m-t-0 m-b-20 f-s-16 text-inverse">Materials</legend>
 					<hr />
-					<asp:LinkButton ID="LinkButton8" class="btn btn-primary btn-md" runat="server"><i class="fa fa-plus-circle"></i><br /> New material</asp:LinkButton>
-					<asp:LinkButton ID="LinkButton9" class="btn btn-primary btn-md" runat="server"><i class="fa fa-plus-circle"></i><br /> New command</asp:LinkButton>
-					<asp:LinkButton ID="LinkButton10" class="btn btn-primary btn-md" runat="server"><i class="fa fa-arrow-up"></i><br /> Stock materials</asp:LinkButton>
-					<asp:LinkButton ID="LinkButton11" class="btn btn-primary btn-md" runat="server"><i class="fa fa-plus-circle"></i><br /> New purchase order</asp:LinkButton>
-					<asp:LinkButton ID="LinkButton12" class="btn btn-primary btn-md" runat="server"><i class="fa fa-list"></i><br /> List of materials </asp:LinkButton>
-					<asp:LinkButton ID="LinkButton13" class="btn btn-primary btn-md" runat="server"><i class="fa fa-list"></i><br /> List of commands </asp:LinkButton>
-					<asp:LinkButton ID="LinkButton14" class="btn btn-primary btn-md" runat="server"><i class="fa fa-list"></i><br /> List of purchase orders </asp:LinkButton>
+					<asp:LinkButton ID="LinkButton8" class="btn btn-primary btn-md mt-1" Width="130px" runat="server"><i class="fa fa-plus-circle"></i><br /> New material</asp:LinkButton>
+					<asp:LinkButton ID="LinkButton9" class="btn btn-primary btn-md mt-1" Width="130px" runat="server"><i class="fa fa-plus-circle"></i><br /> New command</asp:LinkButton>
+					<asp:LinkButton ID="LinkButton10" class="btn btn-primary btn-md mt-1" Width="130px" runat="server"><i class="fa fa-arrow-up"></i><br /> Stock materials</asp:LinkButton>
+					<asp:LinkButton ID="LinkButton11" class="btn btn-primary btn-md mt-1" Width="130px" runat="server"><i class="fa fa-plus-circle"></i><br /> New purchase order</asp:LinkButton>
+					<asp:LinkButton ID="LinkButton12" class="btn btn-primary btn-md mt-1" Width="130px" runat="server"><i class="fa fa-list"></i><br /> List of materials </asp:LinkButton>
+					<asp:LinkButton ID="LinkButton13" class="btn btn-primary btn-md mt-1" Width="130px" runat="server"><i class="fa fa-list"></i><br /> List of commands </asp:LinkButton>
+					<asp:LinkButton ID="LinkButton14" class="btn btn-primary btn-md mt-1" Width="130px" runat="server"><i class="fa fa-list"></i><br /> List of purchase orders </asp:LinkButton>
 					<hr style="background-color:red"/>
 					<legend class="no-border f-w-700 p-b-0 m-t-0 m-b-20 f-s-16 text-inverse">Customer billing</legend>
 					<hr />
-					<asp:LinkButton ID="LinkButton15" class="btn btn-primary btn-md" runat="server"><i class="fa fa-file"></i><br /> New bill</asp:LinkButton>
-					<asp:LinkButton ID="LinkButton16" class="btn btn-primary btn-md" runat="server"><i class="fa fa-file"></i><br /> Generate QR</asp:LinkButton>
-					<asp:LinkButton ID="LinkButton17" class="btn btn-primary btn-md" runat="server"><i class="fa fa-file"></i><br /> New invoice class</asp:LinkButton>
-					<asp:LinkButton ID="LinkButton18" class="btn btn-primary btn-md" runat="server"><i class="fa fa-plus-circle"></i><br />New deposit</asp:LinkButton>
-					<asp:LinkButton ID="LinkButton19" class="btn btn-primary btn-md" runat="server"><i class="fa fa-plus-circle"></i><br /> New pay</asp:LinkButton>
-					<asp:LinkButton ID="LinkButton20" class="btn btn-primary btn-md" runat="server"><i class="fa fa-file-archive"></i><br /> Bill list </asp:LinkButton>
-					<asp:LinkButton ID="LinkButton21" class="btn btn-primary btn-md" runat="server"><i class="fa fa-file-archive"></i><br /> Bill QR list </asp:LinkButton>
-					<asp:LinkButton ID="LinkButton22" class="btn btn-primary btn-md" runat="server"><i class="fa fa-list"></i><br /> Quota list </asp:LinkButton>
-					<asp:LinkButton ID="LinkButton23" class="btn btn-primary btn-md" runat="server"><i class="fa fa-list"></i><br /> Pay list</asp:LinkButton>
-					<asp:LinkButton ID="LinkButton24" class="btn btn-primary btn-md" runat="server"><i class="fa fa-list-ol"></i><br /> Account status</asp:LinkButton>
+					<asp:LinkButton ID="LinkButton15" class="btn btn-primary btn-md mt-1" Width="130px" runat="server"><i class="fa fa-file"></i><br /> New bill</asp:LinkButton>
+					<asp:LinkButton ID="LinkButton16" class="btn btn-primary btn-md mt-1" Width="130px" runat="server"><i class="fa fa-file"></i><br /> Generate QR</asp:LinkButton>
+					<asp:LinkButton ID="LinkButton17" class="btn btn-primary btn-md mt-1" Width="130px" runat="server"><i class="fa fa-file"></i><br /> New invoice class</asp:LinkButton>
+					<asp:LinkButton ID="LinkButton18" class="btn btn-primary btn-md mt-1" Width="130px" runat="server"><i class="fa fa-plus-circle"></i><br />New deposit</asp:LinkButton>
+					<asp:LinkButton ID="LinkButton19" class="btn btn-primary btn-md mt-1" Width="130px" runat="server"><i class="fa fa-plus-circle"></i><br /> New pay</asp:LinkButton>
+					<asp:LinkButton ID="LinkButton20" class="btn btn-primary btn-md mt-1" Width="130px" runat="server"><i class="fa fa-file-archive"></i><br /> Bill list </asp:LinkButton>
+					<asp:LinkButton ID="LinkButton21" class="btn btn-primary btn-md mt-1" Width="130px" runat="server"><i class="fa fa-file-archive"></i><br /> Bill QR list </asp:LinkButton>
+					<asp:LinkButton ID="LinkButton22" class="btn btn-primary btn-md mt-1" Width="130px" runat="server"><i class="fa fa-list"></i><br /> Quota list </asp:LinkButton>
+					<asp:LinkButton ID="LinkButton23" class="btn btn-primary btn-md mt-1" Width="130px" runat="server"><i class="fa fa-list"></i><br /> Pay list</asp:LinkButton>
+					<asp:LinkButton ID="LinkButton24" class="btn btn-primary btn-md mt-1" Width="130px" runat="server"><i class="fa fa-list-ol"></i><br /> Account status</asp:LinkButton>
 					<hr style="background-color:red"/>
 					<legend class="no-border f-w-700 p-b-0 m-t-0 m-b-20 f-s-16 text-inverse">Offers</legend>
 					<hr />
-					<asp:LinkButton ID="LinkButton25" class="btn btn-primary btn-md" runat="server"><i class="fa fa-plus-circle"></i><br /> New labour</asp:LinkButton>
-					<asp:LinkButton ID="LinkButton26" class="btn btn-primary btn-md" runat="server"><i class="fa fa-plus-circle"></i><br /> New maerial</asp:LinkButton>
-					<asp:LinkButton ID="LinkButton27" class="btn btn-primary btn-md" runat="server"><i class="fa fa-file"></i><br /> New offert</asp:LinkButton>
-					<asp:LinkButton ID="LinkButton28" class="btn btn-primary btn-md" runat="server"><i class="fa fa-list"></i><br />Labour list</asp:LinkButton>
-					<asp:LinkButton ID="LinkButton29" class="btn btn-primary btn-md" runat="server"><i class="fa fa-list"></i><br /> Material list</asp:LinkButton>
-					<asp:LinkButton ID="LinkButton30" class="btn btn-primary btn-md" runat="server"><i class="fa fa-list"></i><br /> Offert list</asp:LinkButton>
+					<asp:LinkButton ID="LinkButton25" class="btn btn-primary btn-md mt-1" Width="130px" runat="server"><i class="fa fa-plus-circle"></i><br /> New labour</asp:LinkButton>
+					<asp:LinkButton ID="LinkButton26" class="btn btn-primary btn-md mt-1" Width="130px" runat="server"><i class="fa fa-plus-circle"></i><br /> New maerial</asp:LinkButton>
+					<asp:LinkButton ID="LinkButton27" class="btn btn-primary btn-md mt-1" Width="130px" runat="server"><i class="fa fa-file"></i><br /> New offert</asp:LinkButton>
+					<asp:LinkButton ID="LinkButton28" class="btn btn-primary btn-md mt-1" Width="130px" runat="server"><i class="fa fa-list"></i><br />Labour list</asp:LinkButton>
+					<asp:LinkButton ID="LinkButton29" class="btn btn-primary btn-md mt-1" Width="130px" runat="server"><i class="fa fa-list"></i><br /> Material list</asp:LinkButton>
+					<asp:LinkButton ID="LinkButton30" class="btn btn-primary btn-md mt-1" Width="130px" runat="server"><i class="fa fa-list"></i><br /> Offert list</asp:LinkButton>
 					<hr style="background-color:red"/>
 					<legend class="no-border f-w-700 p-b-0 m-t-0 m-b-20 f-s-16 text-inverse">Resources</legend>
 					<hr />
-					<asp:LinkButton ID="LinkButton31" class="btn btn-primary btn-md" runat="server"><i class="fa fa-upload"></i><br /> Files</asp:LinkButton>
-					<asp:LinkButton ID="LinkButton32" class="btn btn-primary btn-md" runat="server"><i class="fa fa-list"></i><br /> List of accounts and devices</asp:LinkButton>
-					<asp:LinkButton ID="LinkButton33" class="btn btn-primary btn-md" runat="server"><i class="fa fa-list"></i><br /> List of device</asp:LinkButton>
-					<asp:LinkButton ID="LinkButton34" class="btn btn-primary btn-md" runat="server"><i class="fa fa-list"></i><br />List contacts</asp:LinkButton>
+					<asp:LinkButton ID="LinkButton31" class="btn btn-primary btn-md mt-1" Width="130px" runat="server"><i class="fa fa-upload"></i><br /> Files</asp:LinkButton>
+					<asp:LinkButton ID="LinkButton32" class="btn btn-primary btn-md mt-1" Width="130px" runat="server"><i class="fa fa-list"></i><br /> List of accounts and devices</asp:LinkButton>
+					<asp:LinkButton ID="LinkButton33" class="btn btn-primary btn-md mt-1" Width="130px" runat="server"><i class="fa fa-list"></i><br /> List of device</asp:LinkButton>
+					<asp:LinkButton ID="LinkButton34" class="btn btn-primary btn-md mt-1" Width="130px" runat="server"><i class="fa fa-list"></i><br />List contacts</asp:LinkButton>
 				</div>
 				
-
 
 				</div>				
 				<!-- end col-8 -->
 			
         </asp:View>
 		<asp:View ID="View3" runat="server">
-			
-				
-			<!-- begin page-header -->
-			<h1 class="page-header">Clients <small></small></h1>
-			<!-- end page-header -->
-			<!-- begin wizard-form -->
-			<form action="/" method="POST" class="form-control-with-bg">
-				<!-- begin wizard -->
-				<div id="wizard">
-					<!-- begin wizard-step -->
-					<ul>
-						<li id="p1" class="col-md-2 col-sm-4 col-6">
-							<a href="#step-1">
-								<span class="number">1</span> 
-								<span class="info text-ellipsis">
-									General Client Info
-									<small class="text-ellipsis">Name, Address, IC No and DOB</small>
-								</span>
-							</a>
-						</li>
-						<li id="p2" class="col-md-2 col-sm-4 col-6">
-							<a href="#step-2">
-								<span class="number">2</span> 
-								<span class="info text-ellipsis">
-									General Client Contact
-									<small class="text-ellipsis">Email, phone, mmobile</small>
-								</span>
-							</a>
-						</li>
-						<li id="p3" class="col-md-2 col-sm-4 col-6">
-							<a href="#step-3">
-								<span class="number">3</span>
-								<span class="info text-ellipsis">
-									Geolocation
-									<small class="text-ellipsis">Enter your city, village and postale code</small>
-								</span>
-							</a>
-						</li>
-						<li id="p4" class="col-md-2 col-sm-4 col-6">
-							<a href="#step-4">
-								<span class="number">4</span> 
-								<span class="info text-ellipsis">
-									Billing Data
-									<small class="text-ellipsis">Enter your billing data</small>
-								</span>
-							</a>
-						</li>
-						<li id="p5" class="col-md-2 col-sm-4 col-6">
-							<a href="#step-5">
-								<span class="number">5</span> 
-								<span class="info text-ellipsis">
-									Save Client
-									<small class="text-ellipsis">Save your client</small>
-								</span>
-							</a>
-						</li>
-					</ul>
-					<!-- end wizard-step -->
-					<!-- begin wizard-content -->
-					<div>
-						<!-- begin step-1 -->
-						<div id="step-1">
-							<!-- begin fieldset -->
-							<fieldset>
-								<!-- begin row -->
-								<div class="row">
-									<!-- begin col-8 -->
-									<div class="col-md-8 offset-md-2">
-										<legend class="no-border f-w-700 p-b-0 m-t-0 m-b-20 f-s-16 text-inverse">General Client Info</legend>
-										<!-- begin form-group row -->
-											<div class="form-group row m-b-10">
-												<label class="col-md-3 text-md-right col-form-label">Client Type:</label>
-												<div class="col-md-6">
-													   <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="ddlTipoCliente" InitialValue="SELECT" Font-Bold="True"></asp:RequiredFieldValidator>
-												   <asp:DropDownList ID="ddlTipoCliente" DataSourceID="odsTipoCliente" DataTextField="descripcion" OnDataBound="ddlTipoCliente_DataBound" DataValueField="codigo"  ForeColor="Black" class="form-control" runat="server"></asp:DropDownList>
-												</div>
-											</div>
-											<!-- end form-group row -->
-										<!-- begin form-group row -->
-											<div class="form-group row m-b-10">
-												<label class="col-md-3 text-md-right col-form-label">Society:</label>
-												<div class="col-md-6">
-													 <asp:TextBox ID="txtSociety" class="form-control" runat="server"></asp:TextBox>
-													<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="txtSociety" Font-Bold="True"></asp:RequiredFieldValidator>
-												</div>
-											</div>
-											<!-- end form-group row -->
-											<!-- begin form-group row -->
-											<div class="form-group row m-b-10">
-												<label class="col-md-3 text-md-right col-form-label">Name:</label>
-												<div class="col-md-6">
-													 <asp:TextBox ID="txtName" class="form-control" runat="server"></asp:TextBox>
-													<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="txtName" Font-Bold="True"></asp:RequiredFieldValidator>
-												</div>
-											</div>
-											<!-- end form-group row -->
-											<!-- begin form-group row -->
-											<div class="form-group row m-b-10">
-												<label class="col-md-3 text-md-right col-form-label">Surname:</label>
-												<div class="col-md-6">
-													 <asp:TextBox ID="txtSurname" class="form-control" runat="server"></asp:TextBox>
-													<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="txtSurname" Font-Bold="True"></asp:RequiredFieldValidator>
-												</div>
-											</div>
-											<!-- end form-group row -->
-											<!-- begin form-group row -->
-											<div class="form-group row m-b-10">
-												<label class="col-md-3 text-md-right col-form-label">Birthdate:</label>
-												<div class="col-md-6">
-													<asp:Label ID="lblFechaDesde" Visible="false" runat="server" Text=""></asp:Label>
-													<input id="fecha_salida" class="form-control" onfocus="bloquear()" onchange="recuperarFechaSalida()" style="background:#ecf1fa" type="date"><asp:HiddenField ID="hfFechaSalida" runat="server" />
-												</div>
-											</div>
-											<!-- end form-group row -->
-											<!-- begin form-group row -->
-											<div class="form-group row m-b-10">
-												<label class="col-md-3 text-md-right col-form-label">Address:</label>
-												<div class="col-md-6">
-													 <asp:TextBox ID="txtAddres" class="form-control" runat="server"></asp:TextBox>
-													<asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="txtSociety" Font-Bold="True"></asp:RequiredFieldValidator>
-												</div>
-											</div>
-											<!-- end form-group row -->
-									</div>
-									<!-- end col-8 -->
-								</div>
-								<!-- end row -->
-							</fieldset>
-							<!-- end fieldset -->
-						</div>
-						<!-- end step-1 -->
-						<!-- begin step-2 -->
-						<div id="step-2">
-							<!-- begin fieldset -->
-							<fieldset>
-								<!-- begin row -->
-								<div class="row">
-									<!-- begin col-8 -->
-									<div class="col-md-8 offset-md-2">
-										<legend class="no-border f-w-700 p-b-0 m-t-0 m-b-20 f-s-16 text-inverse">General Client Contact</legend>
-										<!-- begin form-group row -->
-										<div class="form-group row m-b-10">
-											<label class="col-md-3 text-md-right col-form-label">Email:</label>
-											<div class="col-md-6">
-												<asp:TextBox ID="txtEmail" class="form-control" runat="server"></asp:TextBox>
-												<asp:RequiredFieldValidator ID="RequiredFieldValidator111" runat="server" ErrorMessage="*" ControlToValidate="txtEmail" Font-Bold="True"></asp:RequiredFieldValidator>
-											</div>
-										</div>
-										<!-- end form-group row -->
-										<!-- begin form-group row -->
-										<div class="form-group row m-b-10">
-											<label class="col-md-3 text-md-right col-form-label">Phone:</label>
-											<div class="col-md-6">
-												<asp:TextBox ID="txtPhone" class="form-control" runat="server"></asp:TextBox>
-											</div>
-										</div>
-										<!-- end form-group row -->
-										<!-- begin form-group row -->
-										<div class="form-group row m-b-10">
-											<label class="col-md-3 text-md-right col-form-label">Mobile:</label>
-											<div class="col-md-6">
-												<asp:TextBox ID="txtMobile" class="form-control"  runat="server"></asp:TextBox>
-											</div>
-										</div>
-										<!-- end form-group row -->
-										<!-- begin form-group row -->
-										<div class="form-group row m-b-10">
-											<label class="col-md-3 text-md-right col-form-label">Fax:</label>
-											<div class="col-md-6">
-												<asp:TextBox ID="txtFax" class="form-control" runat="server"></asp:TextBox>
-											</div>
-										</div>
-										<!-- end form-group row -->
-										<!-- begin form-group row -->
-										<div class="form-group row m-b-10">
-											<label class="col-md-3 text-md-right col-form-label">Type Comunication:</label>
-											<div class="col-md-6">
-												 <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="ddlTypeComunication" InitialValue="SELECT" Font-Bold="True"></asp:RequiredFieldValidator>
-											   <asp:DropDownList ID="ddlTypeComunication" DataSourceID="odsTypeComunication" DataTextField="descripcion" OnDataBound="ddlTypeComunication_DataBound" DataValueField="codigo"  ForeColor="Black" class="form-control" runat="server"></asp:DropDownList>
-											</div>
-										</div>
-										<!-- end form-group row -->
-										<!-- begin form-group row -->
-										<div class="form-group row m-b-10">
-											<label class="col-md-3 text-md-right col-form-label">Door Number:</label>
-											<div class="col-md-6">
-												<asp:TextBox ID="txtDoorNumber" class="form-control"  runat="server"></asp:TextBox>
-											</div>
-										</div>
-										<!-- end form-group row -->
-										<!-- begin form-group row -->
-										<div class="form-group row m-b-10">
-											<label class="col-md-3 text-md-right col-form-label">Floor:</label>
-											<div class="col-md-6">
-												<asp:TextBox ID="txtFloor" class="form-control" runat="server"></asp:TextBox>
-											</div>
-										</div>
-										<!-- end form-group row -->
-										<!-- begin form-group row -->
-										<div class="form-group row m-b-10">
-											<label class="col-md-3 text-md-right col-form-label">Comments:</label>
-											<div class="col-md-6">
-												<asp:TextBox ID="txtComments" class="form-control" TextMode="MultiLine" runat="server"></asp:TextBox>
-											</div>
-										</div>
-										<!-- end form-group row -->
-									</div>
-									<!-- end col-8 -->
-								</div>
-								<!-- end row -->
-							</fieldset>
-							<!-- end fieldset -->
-						</div>
-						<!-- end step-2 -->
-						<!-- begin step-3 -->
-						<div id="step-3">
-							<!-- begin fieldset -->
-							<fieldset>
-								<!-- begin row -->
-								<div class="row">
-									<!-- begin col-8 -->
-									<div class="col-md-8 offset-md-2">
-										<legend class="no-border f-w-700 p-b-0 m-t-0 m-b-20 f-s-16 text-inverse">Client Geolocation</legend>
-										<asp:UpdatePanel ID="UpdatePanel1" runat="server">
+			<!-- begin row -->
+			<div class="row">
+				<legend class="no-border f-w-700 p-b-0 m-t-0 m-b-20 f-s-16 text-inverse">New Client</legend>
+				<hr style="background-color:blue"/>
+				<hr />
+				<!-- begin col-8 -->
+				<div class="col-md-6">
+					<legend class="no-border f-w-700 p-b-0 m-t-0 m-b-20 f-s-16 text-inverse">Personal information</legend>
+					<hr />
+					<!-- begin form-group row -->
+					<label class="col-md-12 text-md-left col-form-label">Client Type:</label>
+					<div class="col-md-12">
+									<asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="ddlTipoCliente" InitialValue="SELECT" Font-Bold="True"></asp:RequiredFieldValidator>
+								<asp:DropDownList ID="ddlTipoCliente" DataSourceID="odsTipoCliente" DataTextField="descripcion" OnDataBound="ddlTipoCliente_DataBound" DataValueField="codigo"  ForeColor="Black" class="form-control" runat="server"></asp:DropDownList>
+							</div>
+						<!-- end form-group row -->
+					<!-- begin form-group row -->
+						<label class="col-md-12 text-md-left col-form-label">Society:</label>
+							<div class="col-md-12">
+									<asp:TextBox ID="txtSociety" class="form-control" runat="server"></asp:TextBox>
+								<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="txtSociety" Font-Bold="True"></asp:RequiredFieldValidator>
+							</div>
+						<!-- end form-group row -->
+						<!-- begin form-group row -->
+						<label class="col-md-12 text-md-left col-form-label">Name:</label>
+							<div class="col-md-12">
+									<asp:TextBox ID="txtName" class="form-control" runat="server"></asp:TextBox>
+								<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="txtName" Font-Bold="True"></asp:RequiredFieldValidator>
+							</div>
+						<!-- end form-group row -->
+						<!-- begin form-group row -->
+						<label class="col-md-12 text-md-left col-form-label">Surname:</label>
+							<div class="col-md-12">
+									<asp:TextBox ID="txtSurname" class="form-control" runat="server"></asp:TextBox>
+								<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="txtSurname" Font-Bold="True"></asp:RequiredFieldValidator>
+							</div>
+						<!-- end form-group row -->
+						<!-- begin form-group row -->
+						<label class="col-md-12 text-md-left col-form-label">Birthdate:</label>
+							<div class="col-md-12">
+								<asp:Label ID="lblFechaDesde" Visible="false" runat="server" Text=""></asp:Label>
+								<input id="fecha_salida" class="form-control" onfocus="bloquear()" onchange="recuperarFechaSalida()" style="background:#ecf1fa" type="date"><asp:HiddenField ID="hfFechaSalida" runat="server" />
+							</div>
+						<!-- end form-group row -->
+						<!-- begin form-group row -->
+						<label class="col-md-12 text-md-left col-form-label">Address:</label>
+							<div class="col-md-12">
+									<asp:TextBox ID="txtAddres" class="form-control" runat="server"></asp:TextBox>
+								<asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="txtSociety" Font-Bold="True"></asp:RequiredFieldValidator>
+							</div>
+						<!-- end form-group row -->
+						<asp:UpdatePanel ID="UpdatePanel1" runat="server">
 											
 										<ContentTemplate>
-										<script type="text/javascript">
-                                            function pageLoad(sender, args) {
-                                                if (args.get_isPartialLoad()) {
-                                                    $('#<%= UpdatePanel1.ClientID %> .ddlCiudad').ddlCiudad();
-                                                }
-                                            }
-                                        </script>
+										<%--<script type="text/javascript">
+											function pageLoad(sender, args) {
+												if (args.get_isPartialLoad()) {
+													$('#<%= UpdatePanel1.ClientID %> .ddlCiudad').ddlCiudad();
+												}
+											}
+                                        </script>--%>
 										<!-- begin form-group row -->
-										<div class="form-group row m-b-10">
-											<label class="col-md-3 text-md-right col-form-label">Country:</label>
-											<div class="col-md-6">
+										<label class="col-md-12 text-md-left col-form-label">Country:</label>
+											<div class="col-md-12">
 													<asp:DropDownList ID="ddlPais" class="form-control" OnSelectedIndexChanged="ddlPais_SelectedIndexChanged" OnDataBound="ddlPais_DataBound" AutoPostBack="true"  DataSourceID="odsPais" DataTextField="descripcion" DataValueField="codigo" ForeColor="Black" runat="server"></asp:DropDownList>
 													<asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="ddlPais" InitialValue="SELECT" Font-Bold="True"></asp:RequiredFieldValidator>
 											</div>  
-										</div>
 										<!-- end form-group row -->  
 										<!-- begin form-group row -->
-										<div class="form-group row m-b-10">
-											<label class="col-md-3 text-md-right col-form-label">City search:</label>
-											<div class="col-md-6">
+										<label class="col-md-12 text-md-left col-form-label">Municipality search:</label>
+											<div class="form-group row m-b-10">
+												<div class="col-md-10">
 													 <asp:DropDownList ID="ddlCiudad"  class="default-select2 form-control" OnSelectedIndexChanged="ddlCiudad_SelectedIndexChanged" AutoPostBack="true" DataSourceID="odsCiudad" OnDataBound="ddlCiudad_DataBound" DataTextField="city" DataValueField="cod_city"  ForeColor="Black" runat="server"></asp:DropDownList>
 													<%--<asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMesssage="*" ForeColor="Red" ControlToValidate="ddlCiudad" InitialValue="SELECCIONAR" Font-Bold="True"></asp:RequiredFieldValidator>--%>
 											</div>
 											<div class="col-md-1">
 												<asp:ImageButton ID="imgNew" OnClick="imgNew_Click" ImageUrl="~/Imagenes/agregar.png" CausesValidation="false" Height="40px" ToolTip="Add new city" runat="server" />
 											</div>
-										</div>
+											</div>
+											
 										<!-- end form-group row -->
 										 <!-- begin form-group row -->
-										<div class="form-group row m-b-10">
-											<label class="col-md-3 text-md-right col-form-label">City:</label>
-											<div class="col-md-6">
+										<label class="col-md-12 text-md-left col-form-label">Municipality:</label>
+											<div class="col-md-12">
 												<asp:TextBox ID="txtCiudad" class="form-control" Enabled="false" runat="server"></asp:TextBox>
 												<%--<asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ErrorMessage="*" ControlToValidate="txtLatitud" Font-Bold="True"></asp:RequiredFieldValidator>--%>
 											</div>
-										</div>
 										<!-- end form-group row -->
 										<!-- begin form-group row -->
-										<div class="form-group row m-b-10">
-											<label class="col-md-3 text-md-right col-form-label">Village:</label>
-											<div class="col-md-6">
+										<label class="col-md-12 text-md-left col-form-label">City:</label>
+											<div class="col-md-12">
 												<asp:TextBox ID="txtVillage" class="form-control" Enabled="false" runat="server"></asp:TextBox>
 												<%--<asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ErrorMessage="*" ControlToValidate="txtLatitud" Font-Bold="True"></asp:RequiredFieldValidator>--%>
 											</div>
-										</div>
 										<!-- end form-group row -->
 										<!-- begin form-group row -->
-										<div class="form-group row m-b-10">
-											<label class="col-md-3 text-md-right col-form-label">Postal code:</label>
-											<div class="col-md-6">
+										<label class="col-md-12 text-md-left col-form-label">Postal code:</label>
+											<div class="col-md-12">
 												<asp:TextBox ID="txtPostalCode" class="form-control" Enabled="false" runat="server"></asp:TextBox>
 												<%--<asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ErrorMessage="*" ControlToValidate="txtLatitud" Font-Bold="True"></asp:RequiredFieldValidator>--%>
 											</div>
-										</div>
 										<!-- end form-group row -->
 										<!-- begin form-group row -->
-										<div class="form-group row m-b-10">
-											<label class="col-md-3 text-md-right col-form-label">Latitude:</label>
-											<div class="col-md-6">
+										<label class="col-md-12 text-md-left col-form-label">Latitude:</label>
+											<div class="col-md-12">
 												<asp:TextBox ID="txtLatitud" class="form-control" Enabled="false" runat="server"></asp:TextBox>
 												<%--<asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ErrorMessage="*" ControlToValidate="txtLatitud" Font-Bold="True"></asp:RequiredFieldValidator>--%>
 											</div>
-										</div>
 										<!-- end form-group row -->
 										<!-- begin form-group row -->
-										<div class="form-group row m-b-10">
-											<label class="col-md-3 text-md-right col-form-label">Length:</label>
-											<div class="col-md-6">
+										<label class="col-md-12 text-md-left col-form-label">Length:</label>
+											<div class="col-md-12">
 												<asp:TextBox ID="txtLongitud" class="form-control"  Enabled="false" runat="server"></asp:TextBox>
 												<%--<asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ErrorMessage="*" ControlToValidate="txtLongitud" Font-Bold="True"></asp:RequiredFieldValidator>--%>
 											</div>
-										</div>
 										<!-- end form-group row -->
 										 <!-- begin form-group row -->
 										<div class="form-group row m-b-10">
@@ -672,49 +488,94 @@
 											</div>
 										</div>
 										<!-- end form-group row -->
+
 											</ContentTemplate>
 									</asp:UpdatePanel>
-									</div>
-									<!-- end col-8 -->
-								</div>
-								<!-- end row -->
-							</fieldset>
-							<!-- end fieldset -->
-						</div>
-						<!-- end step-3 -->
-						<!-- begin step-4 -->
-						<div id="step-4">
-							<!-- begin fieldset -->
-							<fieldset>
-								<!-- begin row -->
-								<div class="row">
-									<!-- begin col-8 -->
-									<div class="col-md-8 offset-md-2">
-										<legend class="no-border f-w-700 p-b-0 m-t-0 m-b-20 f-s-16 text-inverse">Billing Data</legend>
-										<asp:UpdatePanel ID="UpdatePanel2" runat="server">
+				</div>
+				<!-- end form-group row -->
+				<div class="col-md-6">
+					<legend class="no-border f-w-700 p-b-0 m-t-0 m-b-20 f-s-16 text-inverse">Contact details</legend>
+					<hr />
+					<!-- begin form-group row -->
+										<label class="col-md-12 text-md-left col-form-label">Email:</label>
+											<div class="col-md-12">
+												<asp:TextBox ID="txtEmail" class="form-control" runat="server"></asp:TextBox>
+												<asp:RequiredFieldValidator ID="RequiredFieldValidator111" runat="server" ErrorMessage="*" ControlToValidate="txtEmail" Font-Bold="True"></asp:RequiredFieldValidator>
+											</div>
+										<!-- end form-group row -->
+										<!-- begin form-group row -->
+										<label class="col-md-12 text-md-left col-form-label">Phone:</label>
+											<div class="col-md-12">
+												<asp:TextBox ID="txtPhone" class="form-control" runat="server"></asp:TextBox>
+											</div>
+										<!-- end form-group row -->
+										<!-- begin form-group row -->
+										<label class="col-md-12 text-md-left col-form-label">Mobile:</label>
+											<div class="col-md-12">
+												<asp:TextBox ID="txtMobile" class="form-control"  runat="server"></asp:TextBox>
+											</div>
+										<!-- end form-group row -->
+										<!-- begin form-group row -->
+										<label class="col-md-12 text-md-left col-form-label">Fax:</label>
+											<div class="col-md-12">
+												<asp:TextBox ID="txtFax" class="form-control" runat="server"></asp:TextBox>
+											</div>
+										<!-- end form-group row -->
+										<!-- begin form-group row -->
+										<label class="col-md-12 text-md-left col-form-label">Type Comunication:</label>
+											<div class="col-md-12">
+												 <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="ddlTypeComunication" InitialValue="SELECT" Font-Bold="True"></asp:RequiredFieldValidator>
+											   <asp:DropDownList ID="ddlTypeComunication" DataSourceID="odsTypeComunication" DataTextField="descripcion" OnDataBound="ddlTypeComunication_DataBound" DataValueField="codigo"  ForeColor="Black" class="form-control" runat="server"></asp:DropDownList>
+											</div>
+										<!-- end form-group row -->
+										<!-- begin form-group row -->
+										<label class="col-md-12 text-md-left col-form-label">Door Number:</label>
+											<div class="col-md-12">
+												<asp:TextBox ID="txtDoorNumber" class="form-control"  runat="server"></asp:TextBox>
+											</div>
+										<!-- end form-group row -->
+										<!-- begin form-group row -->
+										<label class="col-md-12 text-md-left col-form-label">Floor:</label>
+											<div class="col-md-12">
+												<asp:TextBox ID="txtFloor" class="form-control" runat="server"></asp:TextBox>
+											</div>
+										<!-- end form-group row -->
+										<!-- begin form-group row -->
+										<label class="col-md-12 text-md-left col-form-label">Comments:</label>
+											<div class="col-md-12">
+												<asp:TextBox ID="txtComments" class="form-control" TextMode="MultiLine" runat="server"></asp:TextBox>
+											</div>
+										<!-- end form-group row -->
+					<br />
+					<div id="accordion" class="card-accordion">
+						<!-- begin card -->
+						<div class="card">
+							<div class="card-header bg-blue text-white pointer-cursor collapsed" data-toggle="collapse" data-target="#collapseTwo">
+								Billing Data
+							</div>
+							<div id="collapseTwo" class="collapse" data-parent="#accordion">
+								<div class="card-body">
+									<asp:UpdatePanel ID="UpdatePanel2" runat="server">
 										<ContentTemplate>
 										<!-- begin form-group row -->
-											<div class="form-group row m-b-10">
-												<label class="col-md-3 text-md-right col-form-label">Address:</label>
-												<div class="col-md-6">
+											<label class="col-md-12 text-md-left col-form-label">Address:</label>
+												<div class="col-md-12">
 													 <asp:TextBox ID="txtBillingAddress" class="form-control" runat="server"></asp:TextBox>
 													<%--<asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="txtSociety" Font-Bold="True"></asp:RequiredFieldValidator>--%>
 												</div>
-											</div>
 											<!-- end form-group row -->
 											<!-- begin form-group row -->
-											<div class="form-group row m-b-10">
-												<label class="col-md-3 text-md-right col-form-label">Country:</label>
-												<div class="col-md-6">
+											<label class="col-md-12 text-md-left col-form-label">Country:</label>
+												<div class="col-md-12">
 														<asp:DropDownList ID="ddlPais2" class="form-control"  OnDataBound="ddlPais2_DataBound" AutoPostBack="true"  DataSourceID="odsPais2" DataTextField="descripcion" DataValueField="codigo" ForeColor="Black" runat="server"></asp:DropDownList>
 														<%--<asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="ddlPais2" InitialValue="SELECT" Font-Bold="True"></asp:RequiredFieldValidator>--%>
 												</div>  
-											</div>
 											<!-- end form-group row -->  
 											<!-- begin form-group row -->
+											<label class="col-md-12 text-md-left col-form-label">Municipality search:</label>
 											<div class="form-group row m-b-10">
-												<label class="col-md-3 text-md-right col-form-label">City search:</label>
-												<div class="col-md-6">
+												
+												<div class="col-md-10">
 														 <asp:DropDownList ID="ddlCiudad2"  class="default-select2 form-control" OnSelectedIndexChanged="ddlCiudad2_SelectedIndexChanged" AutoPostBack="true" DataSourceID="odsCiudad2" OnDataBound="ddlCiudad2_DataBound" DataTextField="city" DataValueField="cod_city"  ForeColor="Black" runat="server"></asp:DropDownList>
 														<%--<asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ErrorMesssage="*" ForeColor="Red" ControlToValidate="ddlCiudad" InitialValue="SELECCIONAR" Font-Bold="True"></asp:RequiredFieldValidator>--%>
 												</div>
@@ -724,49 +585,39 @@
 											</div>
 											<!-- end form-group row -->
 											 <!-- begin form-group row -->
-											<div class="form-group row m-b-10">
-												<label class="col-md-3 text-md-right col-form-label">City:</label>
-												<div class="col-md-6">
+											<label class="col-md-12 text-md-left col-form-label">Municipality:</label>
+												<div class="col-md-12">
 													<asp:TextBox ID="txtBillingCity" class="form-control" Enabled="false" runat="server"></asp:TextBox>
 													<%--<asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ErrorMessage="*" ControlToValidate="txtLatitud" Font-Bold="True"></asp:RequiredFieldValidator>--%>
 												</div>
-											</div>
 											<!-- end form-group row -->
 											<!-- begin form-group row -->
-											<div class="form-group row m-b-10">
-												<label class="col-md-3 text-md-right col-form-label">Village:</label>
-												<div class="col-md-6">
+											<label class="col-md-12 text-md-left col-form-label">City:</label>
+												<div class="col-md-12">
 													<asp:TextBox ID="txtBillingVillage" class="form-control" Enabled="false" runat="server"></asp:TextBox>
 													<%--<asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ErrorMessage="*" ControlToValidate="txtLatitud" Font-Bold="True"></asp:RequiredFieldValidator>--%>
 												</div>
-											</div>
 											<!-- end form-group row -->
 											<!-- begin form-group row -->
-											<div class="form-group row m-b-10">
-												<label class="col-md-3 text-md-right col-form-label">Postal code:</label>
-												<div class="col-md-6">
+											<label class="col-md-12 text-md-left col-form-label">Postal code:</label>
+												<div class="col-md-12">
 													<asp:TextBox ID="txtBillingPostaleCode" class="form-control" Enabled="false" runat="server"></asp:TextBox>
 													<%--<asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ErrorMessage="*" ControlToValidate="txtLatitud" Font-Bold="True"></asp:RequiredFieldValidator>--%>
 												</div>
-											</div>
 											<!-- end form-group row -->
 											<!-- begin form-group row -->
-											<div class="form-group row m-b-10">
-												<label class="col-md-3 text-md-right col-form-label">Latitude:</label>
-												<div class="col-md-6">
+											<label class="col-md-12 text-md-left col-form-label">Latitude:</label>
+												<div class="col-md-12">
 													<asp:TextBox ID="txtBillingLatitud" class="form-control" Enabled="false" runat="server"></asp:TextBox>
 													<%--<asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ErrorMessage="*" ControlToValidate="txtLatitud" Font-Bold="True"></asp:RequiredFieldValidator>--%>
 												</div>
-											</div>
 											<!-- end form-group row -->
 											<!-- begin form-group row -->
-											<div class="form-group row m-b-10">
-												<label class="col-md-3 text-md-right col-form-label">Length:</label>
-												<div class="col-md-6">
+											<label class="col-md-12 text-md-left col-form-label">Length:</label>
+												<div class="col-md-12">
 													<asp:TextBox ID="txtBillingLongitud" class="form-control"  Enabled="false" runat="server"></asp:TextBox>
 													<%--<asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ErrorMessage="*" ControlToValidate="txtLongitud" Font-Bold="True"></asp:RequiredFieldValidator>--%>
 												</div>
-											</div>
 											<!-- end form-group row -->
 											 <!-- begin form-group row -->
 											<div class="form-group row m-b-10">
@@ -782,36 +633,26 @@
 											<!-- end form-group row -->
 										</ContentTemplate>
 									</asp:UpdatePanel>
-									</div>
-									<!-- end col-8 -->
 								</div>
-								<!-- end row -->
-							</fieldset>
-							<!-- end fieldset -->
-						</div>
-						<!-- end step-4 -->
-						<!-- begin step-4 -->
-						<div id="step-5">
-							<div class="jumbotron m-b-0 text-center">
-								<h2 class="text-inverse">Congratulations save your data</h2>
-								<asp:Button ID="btnGuardar" CssClass="btn btn-success btn-lg" runat="server" OnClientClick="recuperarFechaSalida()" OnClick="btnGuardar_Click" Text="Save" />
-								<br />
-								<asp:Button ID="btnVolverAlta" CssClass="btn btn-secondary btn-lg"  runat="server" CausesValidation="false" OnClick="btnVolverAlta_Click" Text="Cancel" />
-								<div class="btn-toolbar mr-2 sw-btn-group float-right" role="group">
-									
-									
-								</div>
-								<%--<p class="m-b-30 f-s-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris consequat commodo porttitor. <br />Vivamus eleifend, arcu in tincidunt semper, lorem odio molestie lacus, sed malesuada est lacus ac ligula. Aliquam bibendum felis id purus ullamcorper, quis luctus leo sollicitudin. </p>
-								<p><a href="javascript:;" class="btn btn-primary btn-lg">Proceed to User Profile</a></p>--%>
 							</div>
 						</div>
-						<!-- end step-4 -->
 					</div>
-					<!-- end wizard-content -->
+					<!-- end #accordion -->
+
 				</div>
-				<!-- end wizard -->
-			</form>
-			<!-- end wizard-form -->
+
+				</div>	
+			<div class="row">
+				<div class="btn-toolbar mr-2 sw-btn-group float-right" role="group">
+					<asp:LinkButton ID="lbtnGuardar" CssClass="btn btn-success btn-sm" runat="server" OnClientClick="recuperarFechaSalida()" OnClick="btnGuardar_Click"><i class="fa fa-plus"></i><br /> Save client </asp:LinkButton>
+					<asp:LinkButton ID="lbtnVolver" CssClass="btn btn-secondary btn-sm" runat="server" CausesValidation="false" OnClick="btnVolverAlta_Click"><i class="fa fa-arrow-alt-circle-left"></i><br /> Cancel </asp:LinkButton>
+					<%--<asp:Button ID="btnGuardar" CssClass="btn btn-success btn-lg" runat="server"  Text="Save" />
+					<asp:Button ID="btnVolverAlta" CssClass="btn btn-secondary btn-lg"  runat="server" CausesValidation="false" OnClick="btnVolverAlta_Click" Text="Cancel" />--%>
+					</div>
+			</div>
+				<!-- end col-8 -->
+				
+			
 					
 		</asp:View>
     </asp:MultiView>

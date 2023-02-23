@@ -4182,30 +4182,13 @@
     <Content Include="domino_admin.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Imagenes\agregar.png" />
-    <Content Include="Imagenes\alianza_logo.png" />
-    <Content Include="Imagenes\amaszonas.png" />
-    <Content Include="Imagenes\contrato_amazonas.jpg" />
-    <Content Include="Imagenes\contrato_amazonas2.jpg" />
-    <Content Include="Imagenes\contrato_amazonas6.jpg" />
-    <Content Include="Imagenes\contrato_amazonas7.jpg" />
-    <Content Include="Imagenes\CONTRATO_BASE_mod_Página_1.jpg" />
-    <Content Include="Imagenes\CONTRATO_BASE_mod_Página_2.jpg" />
-    <Content Include="Imagenes\CONTRATO_BASE_PDF_Página_1.jpg" />
-    <Content Include="Imagenes\CONTRATO_BASE_PDF_Página_2.jpg" />
-    <Content Include="Imagenes\firmas_Seguro.jpg" />
     <Content Include="Imagenes\fondo1.jpg" />
-    <Content Include="Imagenes\logo_amas_cuotas.jpg" />
+    <Content Include="Imagenes\google_maps.png" />
     <Content Include="Imagenes\logo_lightblue.png" />
-    <Content Include="Imagenes\logo_plan_pago.jpg" />
-    <Content Include="Imagenes\logo_recibo.jpg" />
-    <Content Include="Imagenes\pagare_amaszonas.jpg" />
-    <Content Include="Imagenes\pagina1_Seguro.png" />
-    <Content Include="Imagenes\pgare_amaszonas.jpg" />
-    <Content Include="Imagenes\seguro_hoja2.jpg" />
-    <Content Include="Imagenes\seguro_pie1.jpg" />
     <Content Include="Imagenes\usuarios\111111111111.jpg" />
     <Content Include="Imagenes\usuarios\sin_imagen.jpg" />
     <Content Include="login.aspx" />
+    <Content Include="mapa_cliente.aspx" />
     <Content Include="menus_admin.aspx" />
     <Content Include="menu_rol_admin.aspx" />
     <Content Include="opciones_admin.aspx" />
@@ -4284,6 +4267,13 @@
     </Compile>
     <Compile Include="domino_admin.aspx.designer.cs">
       <DependentUpon>domino_admin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="mapa_cliente.aspx.cs">
+      <DependentUpon>mapa_cliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mapa_cliente.aspx.designer.cs">
+      <DependentUpon>mapa_cliente.aspx</DependentUpon>
     </Compile>
     <Compile Include="menus_admin.aspx.cs">
       <DependentUpon>menus_admin.aspx</DependentUpon>

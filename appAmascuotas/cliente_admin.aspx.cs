@@ -25,7 +25,7 @@ namespace appAmascuotas
                 else
                 {
                     lblUsuario.Text = Session["usuario"].ToString();
-                    btnNuevo.Visible = false;
+                    lbtNuevo.Visible = false;
                     lblCodMenuRol.Text = Request.QueryString["RME"].ToString();
                     DataTable dt = Clases.Usuarios.PR_SEG_GET_OPCIONES_ROLES(lblUsuario.Text, Int64.Parse(lblCodMenuRol.Text));
                     if (dt.Rows.Count > 0)
@@ -33,7 +33,7 @@ namespace appAmascuotas
                         foreach (DataRow dr in dt.Rows)
                         {
                             if (dr["DESCRIPCION"].ToString().ToUpper() == "NEW")
-                                btnNuevo.Visible = true;
+                                lbtNuevo.Visible = true;
                         }
 
                     }
@@ -187,6 +187,10 @@ namespace appAmascuotas
                     mes = fecha1.Month.ToString();
                 hfFechaSalida.Value = fecha1.Year.ToString() + "-" + mes + "-" + dia;
                 ScriptManager.RegisterStartupScript(this, this.Page.GetType(), "myFuncionAlerta", "setearFechaSalida();", true);
+                if (obj_m.PV_LATITUD != "")
+                    inciar_mapa(obj_m.PV_LATITUD, obj_m.PV_LONGITUD);
+                if (obj_m.PV_LATITUD_FACT != "")
+                    inciar_mapa1(obj_m.PV_LATITUD_FACT, obj_m.PV_LONGITUD_FACT);
                 MultiView1.ActiveViewIndex = 2;
 
             }
@@ -245,26 +249,26 @@ namespace appAmascuotas
             if (e.Item.ItemType == ListItemType.Item ||
                e.Item.ItemType == ListItemType.AlternatingItem)
             {
-                Button bEdit = (Button)e.Item.FindControl("btnEditar");
-                Button bEliminar = (Button)e.Item.FindControl("btnEliminar");
-                Button bContacts = (Button)e.Item.FindControl("btnContacts");
-                bEdit.Visible = false;
-                bEliminar.Visible = false;
-                bContacts.Visible = false;
-                DataTable dt = Clases.Usuarios.PR_SEG_GET_OPCIONES_ROLES(lblUsuario.Text, Int64.Parse(lblCodMenuRol.Text));
-                if (dt.Rows.Count > 0)
-                {
-                    foreach (DataRow dr in dt.Rows)
-                    {
-                        if (dr["DESCRIPCION"].ToString().ToUpper() == "EDIT")
-                            bEdit.Visible = true;
-                        if (dr["DESCRIPCION"].ToString().ToUpper() == "DELETE")
-                            bEliminar.Visible = true;
-                        if (dr["DESCRIPCION"].ToString().ToUpper() == "CONTACTS")
-                            bContacts.Visible = true;
-                    }
+                //Button bEdit = (Button)e.Item.FindControl("btnEditar");
+                //Button bEliminar = (Button)e.Item.FindControl("btnEliminar");
+                //Button bContacts = (Button)e.Item.FindControl("btnContacts");
+                //bEdit.Visible = false;
+                //bEliminar.Visible = false;
+                //bContacts.Visible = false;
+                //DataTable dt = Clases.Usuarios.PR_SEG_GET_OPCIONES_ROLES(lblUsuario.Text, Int64.Parse(lblCodMenuRol.Text));
+                //if (dt.Rows.Count > 0)
+                //{
+                //    foreach (DataRow dr in dt.Rows)
+                //    {
+                //        if (dr["DESCRIPCION"].ToString().ToUpper() == "EDIT")
+                //            bEdit.Visible = true;
+                //        if (dr["DESCRIPCION"].ToString().ToUpper() == "DELETE")
+                //            bEliminar.Visible = true;
+                //        if (dr["DESCRIPCION"].ToString().ToUpper() == "CONTACTS")
+                //            bContacts.Visible = true;
+                //    }
 
-                }
+                //}
 
 
             }
@@ -324,6 +328,31 @@ namespace appAmascuotas
             Gmap2.Add(mark1);
             //Gmap2.addGMarker(mark1);
             Gmap2.mapType = GMapType.GTypes.Satellite;
+
+        }
+        private void inciar_mapa3(string lat, string lng)
+        {
+            string decSep = System.Globalization.CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalSeparator;
+            Gmap3.resetMarkers();
+
+            //GLatLng ubicacion1 = new GLatLng(double.Parse(lat.Replace(".", decSep)), double.Parse(lng.Replace(".", decSep)));
+            GLatLng ubicacion1 = new GLatLng(double.Parse(lat), double.Parse(lng));
+            Gmap3.setCenter(ubicacion1, 17);
+            //Gmap2.Height = 300;
+            //Gmap2.Width = 480;
+
+
+            Gmap3.Add(new GControl(GControl.preBuilt.LargeMapControl));
+
+            //Gmap2.addControl(new GControl(GControl.preBuilt.LargeMapControl));
+            Gmap3.Add(new GControl(GControl.preBuilt.MapTypeControl));
+            //Gmap2.addControl(new GControl(GControl.preBuilt.MapTypeControl));
+            Gmap3.enableHookMouseWheelToZoom = true;
+            //Gmap2.enableScrollWheelZoom = true;
+            GMarker mark1 = new GMarker(ubicacion1);
+            Gmap3.Add(mark1);
+            //Gmap2.addGMarker(mark1);
+            Gmap3.mapType = GMapType.GTypes.Satellite;
 
         }
         private void inciar_mapa1(string lat, string lng)
@@ -486,6 +515,8 @@ namespace appAmascuotas
                 lblVillageR.Text = obj_m.PV_VILLAGE_NAME;
                 lblBirthDateR.Text = obj_m.PD_DATE_BIRTH.ToShortDateString();
                 lblComunicationR.Text = obj_m.PV_TYPE_COMMUNICATION_DESC;
+                if(obj_m.PV_LATITUD!="")
+                    inciar_mapa3(obj_m.PV_LATITUD,obj_m.PV_LONGITUD);
                 MultiView1.ActiveViewIndex = 1;
 
             }
@@ -548,7 +579,53 @@ namespace appAmascuotas
                     mes = fecha1.Month.ToString();
                 hfFechaSalida.Value = fecha1.Year.ToString() + "-" + mes + "-" + dia;
                 ScriptManager.RegisterStartupScript(this, this.Page.GetType(), "myFuncionAlerta", "setearFechaSalida();", true);
+                if (obj_m.PV_LATITUD != "")
+                    inciar_mapa(obj_m.PV_LATITUD, obj_m.PV_LONGITUD);
+                if (obj_m.PV_LATITUD_FACT != "")
+                    inciar_mapa1(obj_m.PV_LATITUD_FACT, obj_m.PV_LONGITUD_FACT);
                 MultiView1.ActiveViewIndex = 2;
+
+            }
+            catch (Exception ex)
+            {
+                string nombre_archivo = "error_roles_admin_" + DateTime.Now.Day.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Year.ToString() + DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString() + ".txt";
+                string directorio2 = Server.MapPath("~/Logs");
+                StreamWriter writer5 = new StreamWriter(directorio2 + "\\" + nombre_archivo, true, Encoding.Unicode);
+                writer5.WriteLine(ex.ToString());
+                writer5.Close();
+                lblAviso.Text = "We have some problems consult with the administrator.";
+            }
+        }
+
+        protected void lbtNuevo_Click(object sender, EventArgs e)
+        {
+            limpiar();
+            //ListItem itemd = new ListItem();
+            //itemd.Text = "SWITZERLAND";
+            //itemd.Value = "SWI";
+            //ddlPais.SelectedIndex = ddlPais.Items.IndexOf(itemd);
+            //ddlPais2.SelectedIndex = ddlPais2.Items.IndexOf(itemd);
+            lblIdCliente.Text = "";
+            MultiView1.ActiveViewIndex = 2;
+        }
+
+        protected void lbtnVoler2_Click(object sender, EventArgs e)
+        {
+            MultiView1.ActiveViewIndex = 0;
+        }
+
+        protected void ibtnMapa_Click(object sender, ImageClickEventArgs e)
+        {
+            try
+            {
+                lblAviso.Text = "";
+                string id = "";
+                ImageButton obj = (ImageButton)sender;
+                id = obj.CommandArgument.ToString();
+                string[] datos = id.Split('|');
+                Session["lat"] = datos[0];
+                Session["lon"] = datos[1];
+                Response.Write("<script>window.open ('mapa_cliente.aspx','_blank');</script>");
 
             }
             catch (Exception ex)
