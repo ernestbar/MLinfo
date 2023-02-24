@@ -1,6 +1,85 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="cliente_admin.aspx.cs" Inherits="appAmascuotas.cliente_admin" %>
 <%@ Register assembly="GMaps" namespace="Subgurim.Controles" tagprefix="cc" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+	<style>
+    .dataTables_wrapper .myfilter .dataTables_filter {
+        float:left
+    }
+    .dataTables_wrapper .mylength .dataTables_length {
+        float:right
+    }
+    </style>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Se inicializa la tabla con las opciones requeridas
+            $('#tabla1').dataTable({
+                dom: '<"myfilter"f><"mylength"l>Brtip',
+                buttons: [
+                    //{ extend: 'copy', className: 'btn-sm', text: 'Copiar' },
+                    //{ extend: 'csv', className: 'btn-sm', text: 'CSV' },
+                    //{ extend: 'excel', className: 'btn-sm', text: 'Excel' },
+                    //{ extend: 'pdf', className: 'btn-sm', text: 'PDF' },
+                    //{ extend: 'print', className: 'btn-sm', text: 'Imprimir' }
+                ],
+                responsive: true,
+                autoFill: true,
+                colReorder: true,
+                keys: true,
+                rowReorder: false,
+                select: 'single',
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No information",
+                    "info": "Showing _START_ of _TOTAL_ entries",
+                    "infoEmpty": "Showing 0 of 0 entries",
+                    "infoFiltered": "(Filtered of _MAX_ total records)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Show _MENU_ records",
+                    "loadingRecords": "Loadin...",
+                    "processing": "Processing...",
+                    "search": "Filter records:",
+                    "zeroRecords": "No records found",
+                    "paginate": {
+                        "first": "First",
+                        "last": "Last",
+                        "next": "Next",
+                        "previous": "Previous"
+                    },
+                    "select": {
+                        rows: "%d fila(s) seleccionada(s)"
+                    }
+                }
+            });
+
+            var table = $('#tabla-rol').DataTable();
+            $('div.dataTables_filter input', table.table().container()).focus();
+
+
+            var dt = $('#tabla-rol').DataTable();
+
+            //********** Para ocultar columnas
+            dt.column(0).visible(true)
+
+            //********** Manejo de selección de filas
+            // Seleccionar fila
+           <%-- $('#tabla-rol tbody').on('click', 'tr', function () {
+                var hfIdRol = document.getElementById('<%=hfIdRol.ClientID%>');
+                if (dt.rows(this).count() > 0) {
+                    var id_rol = dt.row(this).data()[0];
+                    hfIdRol.value = id_rol;
+                }
+                else {
+                    hfIdRol.value = "";
+                }
+            });--%>
+            //********** Manejo de selección de filas
+        });
+
+    </script>
+
+    
      <asp:ObjectDataSource ID="odsClientes" runat="server" SelectMethod="PR_CLI_GET_CLIENTES" TypeName="appAmascuotas.Clases.Clientes">
 		</asp:ObjectDataSource>
 	<asp:ObjectDataSource ID="odsTipoCliente" runat="server" SelectMethod="PR_PAR_GET_DOMINIOS" TypeName="appAmascuotas.Clases.Dominios">
@@ -64,6 +143,7 @@
 			return true;
         }
     </script>
+	
 	<!-- begin #content -->
 		<div id="content" class="content">
 			<asp:SiteMapPath ID="SiteMapPath1" Runat="server" Font-Names="Verdana" Font-Size="0.8em" PathSeparator=" : ">
@@ -111,15 +191,16 @@
 												<!-- begin panel-body -->
 												<div class="panel-body">
 										<%--<div class="table-responsive">--%>
-												<table id="data-table-default" class="table table-striped table-bordered">
+												<%--<table id="data-table-default" class="table table-striped table-bordered">--%>
+													<table id="tabla1" class="table table-striped table-bordered">
 													<thead>
 														<tr>
 															<%--<th class="text-wrap">TYPE CLIENT</th>
 																<th class="text-nowrap">SOCIETY</th>--%>
-																<th class="text-nowrap col-2">NAME</th>
+																<th>NAME</th>
 																<%--<th class="text-nowrap">SURNAMES</th>
 																<th class="text-nowrap">DATE_BIRTH</th>--%>
-																<th class="text-nowrap col-2">ADDRESS</th>
+																<th>ADDRESS</th>
 																<%--<th class="text-nowrap">COUNTRY</th>
 																<th class="text-nowrap">CITY</th>
 																<th class="text-nowrap">VILLAGE_NAME</th>
@@ -132,14 +213,14 @@
 																<th class="text-nowrap">FAX</th>
 																<th class="text-nowrap">TYPE COMMUNICATION</th>
 																<th class="text-nowrap">ESTADO</th>--%>
-															<th class="text-nowrap col-1"></th>
+															<th>AAAA</th>
 															
 															</tr>
 													</thead>
 													<tbody>
                                                         <asp:Repeater ID="Repeater1" DataSourceID="odsClientes" OnItemDataBound="Repeater1_ItemDataBound" runat="server">
 														<ItemTemplate>
-															<tr class="gradeA">
+															<tr class="odd gradeX">
 																
 															<%--<td><asp:Image ID="Image1" Height="50px" runat="server" ImageUrl='<%# @"Logos\" + Eval("CLI_ID_CLIENTE") + @"\" +  Eval("CLI_LOGO") %>' /></td>--%>
 															<%--<td><asp:Label ID="lblEsPrincipal" runat="server" Text='<%# Eval("DESC_TYPE_CLIENT") %>'></asp:Label></td>
@@ -441,12 +522,11 @@
 											</div>
 											
 										<!-- end form-group row -->
+											<asp:TextBox ID="txtCiudad" class="form-control" Visible="false"  runat="server"></asp:TextBox>
 										 <!-- begin form-group row -->
-										<label class="col-md-12 text-md-left col-form-label">Municipality:</label>
+										<%--<label class="col-md-12 text-md-left col-form-label">Municipality:</label>
 											<div class="col-md-12">
-												<asp:TextBox ID="txtCiudad" class="form-control" Enabled="false" runat="server"></asp:TextBox>
-												<%--<asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ErrorMessage="*" ControlToValidate="txtLatitud" Font-Bold="True"></asp:RequiredFieldValidator>--%>
-											</div>
+											</div>--%>
 										<!-- end form-group row -->
 										<!-- begin form-group row -->
 										<label class="col-md-12 text-md-left col-form-label">City:</label>
@@ -462,19 +542,18 @@
 												<%--<asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ErrorMessage="*" ControlToValidate="txtLatitud" Font-Bold="True"></asp:RequiredFieldValidator>--%>
 											</div>
 										<!-- end form-group row -->
+											<asp:TextBox ID="txtLatitud" class="form-control" Visible="false"  runat="server"></asp:TextBox>
 										<!-- begin form-group row -->
-										<label class="col-md-12 text-md-left col-form-label">Latitude:</label>
+										<%--<label class="col-md-12 text-md-left col-form-label">Latitude:</label>
 											<div class="col-md-12">
-												<asp:TextBox ID="txtLatitud" class="form-control" Enabled="false" runat="server"></asp:TextBox>
-												<%--<asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ErrorMessage="*" ControlToValidate="txtLatitud" Font-Bold="True"></asp:RequiredFieldValidator>--%>
-											</div>
+												
+											</div>--%>
 										<!-- end form-group row -->
+											<asp:TextBox ID="txtLongitud" class="form-control" Visible="false"   runat="server"></asp:TextBox>
 										<!-- begin form-group row -->
-										<label class="col-md-12 text-md-left col-form-label">Length:</label>
+										<%--<label class="col-md-12 text-md-left col-form-label">Length:</label>
 											<div class="col-md-12">
-												<asp:TextBox ID="txtLongitud" class="form-control"  Enabled="false" runat="server"></asp:TextBox>
-												<%--<asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ErrorMessage="*" ControlToValidate="txtLongitud" Font-Bold="True"></asp:RequiredFieldValidator>--%>
-											</div>
+											</div>--%>
 										<!-- end form-group row -->
 										 <!-- begin form-group row -->
 										<div class="form-group row m-b-10">
@@ -584,40 +663,39 @@
 												</div>
 											</div>
 											<!-- end form-group row -->
+												<asp:TextBox ID="txtBillingCity" class="form-control"  Visible="false" runat="server"></asp:TextBox>
 											 <!-- begin form-group row -->
-											<label class="col-md-12 text-md-left col-form-label">Municipality:</label>
+											<%--<label class="col-md-12 text-md-left col-form-label">Municipality:</label>
 												<div class="col-md-12">
-													<asp:TextBox ID="txtBillingCity" class="form-control" Enabled="false" runat="server"></asp:TextBox>
-													<%--<asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ErrorMessage="*" ControlToValidate="txtLatitud" Font-Bold="True"></asp:RequiredFieldValidator>--%>
-												</div>
+												
+												</div>--%>
 											<!-- end form-group row -->
+											
 											<!-- begin form-group row -->
 											<label class="col-md-12 text-md-left col-form-label">City:</label>
 												<div class="col-md-12">
-													<asp:TextBox ID="txtBillingVillage" class="form-control" Enabled="false" runat="server"></asp:TextBox>
-													<%--<asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ErrorMessage="*" ControlToValidate="txtLatitud" Font-Bold="True"></asp:RequiredFieldValidator>--%>
+													<asp:TextBox ID="txtBillingVillage" class="form-control"  Enabled="false" runat="server"></asp:TextBox>
 												</div>
 											<!-- end form-group row -->
 											<!-- begin form-group row -->
 											<label class="col-md-12 text-md-left col-form-label">Postal code:</label>
 												<div class="col-md-12">
 													<asp:TextBox ID="txtBillingPostaleCode" class="form-control" Enabled="false" runat="server"></asp:TextBox>
-													<%--<asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ErrorMessage="*" ControlToValidate="txtLatitud" Font-Bold="True"></asp:RequiredFieldValidator>--%>
 												</div>
 											<!-- end form-group row -->
+											<asp:TextBox ID="txtBillingLatitud" class="form-control" Visible="false" runat="server"></asp:TextBox>
 											<!-- begin form-group row -->
-											<label class="col-md-12 text-md-left col-form-label">Latitude:</label>
+											<%--<label class="col-md-12 text-md-left col-form-label">Latitude:</label>
 												<div class="col-md-12">
-													<asp:TextBox ID="txtBillingLatitud" class="form-control" Enabled="false" runat="server"></asp:TextBox>
-													<%--<asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ErrorMessage="*" ControlToValidate="txtLatitud" Font-Bold="True"></asp:RequiredFieldValidator>--%>
-												</div>
+													
+												</div>--%>
 											<!-- end form-group row -->
+											<asp:TextBox ID="txtBillingLongitud" class="form-control"  Visible="false" runat="server"></asp:TextBox>
 											<!-- begin form-group row -->
-											<label class="col-md-12 text-md-left col-form-label">Length:</label>
+											<%--<label class="col-md-12 text-md-left col-form-label">Length:</label>
 												<div class="col-md-12">
-													<asp:TextBox ID="txtBillingLongitud" class="form-control"  Enabled="false" runat="server"></asp:TextBox>
-													<%--<asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ErrorMessage="*" ControlToValidate="txtLongitud" Font-Bold="True"></asp:RequiredFieldValidator>--%>
-												</div>
+													
+												</div>--%>
 											<!-- end form-group row -->
 											 <!-- begin form-group row -->
 											<div class="form-group row m-b-10">
@@ -697,5 +775,11 @@
             document.getElementById('fecha_salida').value = document.getElementById('<%=hfFechaSalida.ClientID%>').value;
 		}
         
+    </script>
+	<script>
+		$(document).ready(function () {
+			//var table = $('#data-table-default').DataTable();
+            $('div.dataTables_filter input', $('#data-table-default').DataTable().table().container()).focus();
+        });
     </script>
 </asp:Content>

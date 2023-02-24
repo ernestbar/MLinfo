@@ -38,9 +38,10 @@ namespace appAmascuotas
 
                     }
                     MultiView1.ActiveViewIndex = 0;
-
+                    
                 }
             }
+
         }
 
 
@@ -52,6 +53,10 @@ namespace appAmascuotas
                 string fecha_salida = DateTime.Now.ToShortDateString();
                 if (hfFechaSalida.Value != "")
                     fecha_salida = hfFechaSalida.Value;
+                if (txtVillage.Enabled == true)
+                    txtVillage.Text = ddlPais.SelectedItem.Text;
+                if (txtBillingVillage.Enabled == true)
+                    txtBillingVillage.Text = ddlPais2.SelectedItem.Text;
 
                 if (lblIdCliente.Text == "")
                 {
@@ -169,7 +174,7 @@ namespace appAmascuotas
                 txtSociety.Text =  obj_m.PV_SOCIETY;
                 txtSurname.Text =  obj_m.PV_SURNAMES;
                 txtVillage.Text =  obj_m.PV_VILLAGE_NAME;
-                //ddlBillingCountry.SelectedValue = obj_m.PV_COUNTRY_FACT;
+                ddlPais2.SelectedValue = obj_m.PV_COUNTRY_FACT;
                 ddlPais.SelectedValue = obj_m.PV_COUNTRY;
                 ddlTipoCliente.SelectedValue = obj_m.PV_TYPE_CLIENT;
                 ddlTypeComunication.SelectedValue = obj_m.PV_TYPE_COMMUNICATION;
@@ -562,7 +567,10 @@ namespace appAmascuotas
                 txtSurname.Text = obj_m.PV_SURNAMES;
                 txtVillage.Text = obj_m.PV_VILLAGE_NAME;
                 //ddlBillingCountry.SelectedValue = obj_m.PV_COUNTRY_FACT;
-                ddlPais.SelectedValue = obj_m.PV_COUNTRY;
+                if (obj_m.PV_COUNTRY != "")
+                    ddlPais.SelectedValue = obj_m.PV_COUNTRY;
+                if(obj_m.PV_COUNTRY_FACT!="")
+                    ddlPais2.SelectedValue = obj_m.PV_COUNTRY_FACT;
                 ddlTipoCliente.SelectedValue = obj_m.PV_TYPE_CLIENT;
                 ddlTypeComunication.SelectedValue = obj_m.PV_TYPE_COMMUNICATION;
                 DateTime fecha1 = obj_m.PD_DATE_BIRTH;

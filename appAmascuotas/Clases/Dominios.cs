@@ -190,6 +190,8 @@ namespace appAmascuotas.Clases
 
         }
 
+       
+
         public static bool VerificarPlazo(decimal PD_PLAZO)
         {
             try

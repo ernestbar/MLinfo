@@ -347,7 +347,11 @@
             });
         }
     </script>
+	<%--<script>
+        var table = $('#data-table-default').DataTable();
 
-	
+        $('div.dataTables_filter input', table.table().container()).focus();
+    </script>--%>
+	<%--<script>var table = $('#data-table-default').DataTable();$('div.dataTables_filter input', table.table().container()).focus();</script>--%>
 </body>
 </html>

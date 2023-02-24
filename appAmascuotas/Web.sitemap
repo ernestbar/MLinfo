@@ -8,12 +8,17 @@
       <siteMapNode title="Options" url="~/opciones_admin.aspx"/>
       <siteMapNode title="Options to menus" url="~/opcion_menu_rol_admin.aspx"/>
     </siteMapNode>
+    <siteMapNode title="Clients" >
+      <siteMapNode title="Clients admin" url="~/cliente_admin.aspx"/>
+      <siteMapNode title="Contact management" url="~/contact_admin.aspx"/>
+    </siteMapNode>
     <siteMapNode title="Staff and users" >
       <siteMapNode title="Staff and users" url="~/personal_admin.aspx"/>
     </siteMapNode>
     <siteMapNode title="Parameter" >
       <siteMapNode title="Branch offices" url="~/sucursal_admin.aspx"/>
       <siteMapNode title="Domains" url="~/domino_admin.aspx"/>
+      <siteMapNode title="Type of clients" url="~/type_clients.aspx"/>
     </siteMapNode>
   </siteMapNode>
 </siteMap>

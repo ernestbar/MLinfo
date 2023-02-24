@@ -1,5 +1,82 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="domino_admin.aspx.cs" Inherits="appAmascuotas.domino_admin" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+	<style>
+    .dataTables_wrapper .myfilter .dataTables_filter {
+        float:left
+    }
+    .dataTables_wrapper .mylength .dataTables_length {
+        float:right
+    }
+    </style>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Se inicializa la tabla con las opciones requeridas
+            $('#tabla1').dataTable({
+                dom: '<"myfilter"f><"mylength"l>Brtip',
+                buttons: [
+                    //{ extend: 'copy', className: 'btn-sm', text: 'Copiar' },
+                    //{ extend: 'csv', className: 'btn-sm', text: 'CSV' },
+                    //{ extend: 'excel', className: 'btn-sm', text: 'Excel' },
+                    //{ extend: 'pdf', className: 'btn-sm', text: 'PDF' },
+                    //{ extend: 'print', className: 'btn-sm', text: 'Imprimir' }
+                ],
+                responsive: true,
+                autoFill: true,
+                colReorder: true,
+                keys: true,
+                rowReorder: false,
+                select: 'single',
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No information",
+                    "info": "Showing _START_ of _TOTAL_ entries",
+                    "infoEmpty": "Showing 0 of 0 entries",
+                    "infoFiltered": "(Filtered of _MAX_ total records)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Show _MENU_ records",
+                    "loadingRecords": "Loadin...",
+                    "processing": "Processing...",
+                    "search": "Filter records:",
+                    "zeroRecords": "No records found",
+                    "paginate": {
+                        "first": "First",
+                        "last": "Last",
+                        "next": "Next",
+                        "previous": "Previous"
+                    },
+                    "select": {
+                        rows: "%d fila(s) seleccionada(s)"
+                    }
+                }
+            });
+
+            var table = $('#tabla-rol').DataTable();
+            $('div.dataTables_filter input', table.table().container()).focus();
+
+
+            var dt = $('#tabla-rol').DataTable();
+
+            //********** Para ocultar columnas
+            dt.column(0).visible(true)
+
+            //********** Manejo de selección de filas
+            // Seleccionar fila
+           <%-- $('#tabla-rol tbody').on('click', 'tr', function () {
+                var hfIdRol = document.getElementById('<%=hfIdRol.ClientID%>');
+                if (dt.rows(this).count() > 0) {
+                    var id_rol = dt.row(this).data()[0];
+                    hfIdRol.value = id_rol;
+                }
+                else {
+                    hfIdRol.value = "";
+                }
+            });--%>
+            //********** Manejo de selección de filas
+        });
+
+    </script>
       <asp:ObjectDataSource ID="odsDominiosOnly" runat="server" SelectMethod="PR_PAR_GET_ONLY_DOMINIOS" TypeName="appAmascuotas.Clases.Dominios">
 		</asp:ObjectDataSource>
 	<asp:ObjectDataSource ID="odsDominios" runat="server" SelectMethod="PR_PAR_GET_DOMINIOS" TypeName="appAmascuotas.Clases.Dominios">
@@ -92,7 +169,7 @@
 												<!-- begin panel-body -->
 												<div class="panel-body">
 										<%--<div class="table-responsive">--%>
-												<table id="data-table-default" class="table table-striped table-bordered">
+												<table id="tabla1" class="table table-striped table-bordered">
 													<thead>
 														<tr>
 															<th class="text-wrap">DOMAIN</th>
