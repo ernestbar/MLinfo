@@ -178,7 +178,10 @@ namespace appAmascuotas.Clases
                         _PV_SOCIETY = (string)dr["SOCIETY"];
                         _PV_NAME = (string)dr["NAME"];
                         _PV_SURNAMES = (string)dr["SURNAMES"];
-                        _PD_DATE_BIRTH = (DateTime)dr["DATE_BIRTH"];
+                        if (string.IsNullOrEmpty(dr["DATE_BIRTH"].ToString()))
+                        { _PD_DATE_BIRTH = DateTime.Parse("01/01/3000"); }
+                        else
+                        { _PD_DATE_BIRTH = (DateTime)dr["DATE_BIRTH"]; }
                         _PV_ADDRESS = (string)dr["ADDRESS"];
                         _PV_COUNTRY = (string)dr["COUNTRY"];
                         _PV_CITY = (string)dr["CITY"];
@@ -233,7 +236,10 @@ namespace appAmascuotas.Clases
                 db1.AddInParameter(cmd, "PV_SOCIETY", DbType.String, _PV_SOCIETY);
                 db1.AddInParameter(cmd, "PV_NAME", DbType.String, _PV_NAME);
                 db1.AddInParameter(cmd, "PV_SURNAMES", DbType.String, _PV_SURNAMES);
-                db1.AddInParameter(cmd, "PD_DATE_BIRTH", DbType.DateTime, _PD_DATE_BIRTH);
+                if(_PD_DATE_BIRTH==DateTime.Parse("01/01/3000"))
+                    db1.AddInParameter(cmd, "PD_DATE_BIRTH", DbType.DateTime, null);
+                else
+                    db1.AddInParameter(cmd, "PD_DATE_BIRTH", DbType.DateTime, _PD_DATE_BIRTH);
                 db1.AddInParameter(cmd, "PV_ADDRESS", DbType.String, _PV_ADDRESS);
                 db1.AddInParameter(cmd, "PV_COUNTRY", DbType.String, _PV_COUNTRY);
                 db1.AddInParameter(cmd, "PV_CITY", DbType.String, _PV_CITY);
@@ -245,7 +251,10 @@ namespace appAmascuotas.Clases
                 db1.AddInParameter(cmd, "PB_PHONE", DbType.Int64, _PB_PHONE);
                 db1.AddInParameter(cmd, "PB_MOBILE", DbType.Int64, _PB_MOBILE);
                 db1.AddInParameter(cmd, "PB_FAX", DbType.Int64, _PB_FAX);
-                db1.AddInParameter(cmd, "PV_TYPE_COMMUNICATION", DbType.String, _PV_TYPE_COMMUNICATION);
+                if(_PV_TYPE_COMMUNICATION=="SELECT")
+                    db1.AddInParameter(cmd, "PV_TYPE_COMMUNICATION", DbType.String, null);
+                else
+                    db1.AddInParameter(cmd, "PV_TYPE_COMMUNICATION", DbType.String, _PV_TYPE_COMMUNICATION);
                 db1.AddInParameter(cmd, "PV_DOOR_NUMBER", DbType.String, _PV_DOOR_NUMBER);
                 db1.AddInParameter(cmd, "PV_FLOOR", DbType.String, _PV_FLOOR);
                 db1.AddInParameter(cmd, "PV_COMMENTS", DbType.String, _PV_COMMENTS);

@@ -335,7 +335,6 @@
 		$(document).ready(function () {
 			App.init();
 			TableManageDefault.init();
-            FormWizard.init();
             FormPlugins.init();
             
 		});

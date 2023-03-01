@@ -50,19 +50,27 @@ namespace appAmascuotas
         {
             try
             {
-                string fecha_salida = DateTime.Now.ToShortDateString();
+                string fecha_salida = DateTime.Parse("01/01/3000").ToString();
                 if (hfFechaSalida.Value != "")
                     fecha_salida = hfFechaSalida.Value;
                 if (txtVillage.Enabled == true)
                     txtVillage.Text = ddlPais.SelectedItem.Text;
                 if (txtBillingVillage.Enabled == true)
                     txtBillingVillage.Text = ddlPais2.SelectedItem.Text;
-
+                long phone = 0;
+                long mobile = 0;
+                long fax = 0;
+                if (txtPhone.Text != "")
+                    phone = long.Parse(txtPhone.Text);
+                if (txtMobile.Text != "")
+                    mobile = long.Parse(txtMobile.Text);
+                if (txtFax.Text != "")
+                    fax = long.Parse(txtFax.Text);
                 if (lblIdCliente.Text == "")
                 {
                     Clases.Clientes obj = new Clases.Clientes("I",0,ddlTipoCliente.SelectedValue,txtSociety.Text,txtName.Text,txtSurname.Text,DateTime.Parse(fecha_salida),txtAddres.Text,
-                        ddlPais.SelectedValue,txtCiudad.Text,txtVillage.Text,txtPostalCode.Text,txtLongitud.Text,txtLatitud.Text,txtEmail.Text,long.Parse(txtPhone.Text),
-                        long.Parse(txtMobile.Text),long.Parse(txtFax.Text),ddlTypeComunication.SelectedValue,txtDoorNumber.Text,txtFloor.Text,txtComments.Text,txtBillingAddress.Text,
+                        ddlPais.SelectedValue,txtCiudad.Text,txtVillage.Text,txtPostalCode.Text,txtLongitud.Text,txtLatitud.Text,txtEmail.Text,phone,
+                        mobile,fax,ddlTypeComunication.SelectedValue,txtDoorNumber.Text,txtFloor.Text,txtComments.Text,txtBillingAddress.Text,
                         "",txtBillingCity.Text,txtBillingVillage.Text,txtBillingPostaleCode.Text,txtBillingLongitud.Text,txtBillingLatitud.Text,lblUsuario.Text);
                     lblAviso.Text = obj.ABM().Replace("|", "").Replace("0", "").Replace("null", "").Replace("1", "");
                     MultiView1.ActiveViewIndex = 0;
@@ -71,8 +79,8 @@ namespace appAmascuotas
                 else
                 {
                     Clases.Clientes obj = new Clases.Clientes("U",long.Parse(lblIdCliente.Text), ddlTipoCliente.SelectedValue, txtSociety.Text, txtName.Text, txtSurname.Text, DateTime.Parse(fecha_salida), txtAddres.Text,
-                        ddlPais.SelectedValue, txtCiudad.Text, txtVillage.Text, txtPostalCode.Text, txtLongitud.Text, txtLatitud.Text, txtEmail.Text, long.Parse(txtPhone.Text),
-                        long.Parse(txtMobile.Text), long.Parse(txtFax.Text), ddlTypeComunication.SelectedValue, txtDoorNumber.Text, txtFloor.Text, txtComments.Text, txtBillingAddress.Text,
+                        ddlPais.SelectedValue, txtCiudad.Text, txtVillage.Text, txtPostalCode.Text, txtLongitud.Text, txtLatitud.Text, txtEmail.Text, phone,
+                        mobile, fax, ddlTypeComunication.SelectedValue, txtDoorNumber.Text, txtFloor.Text, txtComments.Text, txtBillingAddress.Text,
                         "", txtBillingCity.Text, txtBillingVillage.Text, txtBillingPostaleCode.Text, txtBillingLongitud.Text, txtBillingLatitud.Text, lblUsuario.Text);
                     lblAviso.Text = obj.ABM().Replace("|", "").Replace("0", "").Replace("null", "").Replace("1", "");
                     MultiView1.ActiveViewIndex = 0;
@@ -82,7 +90,7 @@ namespace appAmascuotas
             }
             catch (Exception ex)
             {
-                string nombre_archivo = "error_roles_admin_" + DateTime.Now.Day.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Year.ToString() + DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString() + ".txt";
+                string nombre_archivo = "error_cliente_admin_" + DateTime.Now.Day.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Year.ToString() + DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString() + ".txt";
                 string directorio2 = Server.MapPath("~/Logs");
                 StreamWriter writer5 = new StreamWriter(directorio2 + "\\" + nombre_archivo, true, Encoding.Unicode);
                 writer5.WriteLine(ex.ToString());
@@ -567,26 +575,33 @@ namespace appAmascuotas
                 txtSurname.Text = obj_m.PV_SURNAMES;
                 txtVillage.Text = obj_m.PV_VILLAGE_NAME;
                 //ddlBillingCountry.SelectedValue = obj_m.PV_COUNTRY_FACT;
-                if (obj_m.PV_COUNTRY != "")
+                if (obj_m.PV_COUNTRY != ""&& obj_m.PV_COUNTRY !="SELECT")
                     ddlPais.SelectedValue = obj_m.PV_COUNTRY;
-                if(obj_m.PV_COUNTRY_FACT!="")
+                if(obj_m.PV_COUNTRY_FACT!="" && obj_m.PV_COUNTRY_FACT != "SELECT")
                     ddlPais2.SelectedValue = obj_m.PV_COUNTRY_FACT;
-                ddlTipoCliente.SelectedValue = obj_m.PV_TYPE_CLIENT;
-                ddlTypeComunication.SelectedValue = obj_m.PV_TYPE_COMMUNICATION;
-                DateTime fecha1 = obj_m.PD_DATE_BIRTH;
-                string dia = "";
-                string mes = "";
-                if (fecha1.Day.ToString().Length == 1)
-                    dia = "0" + fecha1.Day.ToString();
-                else
-                    dia = fecha1.Day.ToString();
+                if (obj_m.PV_TYPE_CLIENT != "")
+                    ddlTipoCliente.SelectedValue = obj_m.PV_TYPE_CLIENT;
+                if (obj_m.PV_TYPE_COMMUNICATION != "")
+                    ddlTypeComunication.SelectedValue = obj_m.PV_TYPE_COMMUNICATION;
 
-                if (fecha1.Month.ToString().Length == 1)
-                    mes = "0" + fecha1.Month.ToString();
-                else
-                    mes = fecha1.Month.ToString();
-                hfFechaSalida.Value = fecha1.Year.ToString() + "-" + mes + "-" + dia;
-                ScriptManager.RegisterStartupScript(this, this.Page.GetType(), "myFuncionAlerta", "setearFechaSalida();", true);
+                if (obj_m.PD_DATE_BIRTH != DateTime.Parse("01/01/3000"))
+                {
+                    DateTime fecha1 = obj_m.PD_DATE_BIRTH;
+                    string dia = "";
+                    string mes = "";
+                    if (fecha1.Day.ToString().Length == 1)
+                        dia = "0" + fecha1.Day.ToString();
+                    else
+                        dia = fecha1.Day.ToString();
+
+                    if (fecha1.Month.ToString().Length == 1)
+                        mes = "0" + fecha1.Month.ToString();
+                    else
+                        mes = fecha1.Month.ToString();
+                    hfFechaSalida.Value = fecha1.Year.ToString() + "-" + mes + "-" + dia;
+                    ScriptManager.RegisterStartupScript(this, this.Page.GetType(), "myFuncionAlerta", "setearFechaSalida();", true);
+                }
+                
                 if (obj_m.PV_LATITUD != "")
                     inciar_mapa(obj_m.PV_LATITUD, obj_m.PV_LONGITUD);
                 if (obj_m.PV_LATITUD_FACT != "")

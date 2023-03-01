@@ -11,7 +11,7 @@
     </style>
 
     <script type="text/javascript">
-        $(document).ready(function () {
+		$(document).ready(function () {
             // Se inicializa la tabla con las opciones requeridas
             $('#tabla1').dataTable({
                 dom: '<"myfilter"f><"mylength"l>Brtip',
@@ -475,7 +475,7 @@
 						<label class="col-md-12 text-md-left col-form-label">Surname:</label>
 							<div class="col-md-12">
 									<asp:TextBox ID="txtSurname" class="form-control" runat="server"></asp:TextBox>
-								<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="txtSurname" Font-Bold="True"></asp:RequiredFieldValidator>
+								<%--<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="txtSurname" Font-Bold="True"></asp:RequiredFieldValidator>--%>
 							</div>
 						<!-- end form-group row -->
 						<!-- begin form-group row -->
@@ -489,7 +489,7 @@
 						<label class="col-md-12 text-md-left col-form-label">Address:</label>
 							<div class="col-md-12">
 									<asp:TextBox ID="txtAddres" class="form-control" runat="server"></asp:TextBox>
-								<asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="txtSociety" Font-Bold="True"></asp:RequiredFieldValidator>
+								<%--<asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="txtSociety" Font-Bold="True"></asp:RequiredFieldValidator>--%>
 							</div>
 						<!-- end form-group row -->
 						<asp:UpdatePanel ID="UpdatePanel1" runat="server">
@@ -506,7 +506,7 @@
 										<label class="col-md-12 text-md-left col-form-label">Country:</label>
 											<div class="col-md-12">
 													<asp:DropDownList ID="ddlPais" class="form-control" OnSelectedIndexChanged="ddlPais_SelectedIndexChanged" OnDataBound="ddlPais_DataBound" AutoPostBack="true"  DataSourceID="odsPais" DataTextField="descripcion" DataValueField="codigo" ForeColor="Black" runat="server"></asp:DropDownList>
-													<asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="ddlPais" InitialValue="SELECT" Font-Bold="True"></asp:RequiredFieldValidator>
+													<%--<asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="ddlPais" InitialValue="SELECT" Font-Bold="True"></asp:RequiredFieldValidator>--%>
 											</div>  
 										<!-- end form-group row -->  
 										<!-- begin form-group row -->
@@ -579,7 +579,7 @@
 										<label class="col-md-12 text-md-left col-form-label">Email:</label>
 											<div class="col-md-12">
 												<asp:TextBox ID="txtEmail" class="form-control" runat="server"></asp:TextBox>
-												<asp:RequiredFieldValidator ID="RequiredFieldValidator111" runat="server" ErrorMessage="*" ControlToValidate="txtEmail" Font-Bold="True"></asp:RequiredFieldValidator>
+												<%--<asp:RequiredFieldValidator ID="RequiredFieldValidator111" runat="server" ErrorMessage="*" ControlToValidate="txtEmail" Font-Bold="True"></asp:RequiredFieldValidator>--%>
 											</div>
 										<!-- end form-group row -->
 										<!-- begin form-group row -->
@@ -603,7 +603,7 @@
 										<!-- begin form-group row -->
 										<label class="col-md-12 text-md-left col-form-label">Type Comunication:</label>
 											<div class="col-md-12">
-												 <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="ddlTypeComunication" InitialValue="SELECT" Font-Bold="True"></asp:RequiredFieldValidator>
+												 <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="ddlTypeComunication" InitialValue="SELECT" Font-Bold="True"></asp:RequiredFieldValidator>--%>
 											   <asp:DropDownList ID="ddlTypeComunication" DataSourceID="odsTypeComunication" DataTextField="descripcion" OnDataBound="ddlTypeComunication_DataBound" DataValueField="codigo"  ForeColor="Black" class="form-control" runat="server"></asp:DropDownList>
 											</div>
 										<!-- end form-group row -->
