@@ -432,7 +432,7 @@
 					<asp:LinkButton ID="LinkButton31" class="btn btn-primary btn-md mt-1" Width="130px" runat="server"><i class="fa fa-upload"></i><br /> Files</asp:LinkButton>
 					<asp:LinkButton ID="LinkButton32" class="btn btn-primary btn-md mt-1" Width="130px" runat="server"><i class="fa fa-list"></i><br /> List of accounts and devices</asp:LinkButton>
 					<asp:LinkButton ID="LinkButton33" class="btn btn-primary btn-md mt-1" Width="130px" runat="server"><i class="fa fa-list"></i><br /> List of device</asp:LinkButton>
-					<asp:LinkButton ID="LinkButton34" class="btn btn-primary btn-md mt-1" Width="130px" runat="server"><i class="fa fa-list"></i><br />List contacts</asp:LinkButton>
+					<asp:LinkButton ID="LinkButton34" class="btn btn-primary btn-md mt-1" OnClick="LinkButton34_Click" Width="130px" runat="server"><i class="fa fa-list"></i><br />List contacts</asp:LinkButton>
 				</div>
 				
 
