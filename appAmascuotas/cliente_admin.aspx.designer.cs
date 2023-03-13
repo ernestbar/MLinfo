@@ -312,13 +312,13 @@ namespace appAmascuotas
         protected global::System.Web.UI.WebControls.LinkButton LinkButton4;
 
         /// <summary>
-        /// LinkButton3 control.
+        /// lbtnNewIntervention control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton3;
+        protected global::System.Web.UI.WebControls.LinkButton lbtnNewIntervention;
 
         /// <summary>
         /// LinkButton5 control.
@@ -339,13 +339,13 @@ namespace appAmascuotas
         protected global::System.Web.UI.WebControls.LinkButton LinkButton6;
 
         /// <summary>
-        /// LinkButton7 control.
+        /// lbtnListInterventions control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton7;
+        protected global::System.Web.UI.WebControls.LinkButton lbtnListInterventions;
 
         /// <summary>
         /// LinkButton8 control.

@@ -390,10 +390,10 @@
 					<hr style="background-color:red"/>
 					<legend class="no-border f-w-700 p-b-0 m-t-0 m-b-20 f-s-16 text-inverse">Labour</legend>
 					<hr />
-					<asp:LinkButton ID="LinkButton3" class="btn btn-primary btn-md mt-1" Width="130px" runat="server"><i class="fa fa-plus-circle"></i><br /> New intervention </asp:LinkButton>
+					<asp:LinkButton ID="lbtnNewIntervention" OnClick="lbtnNewIntervention_Click" class="btn btn-primary btn-md mt-1" Width="130px" runat="server"><i class="fa fa-plus-circle"></i><br /> New intervention </asp:LinkButton>
 					<asp:LinkButton ID="LinkButton5" class="btn btn-primary btn-md mt-1" Width="130px" runat="server"><i class="fa fa-car"></i><br /> New offset </asp:LinkButton>
 					<asp:LinkButton ID="LinkButton6" class="btn btn-primary btn-md mt-1" Width="130px" runat="server"><i class="fa fa-car"></i><br /> New offset ofert </asp:LinkButton>
-					<asp:LinkButton ID="LinkButton7" class="btn btn-primary btn-md mt-1" Width="130px" runat="server"><i class="fa fa-list"></i><br /> List of interventions </asp:LinkButton>
+					<asp:LinkButton ID="lbtnListInterventions" OnClick="lbtnListInterventions_Click" class="btn btn-primary btn-md mt-1" Width="130px" runat="server"><i class="fa fa-list"></i><br /> List of interventions </asp:LinkButton>
 					<hr style="background-color:red"/>
 					<legend class="no-border f-w-700 p-b-0 m-t-0 m-b-20 f-s-16 text-inverse">Materials</legend>
 					<hr />

@@ -908,6 +908,85 @@
     <Content Include="assets\plugins\bootstrap-timepicker\css\bootstrap-timepicker.min.css" />
     <Content Include="assets\plugins\bootstrap-timepicker\js\bootstrap-timepicker.js" />
     <Content Include="assets\plugins\bootstrap-timepicker\js\bootstrap-timepicker.min.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\dist\amd\bootstrap3-wysihtml5.all.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\dist\amd\bootstrap3-wysihtml5.all.min.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\dist\amd\commands.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\dist\amd\handlebars.runtime.amd.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\dist\amd\templates.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\dist\amd\wysihtml5.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\dist\bootstrap3-wysihtml5.all.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\dist\bootstrap3-wysihtml5.all.min.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\dist\bootstrap3-wysihtml5.css" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\dist\bootstrap3-wysihtml5.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\dist\bootstrap3-wysihtml5.min.css" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\dist\bootstrap3-wysihtml5.min.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\dist\commands.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\dist\locales\bootstrap-wysihtml5.ar-AR.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\dist\locales\bootstrap-wysihtml5.bg-BG.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\dist\locales\bootstrap-wysihtml5.ca-CT.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\dist\locales\bootstrap-wysihtml5.cs-CZ.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\dist\locales\bootstrap-wysihtml5.da-DK.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\dist\locales\bootstrap-wysihtml5.de-DE.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\dist\locales\bootstrap-wysihtml5.el-GR.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\dist\locales\bootstrap-wysihtml5.en-US.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\dist\locales\bootstrap-wysihtml5.es-AR.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\dist\locales\bootstrap-wysihtml5.es-ES.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\dist\locales\bootstrap-wysihtml5.fr-FR.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\dist\locales\bootstrap-wysihtml5.hr-HR.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\dist\locales\bootstrap-wysihtml5.hu-HU.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\dist\locales\bootstrap-wysihtml5.il-HE.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\dist\locales\bootstrap-wysihtml5.it-IT.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\dist\locales\bootstrap-wysihtml5.ja-JP.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\dist\locales\bootstrap-wysihtml5.ko-KR.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\dist\locales\bootstrap-wysihtml5.lt-LT.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\dist\locales\bootstrap-wysihtml5.mo-MD.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\dist\locales\bootstrap-wysihtml5.nb-NB.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\dist\locales\bootstrap-wysihtml5.nl-NL.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\dist\locales\bootstrap-wysihtml5.pl-PL.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\dist\locales\bootstrap-wysihtml5.pt-BR.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\dist\locales\bootstrap-wysihtml5.ru-RU.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\dist\locales\bootstrap-wysihtml5.sk-SK.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\dist\locales\bootstrap-wysihtml5.sv-SE.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\dist\locales\bootstrap-wysihtml5.tr-TR.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\dist\locales\bootstrap-wysihtml5.ua-UA.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\dist\locales\bootstrap-wysihtml5.zh-CN.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\dist\locales\bootstrap-wysihtml5.zh-TW.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\dist\templates.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\src\bootstrap3-wysihtml5.css" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\src\bootstrap3-wysihtml5.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\src\commands\small.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\src\generated\commands.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\src\generated\templates.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\src\locales\bootstrap-wysihtml5.ar-AR.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\src\locales\bootstrap-wysihtml5.bg-BG.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\src\locales\bootstrap-wysihtml5.ca-CT.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\src\locales\bootstrap-wysihtml5.cs-CZ.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\src\locales\bootstrap-wysihtml5.da-DK.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\src\locales\bootstrap-wysihtml5.de-DE.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\src\locales\bootstrap-wysihtml5.el-GR.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\src\locales\bootstrap-wysihtml5.en-US.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\src\locales\bootstrap-wysihtml5.es-AR.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\src\locales\bootstrap-wysihtml5.es-ES.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\src\locales\bootstrap-wysihtml5.fr-FR.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\src\locales\bootstrap-wysihtml5.hr-HR.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\src\locales\bootstrap-wysihtml5.hu-HU.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\src\locales\bootstrap-wysihtml5.il-HE.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\src\locales\bootstrap-wysihtml5.it-IT.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\src\locales\bootstrap-wysihtml5.ja-JP.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\src\locales\bootstrap-wysihtml5.ko-KR.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\src\locales\bootstrap-wysihtml5.lt-LT.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\src\locales\bootstrap-wysihtml5.mo-MD.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\src\locales\bootstrap-wysihtml5.nb-NB.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\src\locales\bootstrap-wysihtml5.nl-NL.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\src\locales\bootstrap-wysihtml5.pl-PL.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\src\locales\bootstrap-wysihtml5.pt-BR.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\src\locales\bootstrap-wysihtml5.ru-RU.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\src\locales\bootstrap-wysihtml5.sk-SK.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\src\locales\bootstrap-wysihtml5.sv-SE.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\src\locales\bootstrap-wysihtml5.tr-TR.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\src\locales\bootstrap-wysihtml5.ua-UA.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\src\locales\bootstrap-wysihtml5.zh-CN.js" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\src\locales\bootstrap-wysihtml5.zh-TW.js" />
     <Content Include="assets\plugins\bootstrap\3.3.7\css\bootstrap-theme.css" />
     <Content Include="assets\plugins\bootstrap\3.3.7\css\bootstrap-theme.min.css" />
     <Content Include="assets\plugins\bootstrap\3.3.7\css\bootstrap.css" />
@@ -4169,6 +4248,14 @@
     <Content Include="assets\plugins\bootstrap-eonasdan-datetimepicker\src\sass\bootstrap-datetimepicker-build.scss" />
     <Content Include="assets\plugins\bootstrap-eonasdan-datetimepicker\src\sass\_bootstrap-datetimepicker.scss" />
     <Content Include="assets\plugins\bootstrap-colorpalette\README.md" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\src\templates\blockquote.hbs" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\src\templates\color.hbs" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\src\templates\emphasis.hbs" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\src\templates\font-styles.hbs" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\src\templates\html.hbs" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\src\templates\image.hbs" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\src\templates\link.hbs" />
+    <Content Include="assets\plugins\bootstrap-wysihtml5\src\templates\lists.hbs" />
     <None Include="Connected Services\testInfoCenter\ServicioIntegracionBIC.disco" />
     <None Include="Connected Services\testInfoCenter\configuration91.svcinfo" />
     <None Include="Connected Services\testInfoCenter\configuration.svcinfo" />
@@ -4187,6 +4274,7 @@
     <Content Include="Imagenes\logo_lightblue.png" />
     <Content Include="Imagenes\usuarios\111111111111.jpg" />
     <Content Include="Imagenes\usuarios\sin_imagen.jpg" />
+    <Content Include="interventions_admin.aspx" />
     <Content Include="login.aspx" />
     <Content Include="mapa_cliente.aspx" />
     <Content Include="menus_admin.aspx" />
@@ -4236,6 +4324,7 @@
     <Compile Include="Clases\DBApi.cs" />
     <Compile Include="Clases\Dominios.cs" />
     <Compile Include="Clases\enviar_correo.cs" />
+    <Compile Include="Clases\Interventions.cs" />
     <Compile Include="Clases\Menus.cs" />
     <Compile Include="Clases\Menus_roles.cs" />
     <Compile Include="Clases\Opciones.cs" />
@@ -4269,6 +4358,13 @@
     </Compile>
     <Compile Include="domino_admin.aspx.designer.cs">
       <DependentUpon>domino_admin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="interventions_admin.aspx.cs">
+      <DependentUpon>interventions_admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="interventions_admin.aspx.designer.cs">
+      <DependentUpon>interventions_admin.aspx</DependentUpon>
     </Compile>
     <Compile Include="mapa_cliente.aspx.cs">
       <DependentUpon>mapa_cliente.aspx</DependentUpon>

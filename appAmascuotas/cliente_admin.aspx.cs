@@ -668,6 +668,20 @@ namespace appAmascuotas
             Response.Redirect("contact_admin.aspx?RME=50");
         }
 
+        protected void lbtnNewIntervention_Click(object sender, EventArgs e)
+        {
+            Session["id_cliente"] = lblIdCliente.Text;
+            Session["is_billed"] = "new";
+            Response.Redirect("interventions_admin.aspx?RME=55");
+        }
+
+        protected void lbtnListInterventions_Click(object sender, EventArgs e)
+        {
+            Session["id_cliente"] = lblIdCliente.Text;
+            Session["is_billed"] = "null";
+            Response.Redirect("interventions_admin.aspx?RME=55");
+        }
+
         protected string Gmap1_Click1(object s, GAjaxServerEventArgs e)
         {
             Gmap1.resetMarkers();
